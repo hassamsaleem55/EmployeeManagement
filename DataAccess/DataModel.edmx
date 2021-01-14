@@ -66,6 +66,7 @@
           <Property Name="job_end_date" Type="date" />
           <Property Name="job_duration" Type="varchar(max)" />
           <Property Name="job_type" Type="varchar(max)" />
+          <Property Name="job_shift" Type="varchar(max)" />
           <Property Name="job_status" Type="varchar(max)" />
           <Property Name="client_id" Type="int" />
           <Property Name="created_at" Type="date" />
@@ -74,7 +75,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="employee_id" Type="int" />
           <Property Name="job_id" Type="int" />
           <Property Name="payslip" Type="text" />
@@ -90,21 +91,12 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="employee_managementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="jobs_log">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="employee_id" Type="Int32" />
-          <Property Name="job_id" Type="Int32" />
-          <Property Name="payslip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityContainer Name="employee_managementEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="jobs_log" EntityType="Self.jobs_log" />
           <EntitySet Name="clients" EntityType="employee_managementModel.client" />
           <EntitySet Name="employees" EntityType="employee_managementModel.employee" />
           <EntitySet Name="admins" EntityType="employee_managementModel.admin" />
           <EntitySet Name="jobs" EntityType="employee_managementModel.job" />
+          <EntitySet Name="jobs_log" EntityType="employee_managementModel.jobs_log" />
         </EntityContainer>
         <EntityType Name="client">
           <Key>
@@ -167,9 +159,19 @@
           <Property Name="job_end_date" Type="DateTime" Precision="0" />
           <Property Name="job_duration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="job_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="job_shift" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="job_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="client_id" Type="Int32" />
           <Property Name="created_at" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="jobs_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employee_id" Type="Int32" />
+          <Property Name="job_id" Type="Int32" />
+          <Property Name="payslip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -177,16 +179,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="employee_managementModelStoreContainer" CdmEntityContainer="employee_managementEntities">
-          <EntitySetMapping Name="jobs_log">
-            <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
-              <MappingFragment StoreEntitySet="jobs_log">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
-                <ScalarProperty Name="job_id" ColumnName="job_id" />
-                <ScalarProperty Name="payslip" ColumnName="payslip" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="clients">
             <EntityTypeMapping TypeName="employee_managementModel.client">
               <MappingFragment StoreEntitySet="client">
@@ -246,6 +238,7 @@
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="client_id" ColumnName="client_id" />
                 <ScalarProperty Name="job_status" ColumnName="job_status" />
+                <ScalarProperty Name="job_shift" ColumnName="job_shift" />
                 <ScalarProperty Name="job_type" ColumnName="job_type" />
                 <ScalarProperty Name="job_duration" ColumnName="job_duration" />
                 <ScalarProperty Name="job_end_date" ColumnName="job_end_date" />
@@ -253,6 +246,16 @@
                 <ScalarProperty Name="job_details" ColumnName="job_details" />
                 <ScalarProperty Name="job_title" ColumnName="job_title" />
                 <ScalarProperty Name="job_id" ColumnName="job_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobs_log">
+            <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
+              <MappingFragment StoreEntitySet="jobs_log">
+                <ScalarProperty Name="payslip" ColumnName="payslip" />
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

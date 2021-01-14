@@ -61,6 +61,7 @@
     <Property Name="job_end_date" Type="date" />
     <Property Name="job_duration" Type="varchar(max)" />
     <Property Name="job_type" Type="varchar(max)" />
+    <Property Name="job_shift" Type="varchar(max)" />
     <Property Name="job_status" Type="varchar(max)" />
     <Property Name="client_id" Type="int" />
     <Property Name="created_at" Type="date" />
@@ -69,7 +70,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="employee_id" Type="int" />
     <Property Name="job_id" Type="int" />
     <Property Name="payslip" Type="text" />

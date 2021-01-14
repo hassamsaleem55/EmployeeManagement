@@ -25,10 +25,10 @@ namespace DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<jobs_log> jobs_log { get; set; }
         public virtual DbSet<client> clients { get; set; }
         public virtual DbSet<employee> employees { get; set; }
         public virtual DbSet<admin> admins { get; set; }
         public virtual DbSet<job> jobs { get; set; }
+        public virtual DbSet<jobs_log> jobs_log { get; set; }
     }
 }

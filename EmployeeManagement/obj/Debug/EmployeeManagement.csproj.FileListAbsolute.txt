@@ -80,3 +80,44 @@ C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeM
 C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.csproj.CopyComplete
 C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.dll
 C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.pdb
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\EmployeeManagement.dll.config
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\EmployeeManagement.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\EmployeeManagement.pdb
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\Antlr3.Runtime.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\AspNet.ScriptManager.jQuery.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.AspNet.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.Core.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.OAuth.Consumer.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.OAuth.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.OpenId.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\EntityFramework.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\Microsoft.ScriptManager.MSAjax.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\Microsoft.ScriptManager.WebForms.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\Microsoft.Web.Infrastructure.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\Newtonsoft.Json.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\System.Net.Http.Formatting.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\System.Web.Http.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\System.Web.Http.WebHost.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\System.Web.Optimization.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\System.Web.Providers.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\WebGrease.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\Newtonsoft.Json.xml
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\System.Net.Http.Formatting.xml
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\System.Web.Http.xml
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\System.Web.Http.WebHost.xml
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\EntityFramework.xml
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.Core.xml
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.OAuth.xml
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.OAuth.Consumer.xml
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.OpenId.xml
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+H:\GIT\EmployeeManagement\EmployeeManagement\bin\DotNetOpenAuth.AspNet.xml
+H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.csprojAssemblyReference.cache
+H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.csproj.CoreCompileInputs.cache
+H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.csproj.CopyComplete
+H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.dll
+H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.pdb

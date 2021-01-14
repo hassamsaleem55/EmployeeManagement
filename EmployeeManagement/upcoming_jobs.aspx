@@ -21,6 +21,7 @@
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Duration</th>
+                                <th>Shift</th>
                                 <th>Type</th>
                                 <th>Labor</th>
                                 <th>Details</th>
@@ -40,7 +41,7 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add New Job</h4>
+                    <h4 class="modal-title" id="addNewTitle">Add New Job</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
@@ -84,12 +85,20 @@
                             days
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-sm-2">Job shift:</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="shift">
+                                    <option value="Day">Day</option>
+                                    <option value="Night">Night</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-sm-2">Type:</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="type" placeholder="Enter Job Type">
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -116,6 +125,7 @@
                                     <th>#</th>
                                     <th>Employee Name</th>
                                     <th>Documents</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="rowLabors">
@@ -160,6 +170,40 @@
         </div>
     </div>
 
+    <div id="modalViewDocuments" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="viewDocumentsTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <table id="rowDocuments" class="table table-responsive">
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalViewDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="viewDetailsTitle"></h4>
+                </div>
+                <div class="modal-body" id="viewDetailsBody">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function () {
             $('#tblJobs').DataTable();
@@ -185,7 +229,7 @@
                         $("#rowJobsTable").empty();
                         if (data.length != 0) {
                             $(data).each(function (index, value) {
-                                $("#rowJobsTable").append("<tr><td>" + (index + 1) + "</td><td>" + value.job_title + "</td><td>" + value.client_name + "</td><td>" + getFormatedDate(value.job_start_date) + "</td><td>" + getFormatedDate(value.job_end_date) + "</td><td>" + value.job_duration + " days</td><td>" + value.job_type + "</td><td><a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a></td><td><a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a></td><td><a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.job_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.job_id + "'><i class='fa fa-trash'></i></a></td><tr>");
+                                $("#rowJobsTable").append("<tr><td>" + (index + 1) + "</td><td>" + value.job_title + "</td><td>" + value.client_name + "</td><td>" + getFormatedDate(value.job_start_date) + "</td><td>" + getFormatedDate(value.job_end_date) + "</td><td>" + value.job_duration + " days</td><td>" + value.job_shift + "</td><td>" + value.job_type + "</td><td><a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a></td><td><a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a></td><td><a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.job_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.job_id + "'><i class='fa fa-trash'></i></a></td><tr>");
                             });
                         }
                         else {
@@ -242,8 +286,32 @@
                 return diff;
             }
 
+            function getLabors(id) {
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/assigned_employees/" + id,
+                    async: false,
+                    method: 'GET',
+                    success: function (data) {
+                        $("#rowLabors").empty();
+                        if (data.length != 0) {
+                            $(data).each(function (index, value) {
+                                $("#rowLabors").append("<tr><td>" + (index + 1) + "</td><td>" + value.name + "</td><td><a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a></td><td><a id='btnRemoveEmployee' class='btn btn-sm btn-danger' data-id='" + value.id + "' data-job-id='" + id + "'>Remove</a></td></tr>");
+                            });
+                        }
+                    },
+                    error: function (jqXHR, exception) {
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: exception,
+                            timer: 1800
+                        });
+                    }
+                });
+            }
+
             $(document).on("click", "#btnShowModal", function () {
-                $(".modal-title").text("Add New Job");
+                $("#addNewTitle").text("Add New Job");
                 $("#btnSubmit").text("Add");
                 $("#title").val("");
                 $("#clients").val("select");
@@ -252,6 +320,7 @@
                 $("#endDate").val("");
                 $("#duration").val("0");
                 $("#type").val("");
+                $("#shift").val("Day");
                 $("#clients").attr("disabled", false);
                 $("#btnSubmit").attr("data-id", "0");
                 $("#modalAddNew").modal("show");
@@ -263,10 +332,6 @@
 
             $("#startDate").change(function () {
                 $("#duration").val(getDuration());
-            });
-
-            $(document).on("click", "#btnViewLabors", function () {
-                $("#modalViewLabors").modal("show");
             });
 
             $(document).on("click", "#btnSubmit", function () {
@@ -329,6 +394,7 @@
                         "job_end_date": $("#endDate").val(),
                         "job_duration": $("#duration").val(),
                         "job_type": $("#type").val(),
+                        "job_shift": $("#shift").val(),
                         "job_status": "upcoming",
                     },
                     async: false,
@@ -336,7 +402,7 @@
                     success: function () {
                         $("#modalAddNew").modal("hide");
                         toastr.success(successMsg);
-                        getadminsData();
+                        getJobsData();
                     },
                     error: function (jqXHR, exception) {
                         swal({
@@ -364,8 +430,8 @@
                         $("#endDate").val(data.job_end_date.split("T")[0]);
                         $("#duration").val(data.job_duration);
                         $("#type").val(data.job_type);
-
-                        $(".modal-title").text("Update Job");
+                        $("#shift").val(data.job_shift);
+                        $("addNewTitle").text("Update Job");
                         $("#clients").attr("disabled", true);
                         $("#btnSubmit").text("Update");
                         $("#btnSubmit").attr("data-id", id);
@@ -413,8 +479,191 @@
                     });
             });
 
+            $(document).on("click", "#btnViewLabors", function () {
+                $("#assignNewLabor").attr("data-shift", $(this).closest("tr").find("td:eq(6)").text());
+                $("#assignNewLabor").attr("data-job-id", $(this).attr("data-id"));
+                getLabors($(this).attr("data-id"));
+                $("#modalViewLabors").modal("show");
+            });
+
             $(document).on("click", "#assignNewLabor", function () {
+                var job_id = $(this).attr("data-job-id");
+                var shift = $(this).attr("data-shift");
+                $("#btnAddLabor").hide();
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/unassigned_employees/" + shift,
+                    async: false,
+                    method: 'GET',
+                    success: function (data) {
+                        if (data.length != 0) {
+                            $("#btnAddLabor").show();
+                            $("#rowLaborsList").empty();
+                            $(data).each(function (index, value) {
+                                $("#rowLaborsList").append("<tr><td>" + (index + 1) + "</td><td>" + value.name + "</td><td><a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a></td><td><input type='checkbox' class='checkbox' data-id='" + value.id + "' data-job-id='" + job_id + "'/></td></tr>");
+                            });
+                        }
+                    },
+                    error: function (jqXHR, exception) {
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: exception,
+                            timer: 1800
+                        });
+                    }
+                });
                 $("#modalNewLabor").modal("show");
+            });
+
+            $(document).on("click", "#btnAddLabor", function () {
+                if ($(".checkbox:checked").length == 0) {
+                    toastr.error("No employee is selected to add");
+                    return false;
+                }
+                $(".checkbox:checked").each(function () {
+                    var employee_id = $(this).attr("data-id");
+                    var job_id = $(this).attr("data-job-id");
+                    $.ajax({
+                        url: localStorage.getItem("ApiLink") + "api/assign_employee_to_job",
+                        async: false,
+                        method: 'POST',
+                        data: {
+                            "employee_id": employee_id,
+                            "job_id": job_id
+                        },
+                        success: function (response) {
+                            getLabors(job_id);
+                            $("#modalNewLabor").modal("hide");
+                            toastr.success("Employees have been assigned successfully");
+                        },
+                        error: function (jqXHR, exception) {
+                            swal({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: exception,
+                                timer: 1800
+                            });
+                        }
+                    });
+                });
+            });
+
+            $(document).on("click", "#btnRemoveEmployee", function () {
+                var id = $(this).attr("data-id");
+                var job_id = $(this).attr("data-job-id");
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/assigned_employees/" + id,
+                    async: false,
+                    method: 'DELETE',
+                    success: function (response) {
+                        getLabors(job_id);
+                        //$("#modalNewLabor").modal("hide");
+                        toastr.success("Employees have been removed successfully");
+                    },
+                    error: function (jqXHR, exception) {
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: exception,
+                            timer: 1800
+                        });
+                    }
+                });
+            });
+
+            $(document).on("click", "#viewDocuments", function () {
+                var id = $(this).attr("data-id");
+                var count = 1;
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/employees/" + id,
+                    async: false,
+                    method: 'GET',
+                    success: function (data) {
+                        $("#modalViewDocuments").modal("show");
+                        $("#viewDocumentsTitle").text(data.first_name + "'s Documents");
+                        $("#rowDocuments").empty();
+                        if (data.length != 0) {
+                            if (data.NIF != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NIF</td><td><a href='" + data.NIF + "' target='_blank'>" + data.NIF.split("/")[data.NIF.split("/").length - 1] + "</a></td><tr>");
+                            }
+                            else {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NIF</td><td>Not Available</td><tr>");
+                            }
+
+                            if (data.NISS != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td><a href='" + data.NISS + "' target='_blank'>" + data.NISS.split("/")[data.NISS.split("/").length - 1] + "</a></td><tr>");
+                            }
+                            else {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td>Not Available</td><tr>");
+                            }
+
+                            if (data.passport != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td><a href='" + data.passport + "' target='_blank'>" + data.passport.split("/")[data.passport.split("/").length - 1] + "</a></td><tr>");
+                            }
+                            else {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td>Not Available</td><tr>");
+                            }
+
+                            if (data.visa != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td><a href='" + data.visa + "' target='_blank'>" + data.visa.split("/")[data.visa.split("/").length - 1] + "</a></td><tr>");
+                            }
+                            else {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td>Not Available</td><tr>");
+                            }
+
+                            if (data.residence_card != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td><a href='" + data.residence_card + "' target='_blank'>" + data.residence_card.split("/")[data.residence_card.split("/").length - 1] + "</a></td><tr>");
+                            }
+                            else {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td>Not Available</td><tr>");
+                            }
+
+                            if (data.SEF != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td><a href='" + data.SEF + "' target='_blank'>" + data.SEF.split("/")[data.SEF.split("/").length - 1] + "</a></td><tr>");
+                            }
+                            else {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td>Not Available</td><tr>");
+                            }
+
+                            if (data.boarding_pass != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td><a href='" + data.boarding_pass + "' target='_blank'>" + data.boarding_pass.split("/")[data.boarding_pass.split("/").length - 1] + "</a></td><tr>");
+                            }
+                            else {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td>Not Available</td><tr>");
+                            }
+                        }
+                    },
+                    error: function (jqXHR, exception) {
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: exception,
+                            timer: 1800
+                        });
+                    }
+                });
+            });
+
+            $(document).on("click", "#btnViewDetails", function () {
+                var id = $(this).attr("data-id");
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/upcoming_jobs/" + id,
+                    async: false,
+                    method: 'GET',
+                    success: function (data) {
+                        $("#viewDetailsTitle").text(data.job_title + "'s details");
+                        $("#viewDetailsBody").text(data.job_details);
+                        $("#modalViewDetails").modal("show");
+                    },
+                    error: function (jqXHR, exception) {
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: exception,
+                            timer: 1800
+                        });
+                    }
+                });
             });
         });
     </script>

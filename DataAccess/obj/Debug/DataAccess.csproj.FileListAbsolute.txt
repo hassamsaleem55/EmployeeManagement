@@ -21,3 +21,15 @@ C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeM
 C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
 C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\DataAccess\obj\Debug\DataAccess.pdb
+H:\GIT\EmployeeManagement\DataAccess\bin\Debug\DataAccess.dll.config
+H:\GIT\EmployeeManagement\DataAccess\bin\Debug\DataAccess.dll
+H:\GIT\EmployeeManagement\DataAccess\bin\Debug\DataAccess.pdb
+H:\GIT\EmployeeManagement\DataAccess\bin\Debug\EntityFramework.dll
+H:\GIT\EmployeeManagement\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+H:\GIT\EmployeeManagement\DataAccess\bin\Debug\EntityFramework.xml
+H:\GIT\EmployeeManagement\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+H:\GIT\EmployeeManagement\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
+H:\GIT\EmployeeManagement\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+H:\GIT\EmployeeManagement\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+H:\GIT\EmployeeManagement\DataAccess\obj\Debug\DataAccess.dll
+H:\GIT\EmployeeManagement\DataAccess\obj\Debug\DataAccess.pdb

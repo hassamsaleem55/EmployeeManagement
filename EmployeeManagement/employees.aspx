@@ -706,7 +706,8 @@
                         "residence_card": residenceCardPath,
                         "SEF": sefPath,
                         "boarding_pass": boardingPassPath,
-                        "working_shift": $("#workingShift").val()
+                        "working_shift": $("#workingShift").val(),
+                        "status": "unassigned"
                     },
                     async: false,
                     method: method,

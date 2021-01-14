@@ -32,6 +32,7 @@ namespace EmployeeManagementApi.Controllers
                                    job_end_date = j.job_end_date,
                                    job_duration = j.job_duration,
                                    job_type = j.job_type,
+                                   job_shift = j.job_shift,
                                    client_name = c.first_name + " " + c.last_name
                                };
                 if (entities != null)
@@ -99,6 +100,7 @@ namespace EmployeeManagementApi.Controllers
                     entity.job_end_date = entities.job_end_date;
                     entity.job_duration = entities.job_duration;
                     entity.job_type = entities.job_type;
+                    entity.job_shift = entities.job_shift;
                     Context.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK, "Data updated successfully");
                 }
@@ -136,6 +138,102 @@ namespace EmployeeManagementApi.Controllers
             }
         }
 
+        [Route("api/unassigned_employees/{shift}")]
+        public HttpResponseMessage GetUnassignedEmployees(string shift)
+        {
+            try
+            {
+                var entities = from e in Context.employees
+                               where e.status == "unassigned" && e.working_shift == shift
+                               select new
+                               {
+                                   id = e.employee_id,
+                                   name = e.first_name + " " + e.last_name
+                               };
+                if (entities != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entities);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/assign_employee_to_job")]
+        public HttpResponseMessage PostAssignEmployeeToJob([FromBody] jobs_log entities)
+        {
+            try
+            {
+                var entity = Context.employees.FirstOrDefault(e => e.employee_id == entities.employee_id);
+                entity.status = "assigned";
+                Context.jobs_log.Add(entities);
+                Context.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK, "Data inserted successfully");
+            }
+            catch  (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
+        }
+
+        [Route("api/assigned_employees/{id}")]
+        public HttpResponseMessage GetAssignedEmployees(int id)
+        {
+            try
+            {
+                var entities = from e in Context.employees
+                               join j in Context.jobs_log on e.employee_id equals j.employee_id
+                               where j.job_id == id
+                               select new
+                               {
+                                   id = e.employee_id,
+                                   name = e.first_name + " " + e.last_name
+                               };
+                if (entities != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entities);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/assigned_employees/{id}")]
+        public HttpResponseMessage DeleteAssignedEmployees(int id)
+        {
+            try
+            {
+                var job_log_entity = Context.jobs_log.FirstOrDefault(e => e.employee_id == id);
+                var employee_entity = Context.employees.FirstOrDefault(e => e.employee_id == id);
+                if (job_log_entity != null)
+                {
+                    employee_entity.status = "unassigned";
+                    Context.jobs_log.Remove(job_log_entity);
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Client has been deleted successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid client ID");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
 
         [Route("api/admins")]
         public HttpResponseMessage GetAdmins()
@@ -331,7 +429,7 @@ namespace EmployeeManagementApi.Controllers
                         string fileName = tokens[0] + "_" + n + extension;
 
                         //var fileSavePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Uploads/employee_documents"), fileName);
-                        var fileSavePath = Path.Combine(@"C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagement\Uploads\employee_documents", fileName);
+                        var fileSavePath = Path.Combine(@"H:\GIT\EmployeeManagement\EmployeeManagement\Uploads\employee_documents", fileName);
                         // Save the uploaded file to "UploadedFiles" folder  
                         httpPostedFile.SaveAs(fileSavePath);
 

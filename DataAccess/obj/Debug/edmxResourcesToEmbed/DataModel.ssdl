@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="employee_managementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar(max)" />
+    <Property Name="last_name" Type="varchar(max)" />
+    <Property Name="email" Type="varchar(max)" />
+    <Property Name="password" Type="varchar(max)" />
+    <Property Name="contact" Type="varchar(max)" />
+    <Property Name="address" Type="varchar(max)" />
+    <Property Name="created_at" Type="date" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="client_id" />
+    </Key>
+    <Property Name="client_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar(max)" />
+    <Property Name="last_name" Type="varchar(max)" />
+    <Property Name="email" Type="varchar(max)" />
+    <Property Name="password" Type="varchar(max)" />
+    <Property Name="contact" Type="varchar(max)" />
+    <Property Name="address" Type="varchar(max)" />
+    <Property Name="created_at" Type="date" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar(max)" />
+    <Property Name="last_name" Type="varchar(max)" />
+    <Property Name="email" Type="varchar(max)" />
+    <Property Name="password" Type="varchar(max)" />
+    <Property Name="contact" Type="varchar(max)" />
+    <Property Name="address" Type="varchar(max)" />
+    <Property Name="skill" Type="varchar(max)" />
+    <Property Name="NIF" Type="varchar(max)" />
+    <Property Name="NISS" Type="varchar(max)" />
+    <Property Name="passport" Type="varchar(max)" />
+    <Property Name="visa" Type="varchar(max)" />
+    <Property Name="residence_card" Type="varchar(max)" />
+    <Property Name="SEF" Type="varchar(max)" />
+    <Property Name="boarding_pass" Type="varchar(max)" />
+    <Property Name="bank_account_number" Type="varchar(max)" />
+    <Property Name="working_shift" Type="varchar(max)" />
+    <Property Name="status" Type="varchar(max)" />
+    <Property Name="created_at" Type="date" />
+  </EntityType>
+  <EntityType Name="jobs">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="job_title" Type="varchar(max)" />
+    <Property Name="job_details" Type="text" />
+    <Property Name="job_start_date" Type="date" />
+    <Property Name="job_end_date" Type="date" />
+    <Property Name="job_duration" Type="varchar(max)" />
+    <Property Name="job_type" Type="varchar(max)" />
+    <Property Name="job_status" Type="varchar(max)" />
+    <Property Name="client_id" Type="int" />
+    <Property Name="created_at" Type="date" />
+  </EntityType>
+  <EntityType Name="jobs_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="employee_id" Type="int" />
+    <Property Name="job_id" Type="int" />
+    <Property Name="payslip" Type="text" />
+  </EntityType>
+  <EntityContainer Name="employee_managementModelStoreContainer">
+    <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="jobs_log" EntityType="Self.jobs_log" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

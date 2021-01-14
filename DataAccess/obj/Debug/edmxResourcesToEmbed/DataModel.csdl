@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="employee_managementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="jobs_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="employee_id" Type="Int32" />
+    <Property Name="job_id" Type="Int32" />
+    <Property Name="payslip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="employee_managementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="jobs_log" EntityType="Self.jobs_log" />
+    <EntitySet Name="clients" EntityType="employee_managementModel.client" />
+    <EntitySet Name="employees" EntityType="employee_managementModel.employee" />
+    <EntitySet Name="admins" EntityType="employee_managementModel.admin" />
+    <EntitySet Name="jobs" EntityType="employee_managementModel.job" />
+  </EntityContainer>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="client_id" />
+    </Key>
+    <Property Name="client_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="skill" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NIF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NISS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="passport" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="visa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="residence_card" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SEF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="boarding_pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="bank_account_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="working_shift" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="job">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="job_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="job_details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="job_start_date" Type="DateTime" Precision="0" />
+    <Property Name="job_end_date" Type="DateTime" Precision="0" />
+    <Property Name="job_duration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="job_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="job_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="client_id" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="0" />
+  </EntityType>
+</Schema>

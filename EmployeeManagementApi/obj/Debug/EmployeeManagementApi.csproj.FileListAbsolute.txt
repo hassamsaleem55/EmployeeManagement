@@ -1,0 +1,252 @@
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\EmployeeManagementApi.dll.config
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\EmployeeManagementApi.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\EmployeeManagementApi.pdb
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csc.exe
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csc.exe.config
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csc.rsp
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csi.exe
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csi.exe.config
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csi.rsp
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.AppContext.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Console.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.IO.Compression.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Net.Http.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.ValueTuple.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\vbc.exe
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\vbc.exe.config
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\vbc.rsp
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\VBCSCompiler.exe
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Antlr3.Runtime.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\DataAccess.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\EntityFramework.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\EntityFramework.SqlServer.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Options.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Newtonsoft.Json.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Buffers.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.ComponentModel.Annotations.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Memory.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Net.Http.Formatting.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Numerics.Vectors.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Text.Encodings.Web.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Cors.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Helpers.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.Cors.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.WebHost.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Mvc.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Optimization.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Razor.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.Razor.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\WebGrease.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\DataAccess.pdb
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\DataAccess.dll.config
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\EntityFramework.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\EntityFramework.SqlServer.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Options.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Buffers.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Memory.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Numerics.Vectors.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Text.Encodings.Web.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.Cors.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Newtonsoft.Json.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Net.Http.Formatting.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Helpers.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.WebHost.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Mvc.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Optimization.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Razor.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.Razor.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Antlr3.Runtime.pdb
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\obj\Debug\EmployeeManagementApi.csprojAssemblyReference.cache
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\obj\Debug\EmployeeManagementApi.csproj.CoreCompileInputs.cache
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\obj\Debug\EmployeeManagementApi.csproj.CopyComplete
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\obj\Debug\EmployeeManagementApi.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\Visual Studio 2012\Projects\EmployeeManagement\EmployeeManagementApi\obj\Debug\EmployeeManagementApi.pdb
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\EmployeeManagementApi.dll.config
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\EmployeeManagementApi.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\EmployeeManagementApi.pdb
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csc.exe
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csc.exe.config
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csc.rsp
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csi.exe
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csi.exe.config
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\csi.rsp
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.AppContext.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Console.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.IO.Compression.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Net.Http.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.ValueTuple.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\vbc.exe
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\vbc.exe.config
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\vbc.rsp
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\VBCSCompiler.exe
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Antlr3.Runtime.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\DataAccess.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\EntityFramework.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\EntityFramework.SqlServer.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Options.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Newtonsoft.Json.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Buffers.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.ComponentModel.Annotations.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Memory.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Net.Http.Formatting.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Numerics.Vectors.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Text.Encodings.Web.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Cors.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Helpers.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.Cors.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.WebHost.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Mvc.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Optimization.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Razor.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.Razor.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\WebGrease.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\DataAccess.pdb
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\DataAccess.dll.config
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\EntityFramework.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\EntityFramework.SqlServer.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Options.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Buffers.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Memory.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Numerics.Vectors.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Text.Encodings.Web.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.Cors.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Newtonsoft.Json.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Net.Http.Formatting.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Helpers.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Http.WebHost.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Mvc.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Optimization.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.Razor.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\System.Web.WebPages.Razor.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Antlr3.Runtime.pdb
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\obj\Debug\EmployeeManagementApi.csprojAssemblyReference.cache
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\obj\Debug\EmployeeManagementApi.csproj.CoreCompileInputs.cache
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\obj\Debug\EmployeeManagementApi.csproj.CopyComplete
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\obj\Debug\EmployeeManagementApi.dll
+C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeManagement\EmployeeManagementApi\obj\Debug\EmployeeManagementApi.pdb

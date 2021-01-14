@@ -1,10 +1,10 @@
-﻿<%@ Page Title="Jobs" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="upcoming_jobs.aspx.cs" Inherits="EmployeeManagement.jobs" %>
+﻿<%@ Page Title="Upcoming Jobs" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="upcoming_jobs.aspx.cs" Inherits="EmployeeManagement.jobs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="main">
         <div class="panel">
             <div class="panel-heading">
-                <h3>Jobs List</h3>
+                <h3>Upcoming Jobs List</h3>
             </div>
             <div class="panel-body">
                 <div class="col-md-12">
@@ -233,7 +233,7 @@
                             });
                         }
                         else {
-                            $("#rowJobsTable").append("<tr><td colspan='9' class='text-center'>No record found</td><tr>");
+                            $("#rowJobsTable").append("<tr><td colspan='11' class='text-center'>No record found</td><tr>");
                         }
                     },
                     error: function (jqXHR, exception) {

@@ -213,6 +213,8 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="index.aspx" />
+    <Content Include="completed_jobs.aspx" />
+    <Content Include="running_jobs.aspx" />
     <Content Include="upcoming_jobs.aspx" />
     <Content Include="login.aspx" />
     <Content Include="packages.config" />
@@ -317,6 +319,20 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="completed_jobs.aspx.cs">
+      <DependentUpon>completed_jobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="completed_jobs.aspx.designer.cs">
+      <DependentUpon>completed_jobs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="running_jobs.aspx.cs">
+      <DependentUpon>running_jobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="running_jobs.aspx.designer.cs">
+      <DependentUpon>running_jobs.aspx</DependentUpon>
     </Compile>
     <Compile Include="upcoming_jobs.aspx.cs">
       <DependentUpon>upcoming_jobs.aspx</DependentUpon>

@@ -235,6 +235,79 @@ namespace EmployeeManagementApi.Controllers
             }
         }
 
+
+
+        [Route("api/running_jobs")]
+        public HttpResponseMessage GetRunningJobs()
+        {
+            try
+            {
+                var entities = from j in Context.jobs
+                               join c in Context.clients on j.client_id equals c.client_id
+                               where j.job_status == "running"
+                               select new
+                               {
+                                   job_id = j.job_id,
+                                   job_title = j.job_title,
+                                   job_details = j.job_details,
+                                   job_end_date = j.job_end_date,
+                                   job_type = j.job_type,
+                                   job_shift = j.job_shift,
+                                   client_name = c.first_name + " " + c.last_name
+                               };
+                if (entities != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entities);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+
+        [Route("api/completed_jobs")]
+        public HttpResponseMessage GetCompletedJobs()
+        {
+            try
+            {
+                var entities = from j in Context.jobs
+                               join c in Context.clients on j.client_id equals c.client_id
+                               where j.job_status == "completed"
+                               select new
+                               {
+                                   job_id = j.job_id,
+                                   job_title = j.job_title,
+                                   job_details = j.job_details,
+                                   job_start_date = j.job_start_date,
+                                   job_end_date = j.job_end_date,
+                                   job_duration = j.job_duration,
+                                   job_type = j.job_type,
+                                   job_shift = j.job_shift,
+                                   client_name = c.first_name + " " + c.last_name
+                               };
+                if (entities != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entities);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+
+
         [Route("api/admins")]
         public HttpResponseMessage GetAdmins()
         {

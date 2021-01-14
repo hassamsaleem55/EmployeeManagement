@@ -124,7 +124,7 @@
                                     <ul class="nav">
                                         <li><a href="upcoming_jobs.aspx" class="nav-item"><i class="fa fa-tasks"></i><span>Upcoming Jobs</span></a></li>
                                         <li><a href="running_jobs.aspx" class="nav-item"><i class="fa fa-tasks"></i><span>Running Jobs</span></a></li>
-                                        <li><a href="jobs_history.aspx" class="nav-item"><i class="fa fa-tasks"></i><span>Jobs History</span></a></li>
+                                        <li><a href="completed_jobs.aspx" class="nav-item"><i class="fa fa-tasks"></i><span>Completed Jobs</span></a></li>
                                     </ul>
                                 </div>
                             </li>

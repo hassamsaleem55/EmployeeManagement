@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Upcoming Jobs" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="upcoming_jobs.aspx.cs" Inherits="EmployeeManagement.jobs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="main">
+        <div class="main">
         <div class="panel">
             <div class="panel-heading">
                 <h3>Upcoming Jobs List</h3>
@@ -395,6 +395,7 @@
                         "job_duration": $("#duration").val(),
                         "job_type": $("#type").val(),
                         "job_shift": $("#shift").val(),
+                        "client_id": $("#clients").val(),
                         "job_status": "upcoming",
                     },
                     async: false,
@@ -459,12 +460,12 @@
                         if (willDelete) {
                             var id = $(this).attr("data-id");
                             $.ajax({
-                                url: localStorage.getItem("ApiLink") + "api/admins/" + id,
+                                url: localStorage.getItem("ApiLink") + "api/upcoming_jobs/" + id,
                                 async: false,
                                 method: 'DELETE',
                                 success: function (response) {
                                     toastr.success("Admin has been removed successfully");
-                                    getadminsData();
+                                    getJobsData();
                                 },
                                 error: function (jqXHR, exception) {
                                     swal({

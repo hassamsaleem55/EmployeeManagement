@@ -588,6 +588,16 @@ namespace EmployeeManagementApi.Controllers
             try
             {
                 var entities = Context.clients.ToList();
+                //var entities = from c in Context.clients
+                //               select new
+                //               {
+                //                   //id = c.client_id,
+                //                   first_name = c.first_name,
+                //                   last_name = c.last_name,
+                //                   email = c.email,
+                //                   password = c.password,
+                //                   contact = c.contact,
+                //               };
                 if (entities != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, entities);

@@ -11,21 +11,7 @@
                     <button id="btnShowModal" type="button" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i>  New Admin</button>
                 </div>
                 <div class="col-md-12 table-responsive" style="margin-top: 10px;">
-                    <table id="example" class="table table-striped table-bordered table-hover" style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Password</th>
-                                <th>Contact</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="rowTable">
-                        </tbody>
-                    </table>
+                    
                 </div>
             </div>
         </div>
@@ -40,6 +26,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
+                        
                         <div class="form-group">
                             <label class="control-label col-sm-2">First Name:</label>
                             <div class="col-sm-10">
@@ -89,25 +76,31 @@
 
     <script>
         $(document).ready(function () {
-            $('#example').DataTable();
+            //$('#example').DataTable();
             $(".nav-item:eq(0)").attr("class", "nav-item");
             $(".nav-item:eq(5)").attr("class", "nav-item active");
             getadminsData();
-            function getadminsData() {
+            function getadminsData()
+            {
+                var arrData = [];
                 $.ajax({
                     url: localStorage.getItem("ApiLink") + "api/admins",
                     async: false,
                     method: 'GET',
                     success: function (data) {
-                        $("#rowTable").empty();
-                        if (data.length != 0) {
-                            $(data).each(function (index, value) {
-                                $("#rowTable").append("<tr><td>" + (index + 1) + "</td><td>" + value.first_name + "</td><td>" + value.last_name + "</td><td>" + value.email + "</td><td>" + value.password + "</td><td>" + value.contact + "</td><td><a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.admin_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.admin_id + "'><i class='fa fa-trash'></i></a></td><tr>");
-                            });
-                        }
-                        else {
-                            $("#rowTable").append("<tr><td colspan='7' class='text-center'>No record found</td><tr>");
-                        }
+
+                        $(data).each(function (index, value) {
+                            var objData = {
+                                "sr": index + 1,
+                                "first_name": value.first_name,
+                                "last_name": value.last_name,
+                                "email": value.email,
+                                "password": value.password,
+                                "contact": value.contact,
+                                "actions": "<a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.admin_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.admin_id + "'><i class='fa fa-trash'></i></a>"
+                            };
+                            arrData.push(objData);
+                        });
                     },
                     error: function (jqXHR, exception) {
                         swal({
@@ -118,7 +111,52 @@
                         });
                     }
                 });
+                $(".table-responsive").empty();
+                $(".table-responsive").html('<table id="example" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Password</th><th>Contact</th><th>Actions</th></tr></thead></table>');
+                $('#example').DataTable({
+                    "data": arrData,
+                    "columns": [
+                        { "data": "sr" },
+                        { "data": "first_name" },
+                        { "data": "last_name" },
+                        { "data": "email" },
+                        { "data": "password" },
+                        { "data": "contact" },
+                        { "data": "actions" }
+                    ]
+                });
             }
+
+            function accept_letters_only(e) {
+                if (e.which != 8 && e.which != 9 && e.which != 32 && (e.which < 65 || e.which > 122 || e
+                    .which == 96)) {
+                    e.preventDefault();
+                }
+            }
+
+            function accept_numbers_only(e) {
+                if (e.which != 8 && (e.which < 48 || e.which > 57)) {
+                    e.preventDefault();
+                }
+            }
+
+            $(document).on("keypress", "#firstName",
+                function (
+                    e) {
+                    accept_letters_only(e);
+                });
+
+            $(document).on("keypress", "#lastName",
+                function (
+                    e) {
+                    accept_letters_only(e);
+                });
+
+            $(document).on("keypress", "#contact",
+                function (
+                    e) {
+                    accept_numbers_only(e)
+                });
 
             $(document).on("click", "#btnShowModal", function () {
                 $(".modal-title").text("Add New Admin");
@@ -144,40 +182,50 @@
 
             $(document).on("click", "#btnSubmit", function () {
                 var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-                console.log();
+                var error = false;
                 if ($("#firstName").val() == "") {
                     toastr.error("First name field cannot be empty");
-                    $("#firstName").focus();
-                    return;
+                    ////$("#firstName").focus();
+                    //return;
+                    error = true;
                 }
-                else if ($("#lastName").val() == "") {
+                 if ($("#lastName").val() == "") {
                     toastr.error("Last name field cannot be empty");
-                    $("#lastName").focus();
-                    return;
+                    //$("#lastName").focus();
+                    //return;
+                    error = true;
                 }
-                else if ($("#email").val() == "") {
+                 if ($("#email").val() == "") {
                     toastr.error("Email field cannot be empty");
-                    $("#email").focus();
-                    return;
+                    //$("#email").focus();
+                    //return;
+                    error = true;
                 }
-                else if (!regex.test($("#email").val())) {
+                 if (!regex.test($("#email").val())) {
                     toastr.error("Invalid Email Address");
-                    $("#email").focus();
-                    return;
+                    //$("#email").focus();
+                    //return;
+                    error = true;
                 }
-                else if ($("#password").val() == "") {
+                 if ($("#password").val() == "") {
                     toastr.error("Password field cannot be empty");
-                    $("#password").focus();
-                    return;
+                    //$("#password").focus();
+                    //return;
+                    error = true;
                 }
-                else if ($("#contact").val() == "") {
+                 if ($("#contact").val() == "") {
                     toastr.error("Contact field cannot be empty");
-                    $("#contact").focus();
-                    return;
+                    //$("#contact").focus();
+                    //return;
+                    error = true;
                 }
-                else if ($("#address").val() == "") {
+                 if ($("#address").val() == "") {
                     toastr.error("Address field cannot be empty");
-                    $("#address").focus();
+                    //$("#address").focus();
+                    //return;
+                    error = true;
+                }
+                if (error) {
                     return;
                 }
                 var id = $("#btnSubmit").attr("data-id");

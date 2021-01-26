@@ -336,30 +336,39 @@
 
             $(document).on("click", "#btnSubmit", function () {
                 //var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                var error = false;
 
                 if ($("#title").val() == "") {
                     toastr.error("Title field cannot be empty");
-                    $("#title").focus();
-                    return;
+                    //$("#title").focus();
+                    //return;
+                    error = true;
                 }
                 if ($("#clients").val() == "select") {
                     toastr.error("Please select a client");
-                    $("#clients").focus();
-                    return;
+                    //$("#clients").focus();
+                    //return;
+                    error = true;
                 }
                 if ($("#details").val() == "") {
                     toastr.error("Details field cannot be empty");
-                    $("#details").focus();
-                    return;
+                    //$("#details").focus();
+                    //return;
+                    error = true;
                 }
                 if ($("#startDate").val() == "") {
                     toastr.error("Please select a start date");
-                    $("#startDate").focus();
-                    return;
+                    //$("#startDate").focus();
+                    //return;
+                    error = true;
                 }
                 if ($("#endDate").val() == "") {
                     toastr.error("Please select an end date");
-                    $("#endDate").focus();
+                    //$("#endDate").focus();
+                    //return;
+                    error = true;
+                }
+                if (error) {
                     return;
                 }
 

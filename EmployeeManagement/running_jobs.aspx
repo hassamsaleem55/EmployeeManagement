@@ -38,7 +38,7 @@
                     <h4 class="modal-title">Assigned Labor's List</h4>
                 </div>
                 <div class="modal-body">
-                    <button class="btn btn-sm btn-primary pull-right" id="assignNewLabor"><i class="fa fa-plus"></i>Assign New Labor</button>
+                    <button class="btn btn-sm btn-success pull-right" id="assignNewLabor"><i class="fa fa-plus"></i>Assign New Labor</button>
                     <div id="divTblLabors" style="margin-top: 50px;">
                         <table id="tblLabors" class="table table-responsive table-striped table-bordered table-hover" style="width: 100%;">
                             <thead>

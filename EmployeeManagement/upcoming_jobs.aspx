@@ -8,7 +8,7 @@
             </div>
             <div class="panel-body">
                 <div class="col-md-12">
-                    <button id="btnShowModal" type="button" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i>New Job</button>
+                    <button id="btnShowModal" type="button" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i>New Job</button>
                 </div>
 
                 <div class="col-md-12 table-responsive" style="margin-top: 10px;">
@@ -20,7 +20,7 @@
                                 <th>Client Name</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
-                                <th>Duration</th>
+                                <%--<th>Duration</th>--%>
                                 <th>Shift</th>
                                 <th>Type</th>
                                 <th>Labor</th>
@@ -28,8 +28,8 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="rowJobsTable">
-                        </tbody>
+                        <%--<tbody id="rowJobsTable">
+                        </tbody>--%>
                     </table>
                 </div>
             </div>
@@ -117,7 +117,7 @@
                     <h4 class="modal-title">Assigned Labor's List</h4>
                 </div>
                 <div class="modal-body">
-                    <button class="btn btn-sm btn-primary pull-right" id="assignNewLabor"><i class="fa fa-plus"></i>Assign New Labor</button>
+                    <button class="btn btn-sm btn-success pull-right" id="assignNewLabor"><i class="fa fa-plus"></i>Assign New Labor</button>
                     <div style="margin-top: 50px;">
                         <table id="tblLabors" class="table table-responsive table-striped table-bordered table-hover" style="width: 100%;">
                             <thead>
@@ -206,7 +206,7 @@
 
     <script>
         $(document).ready(function () {
-            $('#tblJobs').DataTable();
+            //$('#tblJobs').DataTable();
             $('#tblLabors').DataTable();
             $('#tblLaborsList').DataTable();
             $(".nav-item:eq(0)").attr("class", "nav-item");
@@ -221,20 +221,28 @@
 
             getJobsData();
             function getJobsData() {
+                var arrData = [];
                 $.ajax({
                     url: localStorage.getItem("ApiLink") + "api/upcoming_jobs",
                     async: false,
                     method: 'GET',
                     success: function (data) {
-                        $("#rowJobsTable").empty();
-                        if (data.length != 0) {
-                            $(data).each(function (index, value) {
-                                $("#rowJobsTable").append("<tr><td>" + (index + 1) + "</td><td>" + value.job_title + "</td><td>" + value.client_name + "</td><td>" + getFormatedDate(value.job_start_date) + "</td><td>" + getFormatedDate(value.job_end_date) + "</td><td>" + value.job_duration + " days</td><td>" + value.job_shift + "</td><td>" + value.job_type + "</td><td><a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a></td><td><a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a></td><td><a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.job_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.job_id + "'><i class='fa fa-trash'></i></a></td><tr>");
-                            });
-                        }
-                        else {
-                            $("#rowJobsTable").append("<tr><td colspan='11' class='text-center'>No record found</td><tr>");
-                        }
+                        $(data).each(function (index, value) {
+                            var objData = {
+                                "sr": index + 1,
+                                "title": value.job_title,
+                                "client_name": value.client_name,
+                                "start_date": getFormatedDate(value.job_start_date),
+                                "end_date": getFormatedDate(value.job_end_date),
+                                //"duration": value.duration,
+                                "shift": value.job_shift,
+                                "type": value.job_type,
+                                "labor": "<a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
+                                "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
+                                "actions": "<a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.job_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.job_id + "'><i class='fa fa-trash'></i></a>"
+                            };
+                            arrData.push(objData);
+                        });
                     },
                     error: function (jqXHR, exception) {
                         swal({
@@ -244,6 +252,23 @@
                             timer: 1800
                         });
                     }
+                });
+
+                $('#tblJobs').DataTable({
+                    "data": arrData,
+                    "columns": [
+                        { "data": "sr" },
+                        { "data": "title" },
+                        { "data": "client_name" },
+                        { "data": "start_date" },
+                        { "data": "end_date" },
+                        //{ "data": "duration" },
+                        { "data": "shift" },
+                        { "data": "type" },
+                        { "data": "labor" },
+                        { "data": "details" },
+                        { "data": "actions" }
+                    ]
                 });
             }
 
@@ -276,7 +301,7 @@
                 var startDate = 0;
                 var endDate = 0;
                 var diff = 0;
-                if ($("#startDate").val() != "" && $("#endDate").val() != "") {
+                if ($("#startDate").val() != " " && $("#endDate").val() != "") {
                     startDate = new Date($("#startDate").val());
                     endDate = new Date($("#endDate").val());
                     if (endDate >= startDate) {

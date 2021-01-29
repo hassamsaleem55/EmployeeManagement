@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="assets/css/main.css">
-    <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-    <link rel="stylesheet" href="assets/css/demo.css">
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
@@ -44,6 +42,10 @@
     <script>
         localStorage.setItem("ApiLink", "https://localhost:44361/");
         localStorage.setItem("SiteLink", "http://localhost:52625/");
+
+        if (localStorage.getItem("login_details") == undefined || localStorage.getItem("login_details") == null) {
+            window.location.replace("login.aspx");
+        }
     </script>
 </head>
 <body>
@@ -55,7 +57,8 @@
                     <a href="index.aspx">
                         <%--<img src="#"  class="img-responsive logo" />--%>
 
-                        <span class="text-primary" style="font-size: large">Employee Management</span>
+                        <span class="text-success" >Work Permit
+                        </span>
                     </a>
                 </div>
                 <div class="container-fluid">
@@ -132,9 +135,10 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li><a href="admins.aspx" class="nav-item"><i class="lnr lnr-user"></i><span>Admins</span></a></li>
-                            <li><a href="employees.aspx" class="nav-item"><i class="lnr lnr-users"></i><span>Employees</span></a></li>
-                            <li><a href="clients.aspx" class="nav-item"><i class="lnr lnr-users"></i><span>Clients</span></a></li>
+                            <li ><a href="admins.aspx" class="nav-item"><i class="lnr lnr-user"></i><span>Admins</span></a></li>
+                            <li ><a href="employees.aspx" class="nav-item"><i class="lnr lnr-users"></i><span>Employees</span></a></li>
+                            <li ><a href="clients.aspx" class="nav-item"><i class="lnr lnr-users"></i><span>Clients</span></a></li>
+                            <li id="logout"><a href="login.aspx" class="nav-item"><i class="lnr lnr-lock"></i><span>Logout</span></a></li>
                             <%--<li><a href="login.aspx" class="nav-item"><i class="lnr lnr-lock"></i><span>Logout</span></a></li>--%>
 
                             <%--<li><a href="elements.html" class=""><i class="lnr lnr-code"></i><span>Elements</span></a></li>
@@ -171,10 +175,23 @@
 
     <script>
         $(document).ready(function () {
+            console.log(localStorage.getItem("login_details"));
             $(".logo").attr("src", localStorage.getItem("SiteLink") + "/Uploads/logo.png");
+            $(".nav li").hide();
+            $(".nav li").first().show();
+            $(".nav li").last().show();
+
+
+            if (JSON.parse(localStorage.getItem("login_details"))[0].type == "admin") {
+                $(".nav li").show();
+            }
 
             $(document).on("click", ".nav-item", function () {
                 $(".nav-item").attr("class", "nav-item");
+            });
+
+            $(document).on("click", "#logout", function () {
+                localStorage.removeItem("login_details");
             });
         });
     </script>

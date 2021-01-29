@@ -15,6 +15,89 @@ namespace EmployeeManagementApi.Controllers
     {
         employee_managementEntities Context = new employee_managementEntities();
 
+        [Route("api/login")]
+        public HttpResponseMessage GetLoginDetails(string email, string pass, string type)
+        {
+            try
+            {
+                if (type == "admin")
+                {
+                    var entities = from a in Context.admins
+                                   where a.email == email && a.password == pass
+                                   select new
+                                   {
+                                       id = a.admin_id,
+                                       first_name = a.first_name,
+                                       last_name = a.last_name,
+                                       email = a.email,
+                                       contact = a.contact,
+                                       type = "admin"
+                                   };
+                    if (entities != null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, entities);
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                    }
+                }
+                else if (type == "employee")
+                {
+                    var entities = from a in Context.employees
+                                   where a.email == email && a.password == pass
+                                   select new
+                                   {
+                                       id = a.employee_id,
+                                       first_name = a.first_name,
+                                       last_name = a.last_name,
+                                       email = a.email,
+                                       contact = a.contact,
+                                       type = "employee"
+                                   };
+                    if (entities != null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, entities);
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                    }
+                }
+                else if (type == "client")
+                {
+                    var entities = from a in Context.clients
+                                   where a.email == email && a.password == pass
+                                   select new
+                                   {
+                                       id = a.client_id,
+                                       first_name = a.first_name,
+                                       last_name = a.last_name,
+                                       email = a.email,
+                                       contact = a.contact,
+                                       type = "client"
+                                   };
+                    if (entities != null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, entities);
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                    }
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+                
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
         [Route("api/upcoming_jobs")]
         public HttpResponseMessage GetUpcomingJobs()
         {

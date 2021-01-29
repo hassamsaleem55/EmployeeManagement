@@ -21,7 +21,7 @@
 
             <div class="panel-body">
                 <div class="col-md-12">
-                    <button id="btnShowModal" type="button" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i>New Employee</button>
+                    <button id="btnShowModal" type="button" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i>New Employee</button>
                 </div>
                 <div class="col-md-12 table-responsive" style="margin-top: 10px;">
                     

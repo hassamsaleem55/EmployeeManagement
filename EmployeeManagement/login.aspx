@@ -73,10 +73,14 @@
                                     </label>
                                 </div>--%>
                             <button type="button" class="btn btn-success btn-lg btn-block">LOGIN</button>
+                            <div style="margin-top: 50px;">
+                                <i class="fa fa-arrow-left"></i><a href="home/index.html"> Back to home page</a>
+                            </div>
                             <%--<div class="bottom">
                                     <span class="helper-text"><i class="fa fa-lock"></i><a href="#"> Forgot password?</a></span>
                                 </div>--%>
                             <%--</form>--%>
+                            
                         </div>
                     </div>
                     <div class="right">

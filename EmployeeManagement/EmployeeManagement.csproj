@@ -679,6 +679,7 @@
     <Compile Include="completed_jobs.aspx.designer.cs">
       <DependentUpon>completed_jobs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="running_jobs.aspx.cs">
       <DependentUpon>running_jobs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -717,6 +718,10 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Uploads\employee_documents\Test_2021-01-25_11-19-01-PM.docx" />
+    <Content Include="Uploads\employee_documents\Test_2021-01-25_11-19-02-PM.docx" />
+    <Content Include="Uploads\employee_documents\Test_2021-01-25_11-19-03-PM.docx" />
+    <Content Include="Uploads\employee_documents\Test_2021-01-25_11-19-04-PM.docx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

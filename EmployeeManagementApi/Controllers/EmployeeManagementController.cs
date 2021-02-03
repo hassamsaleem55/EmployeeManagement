@@ -318,8 +318,6 @@ namespace EmployeeManagementApi.Controllers
             }
         }
 
-
-
         [Route("api/running_jobs")]
         public HttpResponseMessage GetRunningJobs()
         {
@@ -353,7 +351,6 @@ namespace EmployeeManagementApi.Controllers
             }
         }
 
-
         [Route("api/completed_jobs")]
         public HttpResponseMessage GetCompletedJobs()
         {
@@ -377,6 +374,29 @@ namespace EmployeeManagementApi.Controllers
                 if (entities != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, entities);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/change_job_status/{id}")]
+        public HttpResponseMessage PutChangeJobStatus(int id, [FromBody] job entities)
+        {
+            try
+            {
+                var entity = Context.jobs.FirstOrDefault(e => e.job_id == id);
+                if (entity != null)
+                {
+                    entity.job_status = entities.job_status;
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Data updated successfully");
                 }
                 else
                 {

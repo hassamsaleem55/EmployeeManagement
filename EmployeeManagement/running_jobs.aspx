@@ -10,21 +10,8 @@
                 <%--<div class="col-md-12">
                     <button id="btnShowModal" type="button" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i>New Job</button>
                 </div>--%>
-                <div class="col-md-12 table-responsive" style="margin-top: 10px;">
-                    <table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Title</th>
-                                <th>Client Name</th>
-                                <th>End Date</th>
-                                <th>Shift</th>
-                                <th>Type</th>
-                                <th>Labor</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                    </table>
+                <div class="col-md-12 table-responsive jobs_list" style="margin-top: 10px;">
+                    
                 </div>
             </div>
         </div>
@@ -138,6 +125,7 @@
 
             getJobsData();
             function getJobsData() {
+                $(".jobs_list").html('<table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Client Name</th><th>End Date</th><th>Shift</th><th>Type</th><th>Labor</th><th>Details</th><th>Actions</th></tr></thead></table>');
                 var arrData = [];
                 $.ajax({
                     url: localStorage.getItem("ApiLink") + "api/running_jobs",
@@ -155,7 +143,7 @@
                                 "type": value.job_type,
                                 "labor": "<a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
                                 "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
-                                //"actions": "<a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.employee_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.employee_id + "'><i class='fa fa-trash'></i></a>"
+                                "actions": "<a href='' class='btn btn-primary btn-sm btn-job-complete' data-id='" + value.job_id + "'>Finish Job</a>"
                             };
                             arrData.push(objData);
                         });
@@ -181,7 +169,8 @@
                         { "data": "shift" },
                         { "data": "type" },
                         { "data": "labor" },
-                        { "data": "details" }
+                        { "data": "details" },
+                        { "data": "actions" }
                     ]
                 });
             }
@@ -435,6 +424,30 @@
             //            }
             //        });
             //});
+
+            $(document).on("click", ".btn-job-complete", function () {
+                var id = $(this).attr("data-id");
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/change_job_status/" + id,
+                    async: false,
+                    method: 'PUT',
+                    data: {
+                        job_status: "completed"
+                    },
+                    success: function () {
+                        toastr.success("Job has been finished");
+                        getJobsData();
+                    },
+                    error: function (jqXHR, exception) {
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: exception,
+                            timer: 1800
+                        });
+                    }
+                });
+            });
 
             $(document).on("click", "#btnViewLabors", function () {
                 $("#assignNewLabor").attr("data-shift", $(this).closest("tr").find("td:eq(4)").text());

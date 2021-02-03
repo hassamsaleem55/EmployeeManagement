@@ -314,31 +314,23 @@
                         <a href="#" onclick="return false;" role="button" data-toggle="dropdown" id="dropdownMenu1" data-target="#" style="float: left" aria-expanded="true">
                             <i class="fa fa-bell" style="font-size: 20px; float: left; color: black"></i>
                         </a>
-                        <span class="badge badge-danger">6</span>
-                        
-                            <ul class="dropdown-menu dropdown-menu-left pull-right" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation">
-                                    <a href="#" class="dropdown-menu-header">Notifications</a>
-                                </li>
-                                <ul class="timeline timeline-icons timeline-sm" style="margin: 10px; width: 210px; overflow: auto; max-height: 250px">
-                                    <%--<li>
-                                        <p>
-                                            Your “Volume Trendline” PDF is ready <a href="">here</a>
-                                            <span class="timeline-icon"><i class="fa fa-file-pdf-o" style="color: red"></i></span>
-                                            <span class="timeline-date">Dec 10, 22:00</span>
-                                        </p>
-                                    </li>--%>
-                                   <%--<li>--%>
-                                       <p class="text-muted text-center">No Notifications Available</p>
-                                   <%--</li>--%>
-                                </ul>
-                                <li role="presentation">
-                                    <a href="#" class="dropdown-menu-header"></a>
-                                </li>
-                            </ul>
-                        </div>
+                        <span class="badge badge-danger"></span>
 
-                    
+                        <ul class="dropdown-menu dropdown-menu-left pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <a href="#" class="dropdown-menu-header">Notifications</a>
+                            </li>
+                            <li>
+                                <ul class="timeline timeline-sm" style="margin: 10px; width: 210px; overflow: auto; max-height: 250px">
+                                </ul>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="dropdown-menu-header"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+
 
                     <%--<form class="navbar-form navbar-left">
                         <div class="input-group">
@@ -419,6 +411,37 @@
             $(".nav li").first().show();
             $(".nav li").last().show();
 
+            getCompletingJobsAlerts();
+            function getCompletingJobsAlerts() {
+                var count = 0;
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/running_jobs",
+                    async: false,
+                    method: 'GET',
+                    success: function (data) {
+
+                        $(data).each(function (index, value) {
+                            var diff = new Date(value.job_end_date) - new Date();
+                            var totalDays = parseInt(diff / 1000 / 60 / 60 / 24);
+                            if (totalDays <= 16) {
+                                if (totalDays == 0) {
+                                    totalDays = "tomorrow";
+                                }
+                                else {
+                                    totalDays = "within " + totalDays + " days";
+                                }
+                                $(".timeline-sm").append('<li><p class="text-muted text-center">' + value.job_title + ' is going to be finished ' + totalDays + '</p></li>');
+                                count++;
+                            }
+                        });
+                    }
+                });
+                if (count == 0) {
+                    $(".timeline-sm").html('<p class="text-muted text-center">No Notifications Available</p>');
+                }
+
+                $(".badge-danger").html(count);
+            }
 
             if (JSON.parse(localStorage.getItem("login_details"))[0].type == "admin") {
                 $(".nav li").show();

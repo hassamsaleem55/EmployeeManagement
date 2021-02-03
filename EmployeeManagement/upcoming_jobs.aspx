@@ -11,26 +11,8 @@
                     <button id="btnShowModal" type="button" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i>New Job</button>
                 </div>
 
-                <div class="col-md-12 table-responsive" style="margin-top: 10px;">
-                    <table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Title</th>
-                                <th>Client Name</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <%--<th>Duration</th>--%>
-                                <th>Shift</th>
-                                <th>Type</th>
-                                <th>Labor</th>
-                                <th>Details</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <%--<tbody id="rowJobsTable">
-                        </tbody>--%>
-                    </table>
+                <div class="col-md-12 table-responsive jobs_list" style="margin-top: 10px;">
+                    
                 </div>
             </div>
         </div>
@@ -221,6 +203,7 @@
 
             getJobsData();
             function getJobsData() {
+                $(".jobs_list").html('<table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Client Name</th><th>Start Date</th><th>End Date</th><th>Shift</th><th>Type</th><th>Labor</th><th>Details</th><th class="text-center">Actions</th></tr></thead></table>');
                 var arrData = [];
                 $.ajax({
                     url: localStorage.getItem("ApiLink") + "api/upcoming_jobs",
@@ -239,7 +222,7 @@
                                 "type": value.job_type,
                                 "labor": "<a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
                                 "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
-                                "actions": "<a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.job_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.job_id + "'><i class='fa fa-trash'></i></a>"
+                                "actions": "<a href='' class='btn btn-primary btn-sm btn-job-start' style='margin-right: 5px;' data-id='" + value.job_id + "'>Start Job</a><a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.job_id + "' style='margin-right: 5px;'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.job_id + "'><i class='fa fa-trash'></i></a>"
                             };
                             arrData.push(objData);
                         });
@@ -438,6 +421,31 @@
                         $("#modalAddNew").modal("hide");
                         toastr.success(successMsg);
                         getJobsData();
+                    },
+                    error: function (jqXHR, exception) {
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: exception,
+                            timer: 1800
+                        });
+                    }
+                });
+            });
+
+            $(document).on("click", ".btn-job-start", function () {
+                var id = $(this).attr("data-id");
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/change_job_status/" + id,
+                    async: false,
+                    method: 'PUT',
+                    data: {
+                        job_status : "running"
+                    },
+                    success: function () {
+                        toastr.success("Job has been started");
+                        getJobsData();
+
                     },
                     error: function (jqXHR, exception) {
                         swal({

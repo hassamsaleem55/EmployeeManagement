@@ -265,7 +265,7 @@
                                     "password": value.password,
                                     "contact": value.contact,
                                     "documents": "<a style='cursor: pointer;' class='viewDocuments' data-id='" + value.employee_id + "'>view</a>",
-                                    "actions": "<td class='tex-right'><a id='btnEdit' style='margin-right: 2px;' class='btn btn-xs btn-warning' data-id='" + value.employee_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' style='margin-right: 2px;' class='btn btn-xs btn-danger' data-id='" + value.employee_id + "'><i class='fa fa-trash'></i></a><a id='btnBlacklist' style='margin-right: 2px;' class='btn btn-xs btn-danger' data-id='" + value.employee_id + "'>Blacklist</a><a id='btnInactive' class='btn btn-xs btn-danger' data-id='" + value.employee_id + "'>Inactive</a></td>"
+                                    "actions": "<td class='tex-right'><a id='btnEdit' style='margin-right: 2px;' class='btn btn-xs btn-warning' data-id='" + value.employee_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' style='margin-right: 2px;' class='btn btn-xs btn-danger' data-id='" + value.employee_id + "'><i class='fa fa-trash'></i></a><a id='btnBlacklist' style='margin-right: 2px; border: 0.5px solid red' class='btn btn-xs btn-default' data-id='" + value.employee_id + "'>Blacklist</a><a id='btnInactive' style='border: 0.5px solid red' class='btn btn-xs btn-default' data-id='" + value.employee_id + "'>Inactive</a></td>"
                                 };
                                 arrData.push(objData);
                             }
@@ -352,6 +352,14 @@
                     accept_numbers_only(e)
                 });
 
+            $("#btnBlacklist").hover(function () {
+                $(this).attr("class", "btn btn-xs btn-danger");
+            });
+
+            $("#btnBlacklist").mouseleave(function () {
+                $(this).attr("class", "btn btn-xs btn-default");
+            });
+
             $(document).on("click", "#btnBlacklist", function () {
                 $("#modalBlacklist .modal-title").html("Blacklist " + $(this).closest("tr").find("td:eq(1)").text() + " " + $(this).closest("tr").find("td:eq(2)").text() + " ?");
                 $("#modalBlacklist .btn-danger").attr("data-id", $(this).attr("data-id"));
@@ -380,6 +388,14 @@
                         });
                     }
                 });
+            });
+
+            $("#btnInactive").hover(function () {
+                $(this).attr("class", "btn btn-xs btn-danger");
+            });
+
+            $("#btnInactive").mouseleave(function () {
+                $(this).attr("class", "btn btn-xs btn-default");
             });
 
             $(document).on("click", "#btnInactive", function () {

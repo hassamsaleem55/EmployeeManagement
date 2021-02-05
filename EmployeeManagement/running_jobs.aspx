@@ -114,8 +114,8 @@
         $(document).ready(function () {
             //$('#tblLabors').DataTable();
             $(".nav-item:eq(0)").attr("class", "nav-item");
-            $(".nav-item:eq(1)").attr("class", "collapsed nav-item active");
-            $(".nav-item:eq(3)").attr("class", "nav-item active");
+            $("#linkJobs").attr("class", "collapsed active");
+            $(".nav-item:eq(2)").attr("class", "nav-item active");
             $("#subPages").attr("class", "");
 
             function getFormatedDate(value) {

@@ -331,6 +331,7 @@
     <Content Include="bin\System.Web.Optimization.dll" />
     <Content Include="bin\System.Web.Providers.dll" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="blacklisted_employees.aspx" />
     <Content Include="clients.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -516,6 +517,7 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="inactivated_employees.aspx" />
     <Content Include="index.aspx" />
     <Content Include="completed_jobs.aspx" />
     <Content Include="running_jobs.aspx" />
@@ -641,6 +643,13 @@
     <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="blacklisted_employees.aspx.cs">
+      <DependentUpon>blacklisted_employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="blacklisted_employees.aspx.designer.cs">
+      <DependentUpon>blacklisted_employees.aspx</DependentUpon>
+    </Compile>
     <Compile Include="clients.aspx.cs">
       <DependentUpon>clients.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -664,6 +673,13 @@
     </Compile>
     <Compile Include="homepage.aspx.designer.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inactivated_employees.aspx.cs">
+      <DependentUpon>inactivated_employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inactivated_employees.aspx.designer.cs">
+      <DependentUpon>inactivated_employees.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

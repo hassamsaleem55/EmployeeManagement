@@ -33,5 +33,6 @@ namespace DataAccess
         public string working_shift { get; set; }
         public string status { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
+        public string comments { get; set; }
     }
 }

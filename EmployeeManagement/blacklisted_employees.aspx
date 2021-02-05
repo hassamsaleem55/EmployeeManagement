@@ -1,7 +1,6 @@
-﻿<%@ Page Title="Employees" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="employees.aspx.cs" Inherits="EmployeeManagement.employee" %>
-
+﻿<%@ Page Title="Blacklisted Employees" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="blacklisted_employees.aspx.cs" Inherits="EmployeeManagement.blacklisted_employees" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
+        <style>
         @media only screen and (max-width: 600px) {
             .btn-info {
                 float: right;
@@ -16,159 +15,15 @@
     <div class="main">
         <div class="panel">
             <div class="panel-heading">
-                <h3>Employees List</h3>
+                <h3>Blacklisted Employees List</h3>
             </div>
 
             <div class="panel-body">
-                <div class="col-md-12">
+             <%--   <div class="col-md-12">
                     <button id="btnShowModal" type="button" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i>New Employee</button>
-                </div>
+                </div>--%>
                 <div class="col-md-12 table-responsive" style="margin-top: 10px;">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="modalAddNew" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add New Employee</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">First Name:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">Last Name:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">Email:</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" id="email" placeholder="Enter Email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">Password:</label>
-                            <div class="col-sm-8">
-                                <input type="text" readonly="readonly" class="form-control" id="password">
-                            </div>
-                            <div class="col-sm-2">
-                                <button class="btn btn-xs btn-info pull-right" id="generatePassword">Generate Password</button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">Contact:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="contact" placeholder="Enter Contact">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">Address:</label>
-                            <div class="col-sm-10">
-                                <textarea rows="3" class="form-control" id="address" placeholder="Enter Address"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">Working Shift:</label>
-                            <div class="col-sm-5">
-                                <select class="form-control" id="workingShift">
-                                    <option value="day">Day</option>
-                                    <option value="night">Night</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">NIF:</label>
-                            <a href="#" target="_blank" id="nifDocument" class="col-sm-3" hidden="hidden">NIF document</a>
-                            <div class="col-sm-5" id="divUploadNif">
-                                <input type="file" id="nif" class="form-control" />
-                            </div>
-                            <div class="col-sm-2">
-                                <button class="btn btn-xs btn-info" id="uploadNif">Upload</button>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">NISS:</label>
-                            <a href="#" target="_blank" id="nissDocument" class="col-sm-3" hidden="hidden">NISS document</a>
-                            <div class="col-sm-5" id="divUploadNiss">
-                                <input type="file" id="niss" class="form-control" />
-                            </div>
-                            <div class="col-sm-2">
-                                <button class="btn btn-xs btn-info" id="uploadNiss">Upload</button>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">Passport:</label>
-                            <a href="#" target="_blank" id="passportDocument" class="col-sm-3" hidden="hidden">Passport document</a>
-                            <div class="col-sm-5" id="divUploadPassport">
-                                <input type="file" id="passport" class="form-control" />
-                            </div>
-                            <div class="col-sm-2">
-                                <button class="btn btn-xs btn-info" id="uploadPassport">Upload</button>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">Visa:</label>
-                            <a href="#" target="_blank" id="visaDocument" class="col-sm-3" hidden="hidden">Visa document</a>
-                            <div class="col-sm-5" id="divUploadVisa">
-                                <input type="file" id="visa" class="form-control" />
-                            </div>
-                            <div class="col-sm-2">
-                                <button class="btn btn-xs btn-info" id="uploadVisa">Upload</button>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">Residence Card:</label>
-                            <a href="#" target="_blank" id="residenceCardDocument" class="col-sm-3" hidden="hidden">Residence card document</a>
-                            <div class="col-sm-5" id="divUploadResidenceCard">
-                                <input type="file" id="residenceCard" class="form-control" />
-                            </div>
-                            <div class="col-sm-2">
-                                <button class="btn btn-xs btn-info" id="uploadResidenceCard">Upload</button>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">SEF:</label>
-                            <a href="#" target="_blank" id="sefDocument" class="col-sm-3" hidden="hidden">SEF document</a>
-                            <div class="col-sm-5" id="divUploadSef">
-                                <input type="file" id="sef" class="form-control" />
-                            </div>
-                            <div class="col-sm-2">
-                                <button class="btn btn-xs btn-info" id="uploadSef">Upload</button>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">Boarding Pass:</label>
-                            <a href="#" target="_blank" id="boardingPassDocument" class="col-md-3" hidden="hidden">Boarding Pass document</a>
-                            <div class="col-sm-5" id="divUploadBoardingPass">
-                                <input type="file" id="boardingPass" class="form-control" />
-                            </div>
-                            <div class="col-sm-2">
-                                <button class="btn btn-xs btn-info" id="uploadBoardingPass">Upload</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                    <button id="btnSubmit" data-id="0" type="button" class="btn btn-success">Add</button>
+                    
                 </div>
             </div>
         </div>
@@ -192,7 +47,7 @@
         </div>
     </div>
 
-    <div id="modalBlacklist" class="modal fade" role="dialog">
+     <div id="modalBlacklist" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
@@ -202,31 +57,11 @@
                 <div class="modal-body">
 
                     <label>Comments:</label>
-                    <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" rows="3"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Blacklist</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="modalInactive" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"></h4>
-                </div>
-                <div class="modal-body">
-
-                    <label>Comments:</label>
-                    <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Inactive</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Reactivate</button>
                 </div>
             </div>
         </div>
@@ -245,7 +80,7 @@
             //$('#example').DataTable();
             $(".nav-item:eq(0)").attr("class", "nav-item");
             $("#linkEmployees").attr("class", "collapsed active");
-            $(".nav-item:eq(5)").attr("class", "nav-item active");
+            $(".nav-item:eq(6)").attr("class", "nav-item active");
             $("#subPages1").attr("class", "");
             getEmployeesData();
             function getEmployeesData() {
@@ -256,7 +91,7 @@
                     method: 'GET',
                     success: function (data) {
                         $(data).each(function (index, value) {
-                            if (value.status != "blacklisted" && value.status != "inactivated") {
+                            if (value.status == "blacklisted") {
                                 var objData = {
                                     "sr": index + 1,
                                     "first_name": value.first_name,
@@ -265,7 +100,7 @@
                                     "password": value.password,
                                     "contact": value.contact,
                                     "documents": "<a style='cursor: pointer;' class='viewDocuments' data-id='" + value.employee_id + "'>view</a>",
-                                    "actions": "<td class='tex-right'><a id='btnEdit' style='margin-right: 2px;' class='btn btn-xs btn-warning' data-id='" + value.employee_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' style='margin-right: 2px;' class='btn btn-xs btn-danger' data-id='" + value.employee_id + "'><i class='fa fa-trash'></i></a><a id='btnBlacklist' style='margin-right: 2px;' class='btn btn-xs btn-danger' data-id='" + value.employee_id + "'>Blacklist</a><a id='btnInactive' class='btn btn-xs btn-danger' data-id='" + value.employee_id + "'>Inactive</a></td>"
+                                    "actions": "<a id='btnEdit' style='margin-right: 2px;' class='btn btn-xs btn-warning' data-id='" + value.employee_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' style='margin-right: 2px;' class='btn btn-xs btn-danger ml-2' data-id='" + value.employee_id + "'><i class='fa fa-trash'></i></a><a id='btnChangeStatus' style='margin-right: 2px;' class='btn btn-xs btn-success ml-2' data-id='" + value.employee_id + "'>Reactivate</a>"
                                 };
                                 arrData.push(objData);
                             }
@@ -281,7 +116,7 @@
                     }
                 });
                 $(".table-responsive").empty();
-                $(".table-responsive").html('<table id="example" class="table table-striped table-bordered table-hover" ><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Password</th><th>Contact</th><th>Documents</th><th class="text-center">Actions</th></tr></thead></table>');
+                $(".table-responsive").html('<table id="example" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Password</th><th>Contact</th><th>Documents</th><th>Actions</th></tr></thead></table>');
                 $('#example').DataTable({
                     "data": arrData,
                     "columns": [
@@ -352,53 +187,23 @@
                     accept_numbers_only(e)
                 });
 
-            $(document).on("click", "#btnBlacklist", function () {
-                $("#modalBlacklist .modal-title").html("Blacklist " + $(this).closest("tr").find("td:eq(1)").text() + " " + $(this).closest("tr").find("td:eq(2)").text() + " ?");
-                $("#modalBlacklist .btn-danger").attr("data-id", $(this).attr("data-id"));
+            $(document).on("click", "#btnChangeStatus", function () {
+                $("#modalBlacklist .modal-title").html("Reactivate " + $(this).closest("tr").find("td:eq(1)").text() + " " + $(this).closest("tr").find("td:eq(2)").text() + " ?");
+                $("#modalBlacklist .btn-success").attr("data-id", $(this).attr("data-id"));
                 $("#modalBlacklist").modal("show");
             });
 
-            $(document).on("click", "#modalBlacklist .btn-danger", function () {
+            $(document).on("click", "#modalBlacklist .btn-success", function () {
                 $.ajax({
                     url: localStorage.getItem("ApiLink") + "api/change_employee_status/" + $(this).attr("data-id"),
                     async: false,
                     method: 'PUT',
                     data: {
-                        "status": "blacklisted",
+                        "status": "unassigned",
                         "comments": $("#modalBlacklist .form-contol").val()
                     },
                     success: function (data) {
-                        toastr.success("Employee has been Blaclisted");
-                        getEmployeesData();
-                    },
-                    error: function (jqXHR, exception) {
-                        swal({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: exception,
-                            timer: 1800
-                        });
-                    }
-                });
-            });
-
-            $(document).on("click", "#btnInactive", function () {
-                $("#modalInactive .modal-title").html("Inactive " + $(this).closest("tr").find("td:eq(1)").text() + " " + $(this).closest("tr").find("td:eq(2)").text() + " ?");
-                $("#modalInactive .btn-danger").attr("data-id", $(this).attr("data-id"));
-                $("#modalInactive").modal("show");
-            });
-
-            $(document).on("click", "#modalInactive .btn-danger", function () {
-                $.ajax({
-                    url: localStorage.getItem("ApiLink") + "api/change_employee_status/" + $(this).attr("data-id"),
-                    async: false,
-                    method: 'PUT',
-                    data: {
-                        "status": "inactivated",
-                        "comments": $("#modalInactive .form-contol").val()
-                    },
-                    success: function (data) {
-                        toastr.success("Employee has been Inactivated");
+                        toastr.success("Employee has been Reactivated");
                         getEmployeesData();
                     },
                     error: function (jqXHR, exception) {

@@ -77,7 +77,7 @@
     <script>
         $(document).ready(function () {
             $(".nav-item:eq(0)").attr("class", "nav-item");
-            $(".nav-item:eq(7)").attr("class", "nav-item active");
+            $(".nav-item:eq(8)").attr("class", "nav-item active");
 
             getClientsData();
             function getClientsData() {

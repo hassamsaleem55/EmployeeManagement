@@ -78,7 +78,7 @@
         $(document).ready(function () {
             //$('#example').DataTable();
             $(".nav-item:eq(0)").attr("class", "nav-item");
-            $(".nav-item:eq(5)").attr("class", "nav-item active");
+            $(".nav-item:eq(4)").attr("class", "nav-item active");
             getadminsData();
             function getadminsData()
             {

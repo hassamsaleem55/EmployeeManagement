@@ -48,6 +48,7 @@
     <Property Name="bank_account_number" Type="varchar(max)" />
     <Property Name="working_shift" Type="varchar(max)" />
     <Property Name="status" Type="varchar(max)" />
+    <Property Name="comments" Type="text" />
     <Property Name="created_at" Type="date" />
   </EntityType>
   <EntityType Name="jobs">

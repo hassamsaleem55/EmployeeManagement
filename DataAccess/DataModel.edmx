@@ -53,6 +53,7 @@
           <Property Name="bank_account_number" Type="varchar(max)" />
           <Property Name="working_shift" Type="varchar(max)" />
           <Property Name="status" Type="varchar(max)" />
+          <Property Name="comments" Type="text" />
           <Property Name="created_at" Type="date" />
         </EntityType>
         <EntityType Name="jobs">
@@ -134,6 +135,7 @@
           <Property Name="working_shift" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="created_at" Type="DateTime" Precision="0" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="admin">
           <Key>
@@ -196,6 +198,7 @@
           <EntitySetMapping Name="employees">
             <EntityTypeMapping TypeName="employee_managementModel.employee">
               <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="comments" ColumnName="comments" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="working_shift" ColumnName="working_shift" />

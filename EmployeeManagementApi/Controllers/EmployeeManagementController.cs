@@ -90,7 +90,7 @@ namespace EmployeeManagementApi.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
                 }
-                
+
             }
             catch (Exception)
             {
@@ -259,7 +259,7 @@ namespace EmployeeManagementApi.Controllers
                 Context.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK, "Data inserted successfully");
             }
-            catch  (Exception ex)
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
@@ -660,6 +660,31 @@ namespace EmployeeManagementApi.Controllers
             }
         }
 
+        [Route("api/change_employee_status/{id}")]
+        public HttpResponseMessage PutChangeEmployeeStatus(int id, [FromBody] employee entities)
+        {
+            try
+            {
+                var entity = Context.employees.FirstOrDefault(e => e.employee_id == id);
+                if (entity != null)
+                {
+                    entity.status = entities.status;
+                    entity.comments = entities.comments;
+
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Data updated successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
         [Route("api/employees/{id}")]
         public HttpResponseMessage DeleteEmployee(int id)
         {
@@ -691,16 +716,7 @@ namespace EmployeeManagementApi.Controllers
             try
             {
                 var entities = Context.clients.ToList();
-                //var entities = from c in Context.clients
-                //               select new
-                //               {
-                //                   //id = c.client_id,
-                //                   first_name = c.first_name,
-                //                   last_name = c.last_name,
-                //                   email = c.email,
-                //                   password = c.password,
-                //                   contact = c.contact,
-                //               };
+
                 if (entities != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, entities);

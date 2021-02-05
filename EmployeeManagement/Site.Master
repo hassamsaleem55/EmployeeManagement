@@ -356,7 +356,8 @@
                         <ul class="nav">
                             <li><a href="index.aspx" class="nav-item active"><i class="lnr lnr-home"></i><span>Dashboard</span></a></li>
                             <li>
-                                <a href="upcoming_jobs.aspx" class="collapsed nav-item"><i class="fa fa-tasks"></i><span>Jobs</span></a>
+                                <%--<a href="upcoming_jobs.aspx" class="collapsed nav-item"><i class="fa fa-tasks"></i><span>Jobs</span></a>--%>
+                                <a href="#subPages" id="linkJobs" data-toggle="collapse" class="collapsed"><i class="fa fa-tasks"></i><span>Jobs</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                                 <div id="subPages" class="collapse">
                                     <ul class="nav">
                                         <li><a href="upcoming_jobs.aspx" class="nav-item"><i class="fa fa-tasks"></i><span>Upcoming Jobs</span></a></li>
@@ -366,7 +367,16 @@
                                 </div>
                             </li>
                             <li><a href="admins.aspx" class="nav-item"><i class="lnr lnr-user"></i><span>Admins</span></a></li>
-                            <li><a href="employees.aspx" class="nav-item"><i class="lnr lnr-users"></i><span>Employees</span></a></li>
+                            <li>
+                                <a href="#subPages1" id="linkEmployees" data-toggle="collapse" class="collapsed"><i class="fa fa-users"></i><span>Employees</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                                <div id="subPages1" class="collapse">
+                                    <ul class="nav">
+                                        <li><a href="employees.aspx" class="nav-item"><i class="fa fa-users"></i><span>Active</span></a></li>
+                                        <li><a href="blacklisted_employees.aspx" class="nav-item"><i class="fa fa-users"></i><span>Blacklisted</span></a></li>
+                                        <li><a href="inactivated_employees.aspx" class="nav-item"><i class="fa fa-users"></i><span>Inactivated</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li><a href="clients.aspx" class="nav-item"><i class="lnr lnr-users"></i><span>Clients</span></a></li>
                             <li id="logout"><a href="login.aspx" class="nav-item"><i class="lnr lnr-lock"></i><span>Logout</span></a></li>
                             <%--<li><a href="login.aspx" class="nav-item"><i class="lnr lnr-lock"></i><span>Logout</span></a></li>--%>

@@ -18,6 +18,7 @@
     <EntitySetMapping Name="employees">
       <EntityTypeMapping TypeName="employee_managementModel.employee">
         <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="comments" ColumnName="comments" />
           <ScalarProperty Name="created_at" ColumnName="created_at" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="working_shift" ColumnName="working_shift" />

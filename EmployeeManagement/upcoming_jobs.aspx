@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Upcoming Jobs" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="upcoming_jobs.aspx.cs" Inherits="EmployeeManagement.jobs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <div class="main">
+    <div class="main">
         <div class="panel">
             <div class="panel-heading">
                 <h3>Upcoming Jobs List</h3>
@@ -12,7 +12,6 @@
                 </div>
 
                 <div class="col-md-12 table-responsive jobs_list" style="margin-top: 10px;">
-                    
                 </div>
             </div>
         </div>
@@ -70,8 +69,9 @@
                             <label class="control-label col-sm-2">Job shift:</label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="shift">
-                                    <option value="Day">Day</option>
-                                    <option value="Night">Night</option>
+                                    <option value="morning">Morning</option>
+                                    <option value="afternoon">Afternoon</option>
+                                    <option value="night">Night</option>
                                 </select>
                             </div>
                         </div>
@@ -222,7 +222,7 @@
                                 "type": value.job_type,
                                 "labor": "<a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
                                 "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
-                                "actions": "<a href='' class='btn btn-primary btn-sm btn-job-start' style='margin-right: 5px;' data-id='" + value.job_id + "'>Start Job</a><a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.job_id + "' style='margin-right: 5px;'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.job_id + "'><i class='fa fa-trash'></i></a>"
+                                "actions": "<div class='text-center'><a href='' class='btn btn-primary btn-sm btn-job-start' style='margin-right: 5px;' data-id='" + value.job_id + "'>Start Job</a><a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.job_id + "' style='margin-right: 5px;'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.job_id + "'><i class='fa fa-trash'></i></a></div>"
                             };
                             arrData.push(objData);
                         });
@@ -318,6 +318,19 @@
                 });
             }
 
+            function formatDate(date) {
+                var month = date.getMonth() + 1;
+                var day = date.getDate();
+                var year = date.getFullYear();
+                if (month < 10)
+                    month = '0' + month.toString();
+                if (day < 10)
+                    day = '0' + day.toString();
+
+                date = year + '-' + month + '-' + day;
+                return date;                
+            }
+
             $(document).on("click", "#btnShowModal", function () {
                 $("#addNewTitle").text("Add New Job");
                 $("#btnSubmit").text("Add");
@@ -325,10 +338,11 @@
                 $("#clients").val("select");
                 $("#details").val("");
                 $("#startDate").val("");
-                $("#endDate").val("");
+                $("#startDate").attr('min', formatDate(new Date()));
+                $("#endDate").prop("disabled", true);
                 $("#duration").val("0");
                 $("#type").val("");
-                $("#shift").val("Day");
+                $("#shift").val("morning");
                 $("#clients").attr("disabled", false);
                 $("#btnSubmit").attr("data-id", "0");
                 $("#modalAddNew").modal("show");
@@ -339,6 +353,8 @@
             });
 
             $("#startDate").change(function () {
+                $("#endDate").attr('min', formatDate(new Date($(this).val())));
+                $("#endDate").prop("disabled", false);
                 $("#duration").val(getDuration());
             });
 
@@ -440,7 +456,7 @@
                     async: false,
                     method: 'PUT',
                     data: {
-                        job_status : "running"
+                        job_status: "running"
                     },
                     success: function () {
                         toastr.success("Job has been started");

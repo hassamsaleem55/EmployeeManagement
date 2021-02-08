@@ -18,6 +18,13 @@
     <EntitySetMapping Name="employees">
       <EntityTypeMapping TypeName="employee_managementModel.employee">
         <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="nationality" ColumnName="nationality" />
+          <ScalarProperty Name="driving_license" ColumnName="driving_license" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="nif_number" ColumnName="nif_number" />
           <ScalarProperty Name="comments" ColumnName="comments" />
           <ScalarProperty Name="created_at" ColumnName="created_at" />
           <ScalarProperty Name="status" ColumnName="status" />

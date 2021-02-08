@@ -35,7 +35,13 @@
     <Property Name="last_name" Type="varchar(max)" />
     <Property Name="email" Type="varchar(max)" />
     <Property Name="password" Type="varchar(max)" />
+    <Property Name="nif_number" Type="varchar(max)" />
+    <Property Name="dob" Type="varchar(max)" />
+    <Property Name="sex" Type="varchar(max)" />
+    <Property Name="driving_license" Type="varchar(max)" />
     <Property Name="contact" Type="varchar(max)" />
+    <Property Name="nationality" Type="varchar(max)" />
+    <Property Name="location" Type="varchar(max)" />
     <Property Name="address" Type="varchar(max)" />
     <Property Name="skill" Type="varchar(max)" />
     <Property Name="NIF" Type="varchar(max)" />
@@ -50,6 +56,7 @@
     <Property Name="status" Type="varchar(max)" />
     <Property Name="comments" Type="text" />
     <Property Name="created_at" Type="date" />
+    <Property Name="modified_at" Type="date" />
   </EntityType>
   <EntityType Name="jobs">
     <Key>

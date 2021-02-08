@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="Clients" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="clients.aspx.cs" Inherits="EmployeeManagement.clients" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        a {
+            cursor: pointer;
+        }
+    </style>
     <div class="main">
         <div class="panel">
             <div class="panel-heading">
@@ -12,7 +17,6 @@
                     <button id="btnShowModal" type="button" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i>New Client</button>
                 </div>
                 <div class="col-md-12 table-responsive" style="margin-top: 10px;">
-                   
                 </div>
             </div>
         </div>
@@ -22,7 +26,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close text-danger" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Add New Client</h4>
                 </div>
                 <div class="modal-body">
@@ -52,12 +56,12 @@
                             </div>
                             <button class="col-sm-2 btn btn-info" id="generatePassword">Generate Password</button>
                         </div>
-                        <div class="form-group">
+                        <%-- <div class="form-group">
                             <label class="control-label col-sm-2">Contact:</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="contact" placeholder="Enter Contact">
                             </div>
-                        </div>
+                        </div>--%>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Address:</label>
                             <div class="col-sm-10">
@@ -65,6 +69,53 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong>Contact Details</strong></div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Contact Name</th>
+                                            <th>Contact Number</th>
+                                            <th>Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                <input type="text" class="form-control contact_name" placeholder="Enter Contact Name" />
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control contact_number" placeholder="Enter Contact Number" />
+                                            </td>
+                                            <td>
+                                                <a class="text-danger text-center"><i class="fa fa-times"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <%--<tfoot>
+                                        <tr>
+                                            <td colspan="4">
+                                                <div class="text-right">
+                                                    <button class="btn btn-sm btn-success">Add New Contact</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>--%>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="text-right">
+                                <button class="btn btn-sm btn-success">Add New Contact</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
@@ -87,15 +138,19 @@
                     async: false,
                     method: 'GET',
                     success: function (data) {
+                        
                         $(data).each(function (index, value) {
+                            var contact = "";
+                            $(value.contact.split(",")).each(function (ind, val) {
+                                if ((ind + 1) != value.contact.split(",").length) {
+                                    contact += "<div class='col-lg-12 row text-center'><div class='col-lg-6'>" + val.split(":")[0] + "</div><div class='col-lg-6'>" + val.split(":")[1] + "</div></div>";
+                                }
+                            });
                             var objData = {
                                 "sr": index + 1,
-                                "first_name" : value.first_name,
-                                "last_name": value.last_name,
-                                "email": value.email,
-                                "password": value.password,
-                                "contact": value.contact,
-                                "actions":"<a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.client_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.client_id + "'><i class='fa fa-trash'></i></a>"
+                                "client_name": value.first_name + " " + value.last_name,
+                                "contact_details": contact,
+                                "actions": "<div class='text-center'><a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.client_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.client_id + "'><i class='fa fa-trash'></i></a></div>"
                             };
                             arrData.push(objData);
                         });
@@ -109,19 +164,16 @@
                         });
                     }
                 });
-                $(".table-responsive").empty();
-                $(".table-responsive").html('<table id="example" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Password</th><th>Contact</th><th>Actions</th></tr></thead></table>');
+                $(".main .table-responsive").empty();
+                $(".main .table-responsive").html('<table id="example" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Client Name</th><th width="400" class="text-center">Contact Details</th><th class="text-center">Actions</th></tr></thead></table>');
 
                 $('#example').DataTable({
                     "data": arrData,
                     "columns": [
-                        { "data" : "sr" },
-                        { "data": "first_name" },
-                        { "data": "last_name" },
-                        { "data": "email" },
-                        { "data": "password" },
-                        { "data": "contact" },
-                        { "data" : "actions" }
+                        { "data": "sr" },
+                        { "data": "client_name" },
+                        { "data": "contact_details" },
+                        { "data": "actions" }
                     ]
                 });
             }
@@ -151,22 +203,28 @@
                     accept_letters_only(e);
                 });
 
-            $(document).on("keypress", "#contact",
+            $(document).on("keypress", "#modalAddNew tbody .form-control:eq(0)",
                 function (
                     e) {
-                    accept_numbers_only(e)
+                    accept_letters_only(e);
+                });
+
+            $(document).on("keypress", "#modalAddNew tbody .form-control:eq(1)",
+                function (
+                    e) {
+                    accept_numbers_only(e);
                 });
 
             $(document).on("click", "#btnShowModal", function () {
                 $(".modal-title").text("Add New Client");
                 $("#btnSubmit").text("Add");
-                $("#firstName").val("");
-                $("#lastName").val("");
-                $("#email").val("");
-                $("#password").val("");
-                $("#contact").val("");
-                $("#address").val("");
+                $(".form-control").val("");
                 $("#btnSubmit").attr("data-id", "0");
+                $("#modalAddNew tbody tr").each(function (index, value) {
+                    if (index != 0) {
+                        $(this).remove();
+                    }
+                });
                 $("#modalAddNew").modal("show");
             });
 
@@ -177,6 +235,27 @@
                     password += possible.charAt(Math.floor(Math.random() * possible.length));
                 }
                 $("#password").val(password);
+            });
+
+            $(document).on("click", ".panel-footer .btn-success", function () {
+                var element = $(this);
+                var len = element.closest(".panel").find("tbody tr").length;
+                element.closest(".panel").find("tbody").append(
+                    '<tr style="display:none"><th scope="row">' + (len + 1) +
+                    '</th><td><input type="text" class="form-control contact_name" placeholder="Enter Contact Name"></td><td><input type="text" class="form-control contact_number" placeholder="Enter Contact Number"></td><td><a class="text-danger text-center"><i class="fa fa-times"></i></a></td></tr>'
+                );
+                element.closest(".panel").find("tbody tr").last().show(600);
+            });
+
+            $(document).on("click", "#modalAddNew tbody .text-danger", function () {
+                var element = $(this);
+                var len = element.closest("table").find("tbody tr").length;
+                if (len > 1) {
+                    element.closest("tr").hide(400);
+                    setTimeout(function () {
+                        element.closest("tr").remove();
+                    }, 500);
+                }
             });
 
             $(document).on("click", "#btnSubmit", function () {
@@ -212,20 +291,32 @@
                     //return;
                     error = true;
                 }
-                if ($("#contact").val() == "") {
-                    toastr.error("Contact field cannot be empty");
-                    //$("#contact").focus();
-                    //return;
-                    error = true;
-                }
+
                 if ($("#address").val() == "") {
                     toastr.error("Address field cannot be empty");
                     //$("#address").focus();
                     //return;
                     error = true;
                 }
+
+                $("#modalAddNew tbody tr").each(function () {
+                    if ($(this).find(".contact_name").val() == "") {
+                        toastr.error("Contact name field cannot be empty");
+                        //$("#contact").focus();
+                        //return;
+                        error = true;
+                    }
+
+                    if ($(this).find(".contact_number").val() == "") {
+                        toastr.error("Contact number field cannot be empty");
+                        //$("#contact").focus();
+                        //return;
+                        error = true;
+                    }
+                });
+
                 if (error) {
-                    returnl;
+                    return;
                 }
                 var id = $("#btnSubmit").attr("data-id");
                 var url = localStorage.getItem("ApiLink") + "api/clients";
@@ -236,16 +327,25 @@
                     method = "PUT";
                     successMsg = "Client details has been updated successfully";
                 }
+
+                var contact = "";
+
+                $("#modalAddNew tbody tr").each(function () {
+                    contact += $(this).find(".contact_name").val() + ":" + $(this).find(".contact_number").val() + ",";
+                });
+
+                var data = {
+                    "first_name": $("#firstName").val(),
+                    "last_name": $("#lastName").val(),
+                    "email": $("#email").val(),
+                    "password": $("#password").val(),
+                    "address": $("#address").val(),
+                    "contact": contact,
+                };
+
                 $.ajax({
                     url: url,
-                    data: {
-                        "first_name": $("#firstName").val(),
-                        "last_name": $("#lastName").val(),
-                        "email": $("#email").val(),
-                        "password": $("#password").val(),
-                        "contact": $("#contact").val(),
-                        "address": $("#address").val(),
-                    },
+                    data: data,
                     async: false,
                     method: method,
                     success: function () {
@@ -275,7 +375,14 @@
                         $("#lastName").val(data.last_name);
                         $("#email").val(data.email);
                         $("#password").val(data.password);
-                        $("#contact").val(data.contact);
+                        $("#modalAddNew .panel").find("tbody").empty();
+                        $(data.contact.split(",")).each(function (index, value) {
+                            if ((index + 1) != data.contact.split(",").length) {
+                                $("#modalAddNew .panel").find("tbody").append(
+                                    '<tr><th scope="row">' + (index + 1) +
+                                    '</th><td><input type="text" class="form-control contact_name" placeholder="Enter Contact Name" value="' + value.split(":")[0] + '"></td><td><input type="text" class="form-control contact_number" placeholder="Enter Contact Number" value="' + value.split(":")[1] + '"></td><td><a class="text-danger text-center"><i class="fa fa-times"></i></a></td></tr>');
+                            }
+                        });
                         $("#address").val(data.address);
 
                         $(".modal-title").text("Update Client");

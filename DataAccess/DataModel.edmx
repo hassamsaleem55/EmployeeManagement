@@ -40,7 +40,13 @@
           <Property Name="last_name" Type="varchar(max)" />
           <Property Name="email" Type="varchar(max)" />
           <Property Name="password" Type="varchar(max)" />
+          <Property Name="nif_number" Type="varchar(max)" />
+          <Property Name="dob" Type="varchar(max)" />
+          <Property Name="sex" Type="varchar(max)" />
+          <Property Name="driving_license" Type="varchar(max)" />
           <Property Name="contact" Type="varchar(max)" />
+          <Property Name="nationality" Type="varchar(max)" />
+          <Property Name="location" Type="varchar(max)" />
           <Property Name="address" Type="varchar(max)" />
           <Property Name="skill" Type="varchar(max)" />
           <Property Name="NIF" Type="varchar(max)" />
@@ -55,6 +61,7 @@
           <Property Name="status" Type="varchar(max)" />
           <Property Name="comments" Type="text" />
           <Property Name="created_at" Type="date" />
+          <Property Name="modified_at" Type="date" />
         </EntityType>
         <EntityType Name="jobs">
           <Key>
@@ -136,6 +143,13 @@
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="created_at" Type="DateTime" Precision="0" />
           <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nif_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sex" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="driving_license" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="modified_at" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="admin">
           <Key>
@@ -198,6 +212,13 @@
           <EntitySetMapping Name="employees">
             <EntityTypeMapping TypeName="employee_managementModel.employee">
               <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="nationality" ColumnName="nationality" />
+                <ScalarProperty Name="driving_license" ColumnName="driving_license" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="nif_number" ColumnName="nif_number" />
                 <ScalarProperty Name="comments" ColumnName="comments" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="status" ColumnName="status" />

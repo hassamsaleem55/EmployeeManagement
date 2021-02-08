@@ -97,7 +97,7 @@
                                 "email": value.email,
                                 "password": value.password,
                                 "contact": value.contact,
-                                "actions": "<a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.admin_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.admin_id + "'><i class='fa fa-trash'></i></a>"
+                                "actions": "<div class='text-center'><a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.admin_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.admin_id + "'><i class='fa fa-trash'></i></a></div>"
                             };
                             arrData.push(objData);
                         });
@@ -112,7 +112,7 @@
                     }
                 });
                 $(".table-responsive").empty();
-                $(".table-responsive").html('<table id="example" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Password</th><th>Contact</th><th>Actions</th></tr></thead></table>');
+                $(".table-responsive").html('<table id="example" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Password</th><th>Contact</th><th class="text-center">Actions</th></tr></thead></table>');
                 $('#example').DataTable({
                     "data": arrData,
                     "columns": [

@@ -100,7 +100,7 @@
                                     "password": value.password,
                                     "contact": value.contact,
                                     "documents": "<a style='cursor: pointer;' class='viewDocuments' data-id='" + value.employee_id + "'>view</a>",
-                                    "actions": "<a id='btnEdit' style='margin-right: 2px;' class='btn btn-xs btn-warning' data-id='" + value.employee_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' style='margin-right: 2px;' class='btn btn-xs btn-danger ml-2' data-id='" + value.employee_id + "'><i class='fa fa-trash'></i></a><a id='btnChangeStatus' style='margin-right: 2px; border: 0.5px solid green' class='btn btn-xs btn-default ml-2' data-id='" + value.employee_id + "'>Activate</a>"
+                                    "actions": "<div class='text-center'><a id='btnEdit' style='margin-right: 2px;' class='btn btn-xs btn-warning' data-id='" + value.employee_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' style='margin-right: 2px;' class='btn btn-xs btn-danger ml-2' data-id='" + value.employee_id + "'><i class='fa fa-trash'></i></a><a style='margin-right: 2px; border: 0.5px solid green' class='btn btn-xs btn-default btnChangeStatus' data-id='" + value.employee_id + "'>Activate</a></div>"
                                 };
                                 arrData.push(objData);
                             }
@@ -116,7 +116,7 @@
                     }
                 });
                 $(".table-responsive").empty();
-                $(".table-responsive").html('<table id="example" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Password</th><th>Contact</th><th>Documents</th><th>Actions</th></tr></thead></table>');
+                $(".table-responsive").html('<table id="example" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Password</th><th>Contact</th><th>Documents</th><th class="text-center">Actions</th></tr></thead></table>');
                 $('#example').DataTable({
                     "data": arrData,
                     "columns": [
@@ -187,15 +187,15 @@
                     accept_numbers_only(e)
                 });
 
-            $("#btnChangeStatus").hover(function () {
-                $(this).attr("class", "btn btn-xs btn-success");
+            $(".btnChangeStatus").hover(function () {
+                $(this).attr("class", "btn btn-xs btn-success btnChangeStatus");
             });
 
-            $("#btnChangeStatus").mouseleave(function () {
-                $(this).attr("class", "btn btn-xs btn-default");
+            $(".btnChangeStatus").mouseleave(function () {
+                $(this).attr("class", "btn btn-xs btn-default btnChangeStatus");
             });
 
-            $(document).on("click", "#btnChangeStatus", function () {
+            $(document).on("click", ".btnChangeStatus", function () {
                 $("#modalBlacklist .modal-title").html("Activate " + $(this).closest("tr").find("td:eq(1)").text() + " " + $(this).closest("tr").find("td:eq(2)").text() + " ?");
                 $("#modalBlacklist .btn-success").attr("data-id", $(this).attr("data-id"));
                 $("#modalBlacklist").modal("show");
@@ -208,7 +208,7 @@
                     method: 'PUT',
                     data: {
                         "status": "unassigned",
-                        "comments": $("#modalBlacklist .form-contol").val()
+                        "comments": $("#modalBlacklist .form-control").val()
                     },
                     success: function (data) {
                         toastr.success("Employee has been Activated");

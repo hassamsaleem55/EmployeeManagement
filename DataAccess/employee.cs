@@ -34,5 +34,12 @@ namespace DataAccess
         public string status { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public string comments { get; set; }
+        public string nif_number { get; set; }
+        public string dob { get; set; }
+        public string sex { get; set; }
+        public string driving_license { get; set; }
+        public string nationality { get; set; }
+        public string location { get; set; }
+        public Nullable<System.DateTime> modified_at { get; set; }
     }
 }

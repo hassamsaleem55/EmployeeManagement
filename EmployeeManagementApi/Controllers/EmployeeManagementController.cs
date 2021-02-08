@@ -598,28 +598,18 @@ namespace EmployeeManagementApi.Controllers
                     //db.FileUpload.Add(imgupload);
                     //db.SaveChanges();
                     string extension = Path.GetExtension(httpPostedFile.FileName);
-                    if (extension.ToLower() == ".jpg" || extension.ToLower() == ".jpeg" || extension.ToLower() == ".pdf" || extension.ToLower() == ".docx")
-                    {
-                        string filename = httpPostedFile.FileName;
-                        string[] tokens = filename.Split('.');
-                        string fileName = tokens[0] + "_" + n + extension;
+                    string filename = httpPostedFile.FileName;
+                    string[] tokens = filename.Split('.');
+                    string fileName = tokens[0] + "_" + n + extension;
 
-                        //var fileSavePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Uploads/employee_documents"), fileName);
-                        var fileSavePath = Path.Combine(@"H:\GIT\EmployeeManagement\EmployeeManagement\Uploads\employee_documents", fileName);
-                        // Save the uploaded file to "UploadedFiles" folder  
-                        httpPostedFile.SaveAs(fileSavePath);
+                    //var fileSavePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Uploads/employee_documents"), fileName);
+                    var fileSavePath = Path.Combine(@"H:\GIT\EmployeeManagement\EmployeeManagement\Uploads\employee_documents", fileName);
+                    httpPostedFile.SaveAs(fileSavePath);
 
-                        return Request.CreateResponse(HttpStatusCode.OK, "/Uploads/employee_documents/" + fileName);
-                        //return Request.CreateResponse(fileSavePath);
-                    }
-                    else
-                    {
-                        return Request.CreateResponse(HttpStatusCode.OK, "Invalid file type");
-                    }
-
+                    return Request.CreateResponse(HttpStatusCode.OK, "/Uploads/employee_documents/" + fileName);
                 }
             }
-            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "File Upload Error Please try again");
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "");
 
         }
 
@@ -635,7 +625,13 @@ namespace EmployeeManagementApi.Controllers
                     entity.last_name = entities.last_name;
                     entity.email = entities.email;
                     entity.password = entities.password;
+                    entity.nif_number = entities.nif_number;
+                    entity.dob = entities.dob;
+                    entity.sex = entities.sex;
+                    entity.driving_license = entities.driving_license;
                     entity.contact = entities.contact;
+                    entity.nationality = entities.nationality;
+                    entity.location = entities.location;
                     entity.address = entities.address;
                     entity.NIF = entities.NIF;
                     entity.NISS = entities.NISS;

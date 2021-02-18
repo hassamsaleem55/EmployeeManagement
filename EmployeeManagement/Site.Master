@@ -378,6 +378,7 @@
                                 </div>
                             </li>
                             <li><a href="clients.aspx" class="nav-item"><i class="lnr lnr-users"></i><span>Clients</span></a></li>
+                            <li id="settings"><a href="settings.aspx" class="nav-item"><i class="lnr lnr-cog"></i><span>Settings</span></a></li>
                             <li id="logout"><a href="login.aspx" class="nav-item"><i class="lnr lnr-lock"></i><span>Logout</span></a></li>
                             <%--<li><a href="login.aspx" class="nav-item"><i class="lnr lnr-lock"></i><span>Logout</span></a></li>--%>
 
@@ -419,6 +420,9 @@
             $(".logo").attr("src", localStorage.getItem("SiteLink") + "/Uploads/logo.png");
             $(".nav li").hide();
             $(".nav li").first().show();
+            $(".nav li:eq(1)").show();
+            $(".nav li:eq(1)").find("li").show();
+            $("#settings").show();
             $(".nav li").last().show();
 
             getCompletingJobsAlerts();

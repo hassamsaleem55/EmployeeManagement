@@ -90,7 +90,10 @@
                                                 <input type="text" class="form-control contact_name" placeholder="Enter Contact Name" />
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control contact_number" placeholder="Enter Contact Number" />
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">+351</span>
+                                                    <input type="text" class="form-control contact_number" placeholder="Enter Contact Number" />
+                                                </div>
                                             </td>
                                             <td>
                                                 <a class="text-danger text-center"><i class="fa fa-times"></i></a>
@@ -138,12 +141,12 @@
                     async: false,
                     method: 'GET',
                     success: function (data) {
-                        
+
                         $(data).each(function (index, value) {
                             var contact = "";
                             $(value.contact.split(",")).each(function (ind, val) {
                                 if ((ind + 1) != value.contact.split(",").length) {
-                                    contact += "<div class='col-lg-12 row text-center'><div class='col-lg-6'>" + val.split(":")[0] + "</div><div class='col-lg-6'>" + val.split(":")[1] + "</div></div>";
+                                    contact += "<div class='col-lg-12 row text-center'><div class='col-lg-6'>" + val.split(":")[0] + "</div><div class='col-lg-6'>(+351) " +  + val.split(":")[1] + "</div></div>";
                                 }
                             });
                             var objData = {
@@ -212,6 +215,10 @@
             $(document).on("keypress", "#modalAddNew tbody .form-control:eq(1)",
                 function (
                     e) {
+                    if ($(this).val().length == 9) {
+                        e.preventDefault();
+                        return;
+                    }
                     accept_numbers_only(e);
                 });
 
@@ -241,8 +248,8 @@
                 var element = $(this);
                 var len = element.closest(".panel").find("tbody tr").length;
                 element.closest(".panel").find("tbody").append(
-                    '<tr style="display:none"><th scope="row">' + (len + 1) +
-                    '</th><td><input type="text" class="form-control contact_name" placeholder="Enter Contact Name"></td><td><input type="text" class="form-control contact_number" placeholder="Enter Contact Number"></td><td><a class="text-danger text-center"><i class="fa fa-times"></i></a></td></tr>'
+                    '<tr style="display:none"><td>' + (len + 1) +
+                    '</td><td><input type="text" class="form-control contact_name" placeholder="Enter Contact Name"></td><td><div class="input-group"><span class="input-group-addon">+351</span><input type="text" class="form-control contact_number" placeholder="Enter Contact Number" /></div></td><td><a class="text-danger text-center"><i class="fa fa-times"></i></a></td></tr>'
                 );
                 element.closest(".panel").find("tbody tr").last().show(600);
             });
@@ -254,8 +261,13 @@
                     element.closest("tr").hide(400);
                     setTimeout(function () {
                         element.closest("tr").remove();
+
+                        $("#modalAddNew tr").each(function (index, value) {
+                            $(this).find("td:eq(0)").html(index);
+                        });
                     }, 500);
                 }
+
             });
 
             $(document).on("click", "#btnSubmit", function () {

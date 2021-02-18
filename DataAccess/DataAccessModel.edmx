@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="employee_managementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="employee_managementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="admin_id" />
@@ -57,7 +57,6 @@
           <Property Name="SEF" Type="varchar(max)" />
           <Property Name="boarding_pass" Type="varchar(max)" />
           <Property Name="bank_account_number" Type="varchar(max)" />
-          <Property Name="working_shift" Type="varchar(max)" />
           <Property Name="status" Type="varchar(max)" />
           <Property Name="comments" Type="text" />
           <Property Name="created_at" Type="date" />
@@ -75,6 +74,7 @@
           <Property Name="job_duration" Type="varchar(max)" />
           <Property Name="job_type" Type="varchar(max)" />
           <Property Name="job_shift" Type="varchar(max)" />
+          <Property Name="job_location" Type="varchar(max)" />
           <Property Name="job_status" Type="varchar(max)" />
           <Property Name="client_id" Type="int" />
           <Property Name="created_at" Type="date" />
@@ -95,17 +95,24 @@
           <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="jobs_log" EntityType="Self.jobs_log" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="employee_managementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="employee_managementEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="clients" EntityType="employee_managementModel.client" />
-          <EntitySet Name="employees" EntityType="employee_managementModel.employee" />
-          <EntitySet Name="admins" EntityType="employee_managementModel.admin" />
-          <EntitySet Name="jobs" EntityType="employee_managementModel.job" />
-          <EntitySet Name="jobs_log" EntityType="employee_managementModel.jobs_log" />
-        </EntityContainer>
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="0" />
+        </EntityType>
         <EntityType Name="client">
           <Key>
             <PropertyRef Name="client_id" />
@@ -128,7 +135,13 @@
           <Property Name="last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nif_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sex" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="driving_license" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="skill" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NIF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -139,30 +152,10 @@
           <Property Name="SEF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="boarding_pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="bank_account_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="working_shift" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="created_at" Type="DateTime" Precision="0" />
           <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="nif_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="dob" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="sex" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="driving_license" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="modified_at" Type="DateTime" Precision="0" />
-        </EntityType>
-        <EntityType Name="admin">
-          <Key>
-            <PropertyRef Name="admin_id" />
-          </Key>
-          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="first_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="created_at" Type="DateTime" Precision="0" />
+          <Property Name="modified_at" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="job">
           <Key>
@@ -176,6 +169,7 @@
           <Property Name="job_duration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="job_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="job_shift" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="job_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="job_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="client_id" Type="Int32" />
           <Property Name="created_at" Type="DateTime" Precision="0" />
@@ -189,97 +183,104 @@
           <Property Name="job_id" Type="Int32" />
           <Property Name="payslip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityContainer Name="employee_managementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="clients" EntityType="Self.client" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="jobs" EntityType="Self.job" />
+          <EntitySet Name="jobs_log" EntityType="Self.jobs_log" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="employee_managementModelStoreContainer" CdmEntityContainer="employee_managementEntities">
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="employee_managementModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="clients">
             <EntityTypeMapping TypeName="employee_managementModel.client">
               <MappingFragment StoreEntitySet="client">
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="contact" ColumnName="contact" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
                 <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="employees">
             <EntityTypeMapping TypeName="employee_managementModel.employee">
               <MappingFragment StoreEntitySet="employee">
-                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
-                <ScalarProperty Name="location" ColumnName="location" />
-                <ScalarProperty Name="nationality" ColumnName="nationality" />
-                <ScalarProperty Name="driving_license" ColumnName="driving_license" />
-                <ScalarProperty Name="sex" ColumnName="sex" />
-                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="nif_number" ColumnName="nif_number" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="driving_license" ColumnName="driving_license" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="nationality" ColumnName="nationality" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="skill" ColumnName="skill" />
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="NISS" ColumnName="NISS" />
+                <ScalarProperty Name="passport" ColumnName="passport" />
+                <ScalarProperty Name="visa" ColumnName="visa" />
+                <ScalarProperty Name="residence_card" ColumnName="residence_card" />
+                <ScalarProperty Name="SEF" ColumnName="SEF" />
+                <ScalarProperty Name="boarding_pass" ColumnName="boarding_pass" />
+                <ScalarProperty Name="bank_account_number" ColumnName="bank_account_number" />
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="comments" ColumnName="comments" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="working_shift" ColumnName="working_shift" />
-                <ScalarProperty Name="bank_account_number" ColumnName="bank_account_number" />
-                <ScalarProperty Name="boarding_pass" ColumnName="boarding_pass" />
-                <ScalarProperty Name="SEF" ColumnName="SEF" />
-                <ScalarProperty Name="residence_card" ColumnName="residence_card" />
-                <ScalarProperty Name="visa" ColumnName="visa" />
-                <ScalarProperty Name="passport" ColumnName="passport" />
-                <ScalarProperty Name="NISS" ColumnName="NISS" />
-                <ScalarProperty Name="NIF" ColumnName="NIF" />
-                <ScalarProperty Name="skill" ColumnName="skill" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="contact" ColumnName="contact" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="admins">
-            <EntityTypeMapping TypeName="employee_managementModel.admin">
-              <MappingFragment StoreEntitySet="admin">
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="contact" ColumnName="contact" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jobs">
             <EntityTypeMapping TypeName="employee_managementModel.job">
               <MappingFragment StoreEntitySet="jobs">
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="client_id" ColumnName="client_id" />
-                <ScalarProperty Name="job_status" ColumnName="job_status" />
-                <ScalarProperty Name="job_shift" ColumnName="job_shift" />
-                <ScalarProperty Name="job_type" ColumnName="job_type" />
-                <ScalarProperty Name="job_duration" ColumnName="job_duration" />
-                <ScalarProperty Name="job_end_date" ColumnName="job_end_date" />
-                <ScalarProperty Name="job_start_date" ColumnName="job_start_date" />
-                <ScalarProperty Name="job_details" ColumnName="job_details" />
-                <ScalarProperty Name="job_title" ColumnName="job_title" />
                 <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="job_title" ColumnName="job_title" />
+                <ScalarProperty Name="job_details" ColumnName="job_details" />
+                <ScalarProperty Name="job_start_date" ColumnName="job_start_date" />
+                <ScalarProperty Name="job_end_date" ColumnName="job_end_date" />
+                <ScalarProperty Name="job_duration" ColumnName="job_duration" />
+                <ScalarProperty Name="job_type" ColumnName="job_type" />
+                <ScalarProperty Name="job_shift" ColumnName="job_shift" />
+                <ScalarProperty Name="job_location" ColumnName="job_location" />
+                <ScalarProperty Name="job_status" ColumnName="job_status" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jobs_log">
             <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
               <MappingFragment StoreEntitySet="jobs_log">
-                <ScalarProperty Name="payslip" ColumnName="payslip" />
-                <ScalarProperty Name="job_id" ColumnName="job_id" />
-                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="payslip" ColumnName="payslip" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -19,7 +19,13 @@ namespace DataAccess
         public string last_name { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        public string nif_number { get; set; }
+        public string dob { get; set; }
+        public string sex { get; set; }
+        public string driving_license { get; set; }
         public string contact { get; set; }
+        public string nationality { get; set; }
+        public string location { get; set; }
         public string address { get; set; }
         public string skill { get; set; }
         public string NIF { get; set; }
@@ -30,16 +36,9 @@ namespace DataAccess
         public string SEF { get; set; }
         public string boarding_pass { get; set; }
         public string bank_account_number { get; set; }
-        public string working_shift { get; set; }
         public string status { get; set; }
-        public Nullable<System.DateTime> created_at { get; set; }
         public string comments { get; set; }
-        public string nif_number { get; set; }
-        public string dob { get; set; }
-        public string sex { get; set; }
-        public string driving_license { get; set; }
-        public string nationality { get; set; }
-        public string location { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> modified_at { get; set; }
     }
 }

@@ -52,7 +52,6 @@
     <Property Name="SEF" Type="varchar(max)" />
     <Property Name="boarding_pass" Type="varchar(max)" />
     <Property Name="bank_account_number" Type="varchar(max)" />
-    <Property Name="working_shift" Type="varchar(max)" />
     <Property Name="status" Type="varchar(max)" />
     <Property Name="comments" Type="text" />
     <Property Name="created_at" Type="date" />
@@ -70,6 +69,7 @@
     <Property Name="job_duration" Type="varchar(max)" />
     <Property Name="job_type" Type="varchar(max)" />
     <Property Name="job_shift" Type="varchar(max)" />
+    <Property Name="job_location" Type="varchar(max)" />
     <Property Name="job_status" Type="varchar(max)" />
     <Property Name="client_id" Type="int" />
     <Property Name="created_at" Type="date" />

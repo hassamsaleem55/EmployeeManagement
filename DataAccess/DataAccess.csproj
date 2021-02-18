@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F1799485-9795-4538-881E-D078699E5D24}</ProjectGuid>
+    <ProjectGuid>{357B0E24-3C82-477E-AC8C-4250CF558E21}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DataAccess</RootNamespace>
@@ -51,61 +51,61 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="client.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel.Context.cs">
+    <Compile Include="DataAccessModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.Context.tt</DependentUpon>
+      <DependentUpon>DataAccessModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel.cs">
+    <Compile Include="DataAccessModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel.Designer.cs">
+    <Compile Include="DataAccessModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.edmx</DependentUpon>
+      <DependentUpon>DataAccessModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="employee.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
     </Compile>
     <Compile Include="job.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
     </Compile>
     <Compile Include="jobs_log.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="DataModel.edmx">
+    <EntityDeploy Include="DataAccessModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataAccessModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="DataModel.edmx.diagram">
-      <DependentUpon>DataModel.edmx</DependentUpon>
+    <None Include="DataAccessModel.edmx.diagram">
+      <DependentUpon>DataAccessModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataModel.Context.tt">
+    <Content Include="DataAccessModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
-      <DependentUpon>DataModel.edmx</DependentUpon>
+      <LastGenOutput>DataAccessModel.Context.cs</LastGenOutput>
+      <DependentUpon>DataAccessModel.edmx</DependentUpon>
     </Content>
-    <Content Include="DataModel.tt">
+    <Content Include="DataAccessModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataModel.edmx</DependentUpon>
-      <LastGenOutput>DataModel.cs</LastGenOutput>
+      <DependentUpon>DataAccessModel.edmx</DependentUpon>
+      <LastGenOutput>DataAccessModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

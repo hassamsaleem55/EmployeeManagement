@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="employee_managementModelStoreContainer" CdmEntityContainer="employee_managementEntities">
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="employee_managementModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="employee_managementModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="employee_managementModel.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="nif_number" ColumnName="nif_number" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="driving_license" ColumnName="driving_license" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="nationality" ColumnName="nationality" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="skill" ColumnName="skill" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="NISS" ColumnName="NISS" />
+          <ScalarProperty Name="passport" ColumnName="passport" />
+          <ScalarProperty Name="visa" ColumnName="visa" />
+          <ScalarProperty Name="residence_card" ColumnName="residence_card" />
+          <ScalarProperty Name="SEF" ColumnName="SEF" />
+          <ScalarProperty Name="boarding_pass" ColumnName="boarding_pass" />
+          <ScalarProperty Name="bank_account_number" ColumnName="bank_account_number" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobs">
+      <EntityTypeMapping TypeName="employee_managementModel.job">
+        <MappingFragment StoreEntitySet="jobs">
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+          <ScalarProperty Name="job_details" ColumnName="job_details" />
+          <ScalarProperty Name="job_start_date" ColumnName="job_start_date" />
+          <ScalarProperty Name="job_end_date" ColumnName="job_end_date" />
+          <ScalarProperty Name="job_duration" ColumnName="job_duration" />
+          <ScalarProperty Name="job_type" ColumnName="job_type" />
+          <ScalarProperty Name="job_shift" ColumnName="job_shift" />
+          <ScalarProperty Name="job_location" ColumnName="job_location" />
+          <ScalarProperty Name="job_status" ColumnName="job_status" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobs_log">
+      <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
+        <MappingFragment StoreEntitySet="jobs_log">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="payslip" ColumnName="payslip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

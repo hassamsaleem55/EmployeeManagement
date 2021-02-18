@@ -87,4 +87,3 @@ H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.csproj
 H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.csproj.CopyComplete
 H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.dll
 H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.pdb
-H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.csprojAssemblyReference.cache

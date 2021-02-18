@@ -73,19 +73,29 @@
                                     </label>
                                 </div>--%>
                             <button type="button" class="btn btn-success btn-lg btn-block">LOGIN</button>
-                            <div style="margin-top: 50px;">
-                                <i class="fa fa-arrow-left"></i><a href="home/index.html"> Back to home page</a>
+                            <div class="bottom col-lg-12" style="margin-top: 20px;">
+                                <div class="row">
+                                    <div class="col-lg-6 text-left">
+                                        <i class="fa fa-arrow-left"></i><a href="home/index.html"> Back to home page</a>
+                                    </div>
+                                    <div class="col-lg-6 text-right">
+                                        <span class="helper-text"><i class="fa fa-lock"></i><a href="forgot_password.aspx"> Forgot password?</a></span>
+                                    </div>
+                                </div>
+
                             </div>
+                            <%-- <div style="margin-top: 20px;">
+                                <i class="fa fa-arrow-left"></i><a href="home/index.html"> Back to home page</a>
+                            </div>--%>
                             <%--<div class="bottom">
                                     <span class="helper-text"><i class="fa fa-lock"></i><a href="#"> Forgot password?</a></span>
                                 </div>--%>
                             <%--</form>--%>
-                            
                         </div>
                     </div>
                     <div class="right">
-                        <div class="overlay">
-                            <img src="https://www.workpermit.pt/public/workpermit/images/workpermit-inicio.jpg" style="height: 100%; max-width: 100%""/>
+                        <div class="overlay" style="background: url('/Uploads/workpermit-inicio.jpg') no-repeat; background-size: 130% auto;">
+                            <%--<img src="" style="height: 100%; max-width: 100%""/>--%>
                         </div>
                         <div class="content text">
                             <%--<h1 class="heading">Free Bootstrap dashboard template</h1>
@@ -102,7 +112,7 @@
         $(document).ready(function () {
             $(document).on("click", ".btn-success", function () {
                 $.ajax({
-                    url: localStorage.getItem("ApiLink") + "api/login",
+                    url: "https://localhost:44361/api/login",
                     async: false,
                     method: 'GET',
                     data: {

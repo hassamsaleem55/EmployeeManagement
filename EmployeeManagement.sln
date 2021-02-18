@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement", "Emplo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementApi", "EmployeeManagementApi\EmployeeManagementApi.csproj", "{62C8C704-7CE2-44CA-8648-F69384D90A85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{F1799485-9795-4538-881E-D078699E5D24}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{357B0E24-3C82-477E-AC8C-4250CF558E21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{62C8C704-7CE2-44CA-8648-F69384D90A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62C8C704-7CE2-44CA-8648-F69384D90A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62C8C704-7CE2-44CA-8648-F69384D90A85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1799485-9795-4538-881E-D078699E5D24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1799485-9795-4538-881E-D078699E5D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1799485-9795-4538-881E-D078699E5D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1799485-9795-4538-881E-D078699E5D24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{357B0E24-3C82-477E-AC8C-4250CF558E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{357B0E24-3C82-477E-AC8C-4250CF558E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{357B0E24-3C82-477E-AC8C-4250CF558E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{357B0E24-3C82-477E-AC8C-4250CF558E21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -389,6 +389,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="employees.aspx" />
+    <Content Include="forgot_password.aspx" />
     <Content Include="homepage.aspx" />
     <Content Include="home\404-page.html" />
     <Content Include="home\css\animate.css" />
@@ -521,6 +522,7 @@
     <Content Include="index.aspx" />
     <Content Include="completed_jobs.aspx" />
     <Content Include="running_jobs.aspx" />
+    <Content Include="settings.aspx" />
     <Content Include="upcoming_jobs.aspx" />
     <Content Include="login.aspx" />
     <Content Include="packages.config" />
@@ -664,6 +666,13 @@
     <Compile Include="employees.aspx.designer.cs">
       <DependentUpon>employees.aspx</DependentUpon>
     </Compile>
+    <Compile Include="forgot_password.aspx.cs">
+      <DependentUpon>forgot_password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forgot_password.aspx.designer.cs">
+      <DependentUpon>forgot_password.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -702,6 +711,13 @@
     </Compile>
     <Compile Include="running_jobs.aspx.designer.cs">
       <DependentUpon>running_jobs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="settings.aspx.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="settings.aspx.designer.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
     </Compile>
     <Compile Include="upcoming_jobs.aspx.cs">
       <DependentUpon>upcoming_jobs.aspx</DependentUpon>

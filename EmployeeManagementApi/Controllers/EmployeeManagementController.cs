@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Http;
 using System.Web.UI.WebControls;
@@ -116,6 +118,8 @@ namespace EmployeeManagementApi.Controllers
                                    job_duration = j.job_duration,
                                    job_type = j.job_type,
                                    job_shift = j.job_shift,
+                                   job_location = j.job_location,
+                                   client_id = c.client_id,
                                    client_name = c.first_name + " " + c.last_name
                                };
                 if (entities != null)
@@ -184,6 +188,7 @@ namespace EmployeeManagementApi.Controllers
                     entity.job_duration = entities.job_duration;
                     entity.job_type = entities.job_type;
                     entity.job_shift = entities.job_shift;
+                    entity.job_location = entities.job_location;
                     Context.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK, "Data updated successfully");
                 }
@@ -221,18 +226,51 @@ namespace EmployeeManagementApi.Controllers
             }
         }
 
-        [Route("api/unassigned_employees/{shift}")]
-        public HttpResponseMessage GetUnassignedEmployees(string shift)
+        [Route("api/unassigned_employees")]
+        public HttpResponseMessage GetUnassignedEmployees()
         {
             try
             {
                 var entities = from e in Context.employees
-                               where e.status == "unassigned" && e.working_shift == shift
+                               where e.status == "unassigned"
                                select new
                                {
                                    id = e.employee_id,
-                                   name = e.first_name + " " + e.last_name
+                                   name = e.first_name + " " + e.last_name,
                                };
+
+                if (entities != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entities);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/assigned_employees_from_jobs_log")]
+        public HttpResponseMessage GetAssignedEmployeesFromJobsLog()
+        {
+            try
+            {
+                var entities = from un in Context.employees
+                               join jl in Context.jobs_log on un.employee_id equals jl.employee_id
+                               join j in Context.jobs on jl.job_id equals j.job_id
+                               //where un.status == "unassigned"
+                               select new
+                               {
+                                   id = un.employee_id,
+                                   name = un.first_name + " " + un.last_name,
+                                   start_date = j.job_start_date,
+                                   end_date = j.job_end_date
+                               };
+
                 if (entities != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, entities);
@@ -259,9 +297,9 @@ namespace EmployeeManagementApi.Controllers
                 Context.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK, "Data inserted successfully");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Something went wrong");
             }
         }
 
@@ -334,6 +372,7 @@ namespace EmployeeManagementApi.Controllers
                                    job_end_date = j.job_end_date,
                                    job_type = j.job_type,
                                    job_shift = j.job_shift,
+                                   client_id = c.client_id,
                                    client_name = c.first_name + " " + c.last_name
                                };
                 if (entities != null)
@@ -369,6 +408,7 @@ namespace EmployeeManagementApi.Controllers
                                    job_duration = j.job_duration,
                                    job_type = j.job_type,
                                    job_shift = j.job_shift,
+                                   client_id = c.client_id,
                                    client_name = c.first_name + " " + c.last_name
                                };
                 if (entities != null)
@@ -397,6 +437,119 @@ namespace EmployeeManagementApi.Controllers
                     entity.job_status = entities.job_status;
                     Context.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK, "Data updated successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/upcoming_jobs_for_employee/{id}")]
+        public HttpResponseMessage GetUpcomingJobsForEmployee(int id)
+        {
+            try
+            {
+                var entities = from jl in Context.jobs_log
+                               join e in Context.employees on jl.employee_id equals e.employee_id
+                               join j in Context.jobs on jl.job_id equals j.job_id
+                               join c in Context.clients on j.client_id equals c.client_id
+                               where jl.employee_id == id && j.job_status == "upcoming"
+                               select new
+                               {
+                                   job_id = j.job_id,
+                                   job_title = j.job_title,
+                                   job_details = j.job_details,
+                                   job_start_date = j.job_start_date,
+                                   job_end_date = j.job_end_date,
+                                   job_duration = j.job_duration,
+                                   job_type = j.job_type,
+                                   job_shift = j.job_shift,
+                                   job_location = j.job_location,
+                                   client_id = c.client_id,
+                                   client_name = c.first_name + " " + c.last_name
+                               };
+                if (entities != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entities);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/running_jobs_for_employee/{id}")]
+        public HttpResponseMessage GetRunningJobsForEmployee(int id)
+        {
+            try
+            {
+                var entities = from jl in Context.jobs_log
+                               join e in Context.employees on jl.employee_id equals e.employee_id
+                               join j in Context.jobs on jl.job_id equals j.job_id
+                               join c in Context.clients on j.client_id equals c.client_id
+                               where jl.employee_id == id && j.job_status == "running"
+                               select new
+                               {
+                                   job_id = j.job_id,
+                                   job_title = j.job_title,
+                                   job_details = j.job_details,
+                                   job_end_date = j.job_end_date,
+                                   job_type = j.job_type,
+                                   job_shift = j.job_shift,
+                                   client_id = c.client_id,
+                                   client_name = c.first_name + " " + c.last_name
+                               };
+                if (entities != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entities);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/completed_jobs_for_employee/{id}")]
+        public HttpResponseMessage GetCompletedJobsForEmployee(int id)
+        {
+            try
+            {
+                var entities = from jl in Context.jobs_log
+                               join e in Context.employees on jl.employee_id equals e.employee_id
+                               join j in Context.jobs on jl.job_id equals j.job_id
+                               join c in Context.clients on j.client_id equals c.client_id
+                               where jl.employee_id == id && j.job_status == "completed"
+                               select new
+                               {
+                                   job_id = j.job_id,
+                                   job_title = j.job_title,
+                                   job_details = j.job_details,
+                                   job_start_date = j.job_start_date,
+                                   job_end_date = j.job_end_date,
+                                   job_duration = j.job_duration,
+                                   job_type = j.job_type,
+                                   job_shift = j.job_shift,
+                                   client_id = c.client_id,
+                                   client_name = c.first_name + " " + c.last_name
+                               };
+                if (entities != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entities);
                 }
                 else
                 {
@@ -640,7 +793,7 @@ namespace EmployeeManagementApi.Controllers
                     entity.residence_card = entities.residence_card;
                     entity.SEF = entities.SEF;
                     entity.boarding_pass = entities.boarding_pass;
-                    entity.working_shift = entities.working_shift;
+                    //entity.working_shift = entities.working_shift;
 
                     Context.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK, "Data updated successfully");
@@ -833,6 +986,270 @@ namespace EmployeeManagementApi.Controllers
                 else
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid client ID");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/get_password")]
+        public HttpResponseMessage GetPassword(int id, string type)
+        {
+            try
+            {
+                //var entity = "";
+                if (type == "admin")
+                {
+                    //entity = Convert.ToString(Context.admins.FirstOrDefault(e => e.admin_id == id));
+                    return Request.CreateResponse(HttpStatusCode.OK, Context.admins.FirstOrDefault(e => e.admin_id == id));
+                }
+                else if (type == "client")
+                {
+                    //entity = Convert.ToString(Context.clients.FirstOrDefault(e => e.client_id == id));
+                    return Request.CreateResponse(HttpStatusCode.OK, Context.clients.FirstOrDefault(e => e.client_id == id));
+                }
+                else if (type == "employee")
+                {
+                    //entity = Convert.ToString(Context.employees.FirstOrDefault(e => e.employee_id == id));
+                    return Request.CreateResponse(HttpStatusCode.OK, Context.employees.FirstOrDefault(e => e.employee_id == id));
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/change_admin_password/{id}")]
+        public HttpResponseMessage PutChangeAdminPassword(int id, [FromBody] admin entities)
+        {
+            try
+            {
+                var entity = Context.admins.FirstOrDefault(e => e.admin_id == id);
+                if (entity != null)
+                {
+                    entity.password = entities.password;
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Password updated successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/change_client_password/{id}")]
+        public HttpResponseMessage PutChangeClientPassword(int id, [FromBody] client entities)
+        {
+            try
+            {
+                var entity = Context.clients.FirstOrDefault(e => e.client_id == id);
+                if (entity != null)
+                {
+                    entity.password = entities.password;
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Password updated successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/change_employee_password/{id}")]
+        public HttpResponseMessage PutChangeEmployeePassword(int id, [FromBody] employee entities)
+        {
+            try
+            {
+                var entity = Context.employees.FirstOrDefault(e => e.employee_id == id);
+                if (entity != null)
+                {
+                    entity.password = entities.password;
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Password updated successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/check_admin_email")]
+        public HttpResponseMessage GetCheckAdminEmail(string email)
+        {
+            try
+            {
+                var entity = Context.admins.FirstOrDefault(e => e.email == email);
+                if (entity != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Email Found");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/check_employee_email")]
+        public HttpResponseMessage GetCheckEmployeeEmail(string email)
+        {
+            try
+            {
+                var entity = Context.employees.FirstOrDefault(e => e.email == email);
+                if (entity != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Email Found");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/check_client_email")]
+        public HttpResponseMessage GetCheckClientEmail(string email)
+        {
+            try
+            {
+                var entity = Context.clients.FirstOrDefault(e => e.email == email);
+                if (entity != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Email Found");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/send_email")]
+        public HttpResponseMessage GetSendMail(string EmailBody, string EmailAddress, string Subject)
+        {
+            string htmlbody = EmailBody;
+            SmtpClient client = new SmtpClient();
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new NetworkCredential("workpermit79@gmail.com", "workpermit12317");//email and password , which email is sending email
+            MailMessage mm = new MailMessage(EmailAddress, EmailAddress, Subject, htmlbody);
+            mm.From = new MailAddress("info@test.com", Subject);
+            mm.IsBodyHtml = true;
+            mm.Priority = MailPriority.Normal;
+            //mm.ReplyToList.Add("genial365erp123@gmail.com");
+
+            mm.BodyEncoding = Encoding.Default;
+            mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+            try
+            {
+                client.Send(mm);
+                return Request.CreateResponse(HttpStatusCode.OK, "Email Found");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/change_admin_password")]
+        public HttpResponseMessage PutChangeAdminPassword([FromBody] admin entities)
+        {
+            try
+            {
+                var entity = Context.admins.FirstOrDefault(e => e.email == entities.email);
+                if (entity != null)
+                {
+                    entity.password = entities.password;
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Password updated successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/change_client_password")]
+        public HttpResponseMessage PutChangeClientPassword([FromBody] client entities)
+        {
+            try
+            {
+                var entity = Context.clients.FirstOrDefault(e => e.email == entities.email);
+                if (entity != null)
+                {
+                    entity.password = entities.password;
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Password updated successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/change_employee_password")]
+        public HttpResponseMessage PutChangeEmployeePassword([FromBody] employee entities)
+        {
+            try
+            {
+                var entity = Context.employees.FirstOrDefault(e => e.email == entities.email);
+                if (entity != null)
+                {
+                    entity.password = entities.password;
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Password updated successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
                 }
             }
             catch (Exception)

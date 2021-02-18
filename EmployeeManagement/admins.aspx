@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Admins" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="admins.aspx.cs" Inherits="EmployeeManagement.admins" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="main">
         <div class="panel">
@@ -8,10 +9,9 @@
 
             <div class="panel-body">
                 <div class="col-md-12">
-                    <button id="btnShowModal" type="button" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i>  New Admin</button>
+                    <button id="btnShowModal" type="button" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i>New Admin</button>
                 </div>
                 <div class="col-md-12 table-responsive" style="margin-top: 10px;">
-                    
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
-                        
+
                         <div class="form-group">
                             <label class="control-label col-sm-2">First Name:</label>
                             <div class="col-sm-10">
@@ -48,14 +48,17 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Password:</label>
                             <div class="col-sm-7">
-                                <input type="text" readonly="readonly" class="form-control" id="password" >
+                                <input type="text" readonly="readonly" class="form-control" id="password">
                             </div>
                             <button class="col-sm-2 btn btn-info" id="generatePassword">Generate Password</button>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Contact:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="contact" placeholder="Enter Contact">
+                                <div class="input-group">
+                                    <span class="input-group-addon">+351</span>
+                                    <input type="text" class="form-control" id="contact" placeholder="Enter Contact">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -80,8 +83,7 @@
             $(".nav-item:eq(0)").attr("class", "nav-item");
             $(".nav-item:eq(4)").attr("class", "nav-item active");
             getadminsData();
-            function getadminsData()
-            {
+            function getadminsData() {
                 var arrData = [];
                 $.ajax({
                     url: localStorage.getItem("ApiLink") + "api/admins",
@@ -96,7 +98,7 @@
                                 "last_name": value.last_name,
                                 "email": value.email,
                                 "password": value.password,
-                                "contact": value.contact,
+                                "contact": "(+351) " + value.contact,
                                 "actions": "<div class='text-center'><a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.admin_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.admin_id + "'><i class='fa fa-trash'></i></a></div>"
                             };
                             arrData.push(objData);
@@ -155,6 +157,10 @@
             $(document).on("keypress", "#contact",
                 function (
                     e) {
+                    if ($(this).val().length == 9) {
+                        e.preventDefault();
+                        return;
+                    }
                     accept_numbers_only(e)
                 });
 
@@ -189,37 +195,37 @@
                     //return;
                     error = true;
                 }
-                 if ($("#lastName").val() == "") {
+                if ($("#lastName").val() == "") {
                     toastr.error("Last name field cannot be empty");
                     //$("#lastName").focus();
                     //return;
                     error = true;
                 }
-                 if ($("#email").val() == "") {
+                if ($("#email").val() == "") {
                     toastr.error("Email field cannot be empty");
                     //$("#email").focus();
                     //return;
                     error = true;
                 }
-                 if (!regex.test($("#email").val())) {
+                if (!regex.test($("#email").val())) {
                     toastr.error("Invalid Email Address");
                     //$("#email").focus();
                     //return;
                     error = true;
                 }
-                 if ($("#password").val() == "") {
+                if ($("#password").val() == "") {
                     toastr.error("Password field cannot be empty");
                     //$("#password").focus();
                     //return;
                     error = true;
                 }
-                 if ($("#contact").val() == "") {
+                if ($("#contact").val() == "") {
                     toastr.error("Contact field cannot be empty");
                     //$("#contact").focus();
                     //return;
                     error = true;
                 }
-                 if ($("#address").val() == "") {
+                if ($("#address").val() == "") {
                     toastr.error("Address field cannot be empty");
                     //$("#address").focus();
                     //return;

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Blacklisted Employees" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="blacklisted_employees.aspx.cs" Inherits="EmployeeManagement.blacklisted_employees" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <style>
+    <style>
         @media only screen and (max-width: 600px) {
             .btn-info {
                 float: right;
@@ -19,11 +20,10 @@
             </div>
 
             <div class="panel-body">
-             <%--   <div class="col-md-12">
+                <%--   <div class="col-md-12">
                     <button id="btnShowModal" type="button" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i>New Employee</button>
                 </div>--%>
                 <div class="col-md-12 table-responsive" style="margin-top: 10px;">
-                    
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-     <div id="modalBlacklist" class="modal fade" role="dialog">
+    <div id="modalBlacklist" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
@@ -57,11 +57,27 @@
                 <div class="modal-body">
 
                     <label>Comments:</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                    <textarea class="form-control" rows="3"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-success" data-dismiss="modal">Reactivate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalComments" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -96,10 +112,12 @@
                                     "sr": index + 1,
                                     "first_name": value.first_name,
                                     "last_name": value.last_name,
+                                    "nif_number": value.nif_number,
                                     "email": value.email,
                                     "password": value.password,
                                     "contact": value.contact,
                                     "documents": "<a style='cursor: pointer;' class='viewDocuments' data-id='" + value.employee_id + "'>view</a>",
+                                    "comments": "<a style='cursor: pointer;' class='viewComments' data-name='" + value.first_name + "' data-comments='" + value.comments + "'>view</a>",
                                     "actions": "<div class='text-center'><a id='btnEdit' style='margin-right: 2px;' class='btn btn-xs btn-warning' data-id='" + value.employee_id + "'><i class='fa fa-pencil'></i></a><a id='btnDelete' style='margin-right: 2px;' class='btn btn-xs btn-danger ml-2' data-id='" + value.employee_id + "'><i class='fa fa-trash'></i></a><a style='margin-right: 2px; border: 0.5px solid green' class='btn btn-xs btn-default btnChangeStatus' data-id='" + value.employee_id + "'>Reactivate</a></div>"
                                 };
                                 arrData.push(objData);
@@ -116,17 +134,19 @@
                     }
                 });
                 $(".table-responsive").empty();
-                $(".table-responsive").html('<table id="example" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Password</th><th>Contact</th><th>Documents</th><th class="text-center">Actions</th></tr></thead></table>');
+                $(".table-responsive").html('<table id="example" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Email</th>NIF Number<th>Email</th><th>Password</th><th>Contact</th><th>Documents</th><th>Comments</th><th class="text-center">Actions</th></tr></thead></table>');
                 $('#example').DataTable({
                     "data": arrData,
                     "columns": [
                         { "data": "sr" },
                         { "data": "first_name" },
                         { "data": "last_name" },
+                        { "data": "nif_number" },
                         { "data": "email" },
                         { "data": "password" },
                         { "data": "contact" },
                         { "data": "documents" },
+                        { "data": "comments"},
                         { "data": "actions" }
                     ]
                 });
@@ -186,6 +206,12 @@
                     e) {
                     accept_numbers_only(e)
                 });
+
+            $(document).on("click", ".viewComments", function () {
+                $("#modalComments .modal-title").html("Why " + $(this).attr("data-name") + " was blocked ?");
+                $("#modalComments .modal-body").html($(this).attr("data-comments"));
+                $("#modalComments").modal("show");
+            });
 
             $(".btnChangeStatus").hover(function () {
                 $(this).attr("class", "btn btn-xs btn-success btnChangeStatus");
@@ -825,52 +851,52 @@
                         $("#rowDocuments").empty();
                         if (data.length != 0) {
                             if (data.NIF != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NIF</td><td><a href='" + data.NIF + "' target='_blank'>" + data.NIF.split("/")[data.NIF.split("/").length - 1] + "</a></td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NIF</td><td><a href='" + data.NIF + "' target='_blank'>" + data.NIF.split("/")[data.NIF.split("/").length - 1] + "</a></td><td><a class='download_document' href='" + data.NIF + "'>Download</a></td><tr>");
                             }
                             else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NIF</td><td>Not Available</td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NIF</td><td>Not Available</td><td></td><tr>");
                             }
 
                             if (data.NISS != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td><a href='" + data.NISS + "' target='_blank'>" + data.NISS.split("/")[data.NISS.split("/").length - 1] + "</a></td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td><a href='" + data.NISS + "' target='_blank'>" + data.NISS.split("/")[data.NISS.split("/").length - 1] + "</a></td><td><a class='download_document' href='" + data.NISS + "'>Download</a></td><tr>");
                             }
                             else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td>Not Available</td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td>Not Available</td><td></td><tr>");
                             }
 
                             if (data.passport != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td><a href='" + data.passport + "' target='_blank'>" + data.passport.split("/")[data.passport.split("/").length - 1] + "</a></td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td><a href='" + data.passport + "' target='_blank'>" + data.passport.split("/")[data.passport.split("/").length - 1] + "</a></td><td><a class='download_document' href='" + data.passport + "'>Download</a></td><tr>");
                             }
                             else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td>Not Available</td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td>Not Available</td><td></td><tr>");
                             }
 
                             if (data.visa != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td><a href='" + data.visa + "' target='_blank'>" + data.visa.split("/")[data.visa.split("/").length - 1] + "</a></td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td><a href='" + data.visa + "' target='_blank'>" + data.visa.split("/")[data.visa.split("/").length - 1] + "</a></td><td><a class='download_document' href='" + data.visa + "'>Download</a></td><tr>");
                             }
                             else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td>Not Available</td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td>Not Available</td><td></td><tr>");
                             }
 
                             if (data.residence_card != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td><a href='" + data.residence_card + "' target='_blank'>" + data.residence_card.split("/")[data.residence_card.split("/").length - 1] + "</a></td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td><a href='" + data.residence_card + "' target='_blank'>" + data.residence_card.split("/")[data.residence_card.split("/").length - 1] + "</a></td><td><a class='download_document' href='" + data.residence_card + "'>Download</a></td><tr>");
                             }
                             else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td>Not Available</td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td>Not Available</td><td></td><tr>");
                             }
 
                             if (data.SEF != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td><a href='" + data.SEF + "' target='_blank'>" + data.SEF.split("/")[data.SEF.split("/").length - 1] + "</a></td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td><a href='" + data.SEF + "' target='_blank'>" + data.SEF.split("/")[data.SEF.split("/").length - 1] + "</a></td><td><a class='download_document' href='" + data.SEF + "'>Download</a></td><tr>");
                             }
                             else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td>Not Available</td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td>Not Available</td><td></td><tr>");
                             }
 
                             if (data.boarding_pass != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td><a href='" + data.boarding_pass + "' target='_blank'>" + data.boarding_pass.split("/")[data.boarding_pass.split("/").length - 1] + "</a></td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td><a href='" + data.boarding_pass + "' target='_blank'>" + data.boarding_pass.split("/")[data.boarding_pass.split("/").length - 1] + "</a></td><td><a class='download_document' href='" + data.boarding_pass + "'>Download</a></td><tr>");
                             }
                             else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td>Not Available</td><tr>");
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td>Not Available</td><td></td><tr>");
                             }
                         }
                     },
@@ -883,6 +909,11 @@
                         });
                     }
                 });
+            });
+
+            $(document).on("click", ".download_document", function () {
+                e.preventDefault();
+                window.location.href = $(this).attr("href");
             });
         });
     </script>

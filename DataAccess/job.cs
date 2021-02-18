@@ -22,6 +22,7 @@ namespace DataAccess
         public string job_duration { get; set; }
         public string job_type { get; set; }
         public string job_shift { get; set; }
+        public string job_location { get; set; }
         public string job_status { get; set; }
         public Nullable<int> client_id { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }

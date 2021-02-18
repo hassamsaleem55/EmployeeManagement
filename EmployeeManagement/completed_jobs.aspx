@@ -7,25 +7,7 @@
             </div>
             <div class="panel-body">
 
-                <div class="col-md-12 table-responsive" style="margin-top: 10px;">
-                    <table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Title</th>
-                                <th>Client Name</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Duration</th>
-                                <th>Shift</th>
-                                <th>Type</th>
-                                <th>Labor</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody id="rowJobsTable">
-                        </tbody>
-                    </table>
+                <div class="col-md-12 table-responsive jobs_list" style="margin-top: 10px;">
                 </div>
             </div>
         </div>
@@ -36,22 +18,13 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Labor's List</h4>
+                    <h4 class="modal-title">Assigned Labor's List</h4>
                 </div>
                 <div class="modal-body">
-                    <div style="margin-top: 50px;">
-                        <table id="tblLabors" class="table table-responsive table-striped table-bordered table-hover" style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Employee Name</th>
-                                    <th>Documents</th>
-                                </tr>
-                            </thead>
-                            <tbody id="rowLabors">
-                            </tbody>
-                        </table>
+                    <button class="btn btn-sm btn-success pull-right" id="assignNewLabor"><i class="fa fa-plus"></i>Assign New Labor</button>
+                    <div class="col-md-12 table-responsive assigned_labors_list" style="margin-top: 10px;">
                     </div>
+                    <div class="clearfix"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
@@ -104,66 +77,269 @@
             $(".nav-item:eq(3)").attr("class", "nav-item active");
             $("#subPages").attr("class", "");
 
+            //function getFormatedDate(value) {
+            //    var date = new Date(value);
+            //    return ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear();
+            //}
+
             function getFormatedDate(value) {
                 var date = new Date(value);
-                return ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear();
+                var arrMonth = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                var month = date.getMonth();
+                var day = date.getDate();
+                var year = date.getFullYear();
+                // if (month < 10)
+                //     month = '0' + month.toString();
+                if (day < 10)
+                    day = '0' + day.toString();
+
+                date = arrMonth[month] + ' ' + day + ', ' + year;
+                return date;
             }
 
             getJobsData();
             function getJobsData() {
-                $.ajax({
-                    url: localStorage.getItem("ApiLink") + "api/completed_jobs",
-                    async: false,
-                    method: 'GET',
-                    success: function (data) {
-                        $("#rowJobsTable").empty();
-                        if (data.length != 0) {
+
+                if (JSON.parse(localStorage.getItem("login_details"))[0].type == "admin") {
+                    $(".jobs_list").html('<table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Client Name</th><th>Start Date</th><th>End Date</th><th>Duration</th><th>Shift</th><th>Type</th><th>Labor</th><th>Details</th></tr></thead></table>');
+                    var arrData = [];
+                    $.ajax({
+                        url: localStorage.getItem("ApiLink") + "api/completed_jobs",
+                        async: false,
+                        method: 'GET',
+                        success: function (data) {
+
                             $(data).each(function (index, value) {
-                                $("#rowJobsTable").append("<tr><td>" + (index + 1) + "</td><td>" + value.job_title + "</td><td>" + value.client_name + "</td><td>" + getFormatedDate(value.job_start_date) + "</td><td>" + getFormatedDate(value.job_end_date) + "</td><td>" + value.job_duration + " days</td><td>" + value.job_shift + "</td><td>" + value.job_type + "</td><td><a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a></td><td><a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a></td><tr>");
+                                var objData = {
+                                    "sr": index + 1,
+                                    "title": value.job_title,
+                                    "client_name": value.client_name,
+                                    "start_date": getFormatedDate(value.job_start_date),
+                                    "end_date": getFormatedDate(value.job_end_date),
+                                    "duration": value.job_duration + " days",
+                                    "shift": value.job_shift,
+                                    "type": value.job_type,
+                                    "labor": "<a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "' data-start-date='" + value.job_start_date + "'>View</a>",
+                                    "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
+                                    
+                                };
+                                arrData.push(objData);
+                            });
+                        },
+                        error: function (jqXHR, exception) {
+                            swal({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: exception,
+                                timer: 1800
                             });
                         }
-                        else {
-                            $("#rowJobsTable").append("<tr><td colspan='11' class='text-center'>No record found</td><tr>");
+                    });
+
+
+                    $('#tblJobs').DataTable({
+                        "data": arrData,
+                        "columns": [
+                            { "data": "sr" },
+                            { "data": "title" },
+                            { "data": "client_name" },
+                            { "data": "start_date" },
+                            { "data": "end_date" },
+                            { "data": "duration" },
+                            { "data": "shift" },
+                            { "data": "type" },
+                            { "data": "labor" },
+                            { "data": "details" },
+                        ]
+                    });
+                }
+
+                else if (JSON.parse(localStorage.getItem("login_details"))[0].type == "client") {
+                    $(".jobs_list").html('<table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Start Date</th><th>End Date</th><th>Duration</th><th>Shift</th><th>Type</th><th>Labor</th><th>Details</th></tr></thead></table>');
+                    var arrData = [];
+                    $.ajax({
+                        url: localStorage.getItem("ApiLink") + "api/completed_jobs",
+                        async: false,
+                        method: 'GET',
+                        success: function (data) {
+                            var count = 0;
+                            $(data).each(function (index, value) {
+                                if (value.client_id == JSON.parse(localStorage.getItem("login_details"))[0].id) {
+                                    var objData = {
+                                        "sr": ++count,
+                                        "title": value.job_title,
+                                        "start_date": getFormatedDate(value.job_start_date),
+                                        "end_date": getFormatedDate(value.job_end_date),
+                                        "duration": value.job_duration + " days",
+                                        "shift": value.job_shift,
+                                        "type": value.job_type,
+                                        "labor": "<a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "' data-start-date='" + value.job_start_date + "'>View</a>",
+                                        "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
+                                    };
+                                    arrData.push(objData);
+                                }
+                            });
+                        },
+                        error: function (jqXHR, exception) {
+                            swal({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: exception,
+                                timer: 1800
+                            });
                         }
-                    },
-                    error: function (jqXHR, exception) {
-                        swal({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: exception,
-                            timer: 1800
-                        });
-                    }
-                });
+                    });
+
+
+                    $('#tblJobs').DataTable({
+                        "data": arrData,
+                        "columns": [
+                            { "data": "sr" },
+                            { "data": "title" },
+                            { "data": "start_date" },
+                            { "data": "end_date" },
+                            { "data": "duration" },
+                            { "data": "shift" },
+                            { "data": "type" },
+                            { "data": "labor" },
+                            { "data": "details" },
+                        ]
+                    });
+                }
+
+                else if (JSON.parse(localStorage.getItem("login_details"))[0].type == "employee") {
+                    $("#btnShowModal").hide();
+                    $("#assignNewLabor").hide();
+                    $(".jobs_list").html('<table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Client Name</th><th>Start Date</th><th>End Date</th><th>Duration</th><th>Shift</th><th>Type</th><th>Location</th><th>Details</th></tr></thead></table>');
+                    var arrData = [];
+                    $.ajax({
+                        url: localStorage.getItem("ApiLink") + "api/completed_jobs_for_employee/" + JSON.parse(localStorage.getItem("login_details"))[0].id,
+                        async: false,
+                        method: 'GET',
+                        success: function (data) {
+                            $(data).each(function (index, value) {
+                                var objData = {
+                                    "sr": index + 1,
+                                    "title": value.job_title,
+                                    "client_name": value.client_name,
+                                    "start_date": getFormatedDate(value.job_start_date),
+                                    "end_date": getFormatedDate(value.job_end_date),
+                                    "duration": value.job_duration + " days",
+                                    "shift": value.job_shift,
+                                    "type": value.job_type,
+                                    "location": value.job_location,
+                                    "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
+                                };
+                                arrData.push(objData);
+                            });
+                        },
+                        error: function (jqXHR, exception) {
+                            swal({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: exception,
+                                timer: 1800
+                            });
+                        }
+                    });
+
+                    $('#tblJobs').DataTable({
+                        "data": arrData,
+                        "columns": [
+                            { "data": "sr" },
+                            { "data": "title" },
+                            { "data": "client_name" },
+                            { "data": "start_date" },
+                            { "data": "end_date" },
+                            { "data": "duration" },
+                            { "data": "shift" },
+                            { "data": "type" },
+                            { "data": "location" },
+                            { "data": "details" }
+                        ]
+                    });
+                }
             }
 
             function getLabors(id) {
-                $.ajax({
-                    url: localStorage.getItem("ApiLink") + "api/assigned_employees/" + id,
-                    async: false,
-                    method: 'GET',
-                    success: function (data) {
-                        $("#rowLabors").empty();
-                        if (data.length != 0) {
+                if (JSON.parse(localStorage.getItem("login_details"))[0].type == "admin") {
+                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th><th>Action</th></tr></thead></table>');
+                    var arrData = [];
+                    $.ajax({
+                        url: localStorage.getItem("ApiLink") + "api/assigned_employees/" + id,
+                        async: false,
+                        method: 'GET',
+                        success: function (data) {
                             $(data).each(function (index, value) {
-                                $("#rowLabors").append("<tr><td>" + (index + 1) + "</td><td>" + value.name + "</td><td><a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a></td></tr>");
+                                var objData = {
+                                    "sr": index + 1,
+                                    "name": value.name,
+                                    "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a>",
+                                    "actions": "<a id='btnRemoveEmployee' class='btn btn-sm btn-danger' data-id='" + value.id + "' data-job-id='" + id + "'>Remove</a>",
+                                };
+                                arrData.push(objData);
+                            });
+                        },
+                        error: function (jqXHR, exception) {
+                            swal({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: exception,
+                                timer: 1800
                             });
                         }
-                    },
-                    error: function (jqXHR, exception) {
-                        swal({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: exception,
-                            timer: 1800
-                        });
-                    }
-                });
+                    });
+
+                    $('#tblLabors').DataTable({
+                        "data": arrData,
+                        "columns": [
+                            { "data": "sr" },
+                            { "data": "name" },
+                            { "data": "documents" },
+                            { "data": "actions" }
+                        ]
+                    });
+                }
+                else if (JSON.parse(localStorage.getItem("login_details"))[0].type == "client") {
+                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th></tr></thead></table>');
+                    var arrData = [];
+                    $.ajax({
+                        url: localStorage.getItem("ApiLink") + "api/assigned_employees/" + id,
+                        async: false,
+                        method: 'GET',
+                        success: function (data) {
+                            $(data).each(function (index, value) {
+                                var objData = {
+                                    "sr": index + 1,
+                                    "name": value.name,
+                                    "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a>",
+
+                                };
+                                arrData.push(objData);
+                            });
+                        },
+                        error: function (jqXHR, exception) {
+                            swal({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: exception,
+                                timer: 1800
+                            });
+                        }
+                    });
+
+                    $('#tblLabors').DataTable({
+                        "data": arrData,
+                        "columns": [
+                            { "data": "sr" },
+                            { "data": "name" },
+                            { "data": "documents" }
+                        ]
+                    });
+                }
             }
 
             $(document).on("click", "#btnViewLabors", function () {
-                $("#assignNewLabor").attr("data-shift", $(this).closest("tr").find("td:eq(6)").text());
-                $("#assignNewLabor").attr("data-job-id", $(this).attr("data-id"));
                 getLabors($(this).attr("data-id"));
                 $("#modalViewLabors").modal("show");
             });

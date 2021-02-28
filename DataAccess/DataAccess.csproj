@@ -81,6 +81,12 @@
     <Compile Include="jobs_log.cs">
       <DependentUpon>DataAccessModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="job_applicants.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="job_offers.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

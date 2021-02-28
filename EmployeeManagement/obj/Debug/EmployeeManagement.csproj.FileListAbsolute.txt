@@ -83,6 +83,7 @@ C:\Users\Hassam Saleem\OneDrive\Documents\SofticEra\EmployeeManagement\EmployeeM
 H:\GIT\EmployeeManagement\EmployeeManagement\bin\EmployeeManagement.dll.config
 H:\GIT\EmployeeManagement\EmployeeManagement\bin\EmployeeManagement.dll
 H:\GIT\EmployeeManagement\EmployeeManagement\bin\EmployeeManagement.pdb
+H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.csprojAssemblyReference.cache
 H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.csproj.CoreCompileInputs.cache
 H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.csproj.CopyComplete
 H:\GIT\EmployeeManagement\EmployeeManagement\obj\Debug\EmployeeManagement.dll

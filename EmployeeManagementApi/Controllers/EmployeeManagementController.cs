@@ -1257,5 +1257,151 @@ namespace EmployeeManagementApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
             }
         }
+
+
+        [Route("api/agriculture_job_offers_new")]
+        public HttpResponseMessage GetAgricultureJobOffersNew()
+        {
+            try
+            {
+                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "agriculture" && e.job_status == "open");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/agriculture_job_offers_closed")]
+        public HttpResponseMessage GetAgricultureJobOffersClosed()
+        {
+            try
+            {
+                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "agriculture" && e.job_status == "closed");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/industry_job_offers_new")]
+        public HttpResponseMessage GetIndustryJobOffersNew()
+        {
+            try
+            {
+                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "industry" && e.job_status == "open");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/industry_job_offers_closed")]
+        public HttpResponseMessage GetIndustryJobOffersClosed()
+        {
+            try
+            {
+                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "industry" && e.job_status == "closed");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/retail_job_offers_new")]
+        public HttpResponseMessage GetRetailJobOffersNew()
+        {
+            try
+            {
+                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "retail" && e.job_status == "new");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/retail_job_offers_closed")]
+        public HttpResponseMessage GetRetailJobOffersClosed()
+        {
+            try
+            {
+                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "retail" && e.job_status == "closed");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/job_offers")]
+        public HttpResponseMessage PostJobOffers([FromBody] job_offers entities)
+        {
+            try
+            {
+                Context.job_offers.Add(entities);
+                Context.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK, "Data inserted successfully");
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/close_job_offer")]
+        public HttpResponseMessage PutCloseJobOffer([FromBody] job_offers entities)
+        {
+            try
+            {
+                var entity = Context.job_offers.FirstOrDefault(e => e.job_offer_id == entities.job_offer_id);
+                if (entity != null)
+                {
+                    entity.job_status = "closed";
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Job Offer has been closed");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/delete_job_offer")]
+        public HttpResponseMessage DeleteJobOffer([FromBody] job_offers entities)
+        {
+            try
+            {
+                var entity = Context.job_offers.FirstOrDefault(e => e.job_offer_id == entities.job_offer_id);
+                if (entity != null)
+                {
+                    Context.job_offers.Remove(entity);
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Job offer has been deleted successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid Job Offer ID");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
     }
 }

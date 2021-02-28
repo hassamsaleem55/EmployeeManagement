@@ -89,5 +89,43 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="job_applicants">
+      <EntityTypeMapping TypeName="employee_managementModel.job_applicants">
+        <MappingFragment StoreEntitySet="job_applicants">
+          <ScalarProperty Name="job_offer_id" ColumnName="job_offer_id" />
+          <ScalarProperty Name="apply_date" ColumnName="apply_date" />
+          <ScalarProperty Name="exam_date" ColumnName="exam_date" />
+          <ScalarProperty Name="medical_examination" ColumnName="medical_examination" />
+          <ScalarProperty Name="passport_validity_year" ColumnName="passport_validity_year" />
+          <ScalarProperty Name="passport_number" ColumnName="passport_number" />
+          <ScalarProperty Name="NISS" ColumnName="NISS" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="nationality" ColumnName="nationality" />
+          <ScalarProperty Name="nif_number" ColumnName="nif_number" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="applicant_id" ColumnName="applicant_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="job_offers">
+      <EntityTypeMapping TypeName="employee_managementModel.job_offers">
+        <MappingFragment StoreEntitySet="job_offers">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="job_status" ColumnName="job_status" />
+          <ScalarProperty Name="job_location" ColumnName="job_location" />
+          <ScalarProperty Name="job_shift" ColumnName="job_shift" />
+          <ScalarProperty Name="job_type" ColumnName="job_type" />
+          <ScalarProperty Name="job_last_date" ColumnName="job_last_date" />
+          <ScalarProperty Name="job_details" ColumnName="job_details" />
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+          <ScalarProperty Name="job_offer_id" ColumnName="job_offer_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -57,6 +57,42 @@
     <Property Name="created_at" Type="date" />
     <Property Name="modified_at" Type="date" />
   </EntityType>
+  <EntityType Name="job_applicants">
+    <Key>
+      <PropertyRef Name="applicant_id" />
+    </Key>
+    <Property Name="applicant_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar(max)" />
+    <Property Name="last_name" Type="varchar(max)" />
+    <Property Name="dob" Type="varchar(max)" />
+    <Property Name="email" Type="varchar(max)" />
+    <Property Name="contact" Type="varchar(max)" />
+    <Property Name="address" Type="varchar(max)" />
+    <Property Name="nif_number" Type="varchar(max)" />
+    <Property Name="nationality" Type="varchar(max)" />
+    <Property Name="NIF" Type="varchar(max)" />
+    <Property Name="NISS" Type="varchar(max)" />
+    <Property Name="passport_number" Type="varchar(max)" />
+    <Property Name="passport_validity_year" Type="varchar(max)" />
+    <Property Name="medical_examination" Type="varchar(max)" />
+    <Property Name="exam_date" Type="varchar(max)" />
+    <Property Name="apply_date" Type="date" />
+    <Property Name="job_offer_id" Type="int" />
+  </EntityType>
+  <EntityType Name="job_offers">
+    <Key>
+      <PropertyRef Name="job_offer_id" />
+    </Key>
+    <Property Name="job_offer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="job_title" Type="varchar(max)" />
+    <Property Name="job_details" Type="varchar(max)" />
+    <Property Name="job_last_date" Type="date" />
+    <Property Name="job_type" Type="varchar(max)" />
+    <Property Name="job_shift" Type="varchar(max)" />
+    <Property Name="job_location" Type="varchar(max)" />
+    <Property Name="job_status" Type="varchar(max)" />
+    <Property Name="created_at" Type="date" />
+  </EntityType>
   <EntityType Name="jobs">
     <Key>
       <PropertyRef Name="job_id" />
@@ -87,6 +123,8 @@
     <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="job_applicants" EntityType="Self.job_applicants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="job_offers" EntityType="Self.job_offers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="jobs_log" EntityType="Self.jobs_log" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

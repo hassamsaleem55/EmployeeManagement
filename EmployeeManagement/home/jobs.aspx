@@ -1,63 +1,5 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- responsive viewport
-    ====================================================================-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- responsive viewport
-    ====================================================================-->
-    <title>Jobs - Work Permit</title>
-
-    <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Bootstrap css
-    =====================================================================-->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- FontAwesome css
-    =====================================================================-->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-
-    <!-- Nivo-slider css
-    =====================================================================-->
-    <link rel="stylesheet" href="css/nivo-slider.css">
-
-    <!-- Animate css
-    =====================================================================-->
-    <link rel="stylesheet" href="css/animate.css">
-
-    <!-- Owl css
-    =====================================================================-->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-
-    <!-- PrettyPhoto css
-    =====================================================================-->
-    <link rel="stylesheet" href="css/prettyPhoto.css">
-
-    <!-- Meanmenu css
-    =====================================================================-->
-    <link rel="stylesheet" href="css/meanmenu.min.css">
-
-    <!-- Style css
-    =====================================================================-->
-    <link rel="stylesheet" href="style_green.css">
-
-    <!-- responsive css
-    ======================================================================-->
-    <link rel="stylesheet" href="css/responsive.css">
-
-
-
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-
+﻿<%@ Page Title="Jobs - Work Permit" Language="C#" MasterPageFile="~/homeMaster.Master" AutoEventWireup="true" CodeBehind="jobs.aspx.cs" Inherits="EmployeeManagement.home.jobs" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
         .single-brand {
             max-height: 100px;
@@ -91,8 +33,7 @@
             color: #80c223 !important;
         }
     </style>
-</head>
-<body>
+
     <div id="preloader-container">
         <div class="preloader">
             <span class="bubble-01"></span>
@@ -158,16 +99,16 @@
                             <nav>
                                 <ul>
                                     <li class="smooth-menu">
-                                        <a href="index.html">home</a>
+                                        <a href="index.aspx">home</a>
                                     </li>
                                     <li class="smooth-menu">
-                                        <a href="index.html#about">about</a>
+                                        <a href="index.aspx#about">about</a>
                                     </li>
                                     <li class="smooth-menu">
-                                        <a href="index.html#contact">contact</a>
+                                        <a href="index.aspx#contact">contact</a>
                                     </li>
                                     <li class="smooth-menu">
-                                        <a href="jobs.html">Jobs</a>
+                                        <a href="jobs.aspx">Jobs</a>
                                     </li>
                                     <li class="smooth-menu">
                                         <a href="../login.aspx">Login</a>
@@ -288,11 +229,35 @@
                                     <input type="email" class="form-control" id="email" placeholder="Enter Email">
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="control-label col-sm-2">NIF Number<sup class="text-danger"> *</sup></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="nif_number" placeholder="Enter NIF Number">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Passport Number<sup class="text-danger"> *</sup></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="passport_number" placeholder="Enter Passport Number">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Passport Validity Year<sup class="text-danger"> *</sup></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="passport_validity_year" placeholder="Enter Passport Validity Year">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Medical Examination<sup class="text-danger"> *</sup></label>
+                                <div class="col-sm-10">
+                                    <textarea rows="4" class="form-control" id="medical_examination" placeholder="Enter Medical Examination Details"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Medical Examination Date<sup class="text-danger"> *</sup></label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control" id="exam_date">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -310,7 +275,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Contact<sup class="text-danger"> *</sup></label>
                                 <div class="col-sm-10">
@@ -355,7 +320,7 @@
                                 </div>
                             </div>
 
-                            
+
 
                         </div>
                     </div>
@@ -385,110 +350,11 @@
 
     </section>
 
-    <!--<section id="content" class="container" style="height: 500px; margin-top: 70px">-->
-    <!--<ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-        <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-        <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-    </ul>-->
-    <!--</section>-->
-
-    <footer class="footer-area">
-        <div class="footer-bottom" style="height: 100px;
-        line-height: 100px;
-        text-align: center;
-        font-size: 12px;
-">
-            <div class="row">
-                <div class="container">
-                    <div class="col-lg-6 text-left">
-                        <a href="#about" style="margin-right: 20px">ABOUT</a>
-                        <a href="#contact">CONTACT</a>
-                    </div>
-
-                    <div class="col-lg-6 text-right" style="color: white">
-                        <b>WORK PERMIT</b><span class="text-muted">® 2019. TODOS OS DIREITOS RESERVADOS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!--  jQuery
-    ==============================================================-->
-    <script src="js/jquery-1.12.4.min.js"></script>
-
-    <!-- Bootstrap Js
-    ==============================================================-->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Modernizr Js
-    ==============================================================-->
-    <script src="js/modernizr-2.8.3.min.js"></script>
-
-    <!-- Nivo-slider Js
-    ==============================================================-->
-    <script src="js/jquery.nivo.slider.js"></script>
-
-    <!-- Wow Js
-    ==============================================================-->
-    <script src="js/wow.js"></script>
-
-    <!-- Sticky Js
-    ==============================================================-->
-    <script src="js/jquery.sticky.js"></script>
-
-    <!-- ScrollUp Js
-    ==============================================================-->
-    <script src="js/jquery.scrollUp.min.js"></script>
-
-    <!-- Owl Js
-    ==============================================================-->
-    <script src="js/owl.carousel.min.js"></script>
-
-    <!-- PrettyPhoto Js
-    ==============================================================-->
-    <script src="js/jquery.prettyPhoto.js"></script>
-
-    <!-- Mobile Menu Js
-    ==============================================================-->
-    <script src="js/jquery.meanmenu.js"></script>
-
-    <!-- Parallax Js
-    ==============================================================-->
-    <script src="js/jquery.parallax-1.1.3.js"></script>
-
-    <!-- Easing Js
-    ==============================================================-->
-    <script src="js/jquery.easing-1.3%20.js"></script>
-    <!-- Counterup Js
-    ==============================================================-->
-    <script src="js/jquery.counterup.min.js"></script>
-
-    <!-- Waypoints Js
-    ==============================================================-->
-    <script src="js/jquery.waypoints.min.js"></script>
-
-    <!-- App Js
-    ==============================================================-->
-    <script src="js/app.js"></script>
-
-    <!-- Google Map Js
-    ==============================================================-->
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
-
-
-    <!-- Main Js
-    ==============================================================-->
-    <script src="js/main.js"></script>
-
-
-
     <script>
         $(document).ready(function () {
+
+            var nifPath = "";
+            var nissPath = "";
             $("#endDate").attr('min', formatDate(new Date()));
             function formatDate(date) {
                 var month = date.getMonth() + 1;
@@ -546,6 +412,46 @@
                         { "data": "actions" }
                     ]
                 });
+            }
+
+            function uploadFile(files) {
+                var data = new FormData();
+                var result = "";
+                // Add the uploaded image content to the form data collection
+                if (files.length > 0) {
+                    data.append("UploadedImage", files[0]);
+                }
+                // Make Ajax request with the contentType = false, and procesDate = false
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/file_upload",
+                    async: false,
+                    type: 'POST',
+                    method: 'POST',
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (response) {
+                        result = response;
+                    },
+                    error: function (exception) {
+                        if (exception == "") {
+                            toastr.error("File Upload Error Please try again");
+                        }
+                        else {
+                            toastr.error(exception.responseJSON.ExceptionMessage);
+                        }
+                    }
+                });
+                return result;
+            }
+
+            function checkFileType(file) {
+                var ext = file.val().split('.').pop().toLowerCase();
+                if ($.inArray(ext, ['jpg', 'jpeg', 'pdf', 'doc', 'docx']) == -1) {
+                    toastr.error("Invalid file type. Please upload only jpg, jpeg, pdf, doc, docx format files");
+                    return true;
+                }
+                return false;
             }
 
             getNewAgricultureJobOffers();
@@ -620,6 +526,38 @@
 
 
             $(document).on("click", "#btnApply", function () {
+                $("#firstName").val("");
+                $("#lastName").val("");
+                $("#email").val("");
+                $("#nif_number").val("");
+                $("#passport_number").val("");
+                $("#passport_validity_year").val("");
+                $("#medical_examination").val("");
+                $("#exam_date").val("");
+                $("#dob").val("");
+                $("#sex").val("male");
+                $("#contact").val("");
+                $("#nationality").val("");
+                $("#address").val("");
+
+                $("#nifDocument").attr("href", "#");
+                $("#nifDocument").attr("hidden", "hidden");
+                $("#uploadNif").text("Upload");
+                $("#uploadNif").attr("disabled", false);
+                $("#uploadNif").attr("class", "btn btn-xs btn-info");
+                $("#uploadNif").css("color", "#fff");
+                $("#uploadNif").text("Upload");
+
+                $("#nissDocument").attr("href", "#");
+                $("#nissDocument").attr("hidden", "hidden");
+                $("#uploadNiss").text("Upload");
+                $("#uploadNiss").attr("disabled", false);
+                $("#uploadNiss").attr("class", "btn btn-xs btn-info");
+                $("#uploadNiss").css("color", "#fff");
+                $("#uploadNiss").text("Upload");
+
+
+                $("#modalApplyNow #btnSubmit").attr("data-id", $(this).attr("data-id"));
                 $("#modalApplyNow").modal("show");
             });
 
@@ -628,7 +566,187 @@
                 $("#modalViewDetails #viewDetailsBody").html(unescape($(this).attr("data-details")));
                 $("#modalViewDetails").modal("show");
             });
+
+            $(document).on("click", "#uploadNif", function () {
+                if ($("#nif").val() == '') {
+                    toastr.error("Choose any file first");
+                    return;
+                }
+
+                if (checkFileType($("#nif"))) {
+                    return;
+                }
+
+                $(this).attr("disabled", "disabled");
+                $(this).text("Uploading...");
+
+                nifPath = uploadFile($("#nif").get(0).files);
+                if (nifPath == "") {
+                    //toastr.error("Something went wrong");
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else {
+                    $(this).text("");
+                    $(this).attr("class", "btn btn-xs btn-success");
+                    $(this).append("<i class='fa fa-check'></i>");
+                }
+            });
+
+            $(document).on("click", "#uploadNiss", function () {
+                if ($("#niss").val() == '') {
+                    toastr.error("Choose any file first");
+                    return;
+                }
+
+                $(this).attr("disabled", "disabled");
+                $(this).text("Uploading...");
+
+                nissPath = uploadFile($("#niss").get(0).files);
+
+                if (nissPath == "Invalid file type") {
+                    toastr.error(nissPath);
+                    nissPath = "";
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else if (nissPath == "") {
+                    toastr.error("Something went wrong");
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else {
+                    $(this).text("");
+                    $(this).attr("class", "btn btn-xs btn-success");
+                    $(this).append("<i class='fa fa-check'></i>");
+                }
+            });
+
+            $(document).on("click", "#modalApplyNow #btnSubmit", function () {
+                var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                var error = false;
+                if ($("#firstName").val() == "") {
+                    toastr.error("First name field cannot be empty");
+                    error = true;
+                }
+
+                if ($("#lastName").val() == "") {
+                    toastr.error("Last name field cannot be empty");
+                    error = true;
+                }
+
+                if ($("#email").val() == "") {
+                    toastr.error("Email field cannot be empty");
+                    error = true;
+                }
+
+                if (!regex.test($("#email").val())) {
+                    toastr.error("Invalid Email Address");
+                    error = true;
+                }
+
+                if ($("#nif_number").val() == "") {
+                    toastr.error("NIF number field cannot be empty");
+                    error = true;
+                }
+
+                if ($("#passport_number").val() == "") {
+                    toastr.error("Passport number field cannot be empty");
+                    error = true;
+                }
+
+                if ($("#passport_validity_year").val() == "") {
+                    toastr.error("Passport Validity Year field cannot be empty");
+                    error = true;
+                }
+
+                if ($("#medical_examination").val() == "") {
+                    toastr.error("Medical Examination field cannot be empty");
+                    error = true;
+                }
+
+                if ($("#exam_date").val() == "") {
+                    toastr.error("Medical Examination Dates field cannot be empty");
+                    error = true;
+                }
+
+                if ($("#dob").val() == "") {
+                    toastr.error("DOB field cannot be empty");
+                    error = true;
+                }
+
+                if ($("#contact").val() == "") {
+                    toastr.error("Contact field cannot be empty");
+                    error = true;
+                }
+
+                if ($("#nationality").val() == "") {
+                    toastr.error("Nationality field cannot be empty");
+                    error = true;
+                }
+
+                if ($("#address").val() == "") {
+                    toastr.error("Address field cannot be empty");
+                    error = true;
+                }
+
+                if (nifPath == '') {
+                    toastr.error("Upload nif document first");
+                    error = true;
+                }
+
+                if (nissPath == '') {
+                    toastr.error("Upload niss document first");
+                    error = true;
+                }
+
+                if (error) {
+                    return;
+                }
+
+                var id = $(this).attr("data-id");
+
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/job_applicants",
+                    data: {
+                        "first_name": $("#firstName").val(),
+                        "last_name": $("#lastName").val(),
+                        "email": $("#email").val(),
+                        "nif_number": $("#nif_number").val(),
+                        "passport_number": $("#passport_number").val(),
+                        "passport_validity_year": $("#passport_validity_year").val(),
+                        "medical_examination": $("#medical_examination").val(),
+                        "exam_date": $("#exam_date").val(),
+                        "dob": $("#dob").val(),
+                        "sex": $("#sex").val(),
+                        "contact": $("#contact").val(),
+                        "nationality": $("#nationality").val(),
+                        "address": $("#address").val(),
+                        "NIF": nifPath,
+                        "NISS": nissPath,
+                        "status": "pending",
+                        "job_offer_id": id,
+                        "apply_date": formatDate(new Date())
+                    },
+                    async: false,
+                    method: "POST",
+                    success: function () {
+                        $("#modalApplyNow").modal("hide");
+                        toastr.success("You have successfully applied for this job");
+                        getNewAgricultureJobOffers();
+                        getNewIndustryJobOffers();
+                        getNewRetailJobOffers();
+                    },
+                    error: function (jqXHR, exception) {
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: exception,
+                            timer: 1800
+                        });
+                    }
+                });
+            });
         });
     </script>
-</body>
-</html>
+</asp:Content>

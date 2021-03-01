@@ -70,6 +70,7 @@
           <Property Name="first_name" Type="varchar(max)" />
           <Property Name="last_name" Type="varchar(max)" />
           <Property Name="dob" Type="varchar(max)" />
+          <Property Name="sex" Type="varchar(max)" />
           <Property Name="email" Type="varchar(max)" />
           <Property Name="contact" Type="varchar(max)" />
           <Property Name="address" Type="varchar(max)" />
@@ -82,6 +83,7 @@
           <Property Name="medical_examination" Type="varchar(max)" />
           <Property Name="exam_date" Type="varchar(max)" />
           <Property Name="apply_date" Type="date" />
+          <Property Name="status" Type="varchar(max)" />
           <Property Name="job_offer_id" Type="int" />
         </EntityType>
         <EntityType Name="job_offers">
@@ -226,31 +228,9 @@
           <EntitySet Name="employees" EntityType="Self.employee" />
           <EntitySet Name="jobs" EntityType="Self.job" />
           <EntitySet Name="jobs_log" EntityType="Self.jobs_log" />
-          <EntitySet Name="job_applicants" EntityType="employee_managementModel.job_applicants" />
           <EntitySet Name="job_offers" EntityType="employee_managementModel.job_offers" />
+          <EntitySet Name="job_applicants" EntityType="employee_managementModel.job_applicants" />
         </EntityContainer>
-        <EntityType Name="job_applicants">
-          <Key>
-            <PropertyRef Name="applicant_id" />
-          </Key>
-          <Property Name="applicant_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="first_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="dob" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="nif_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NIF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NISS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="passport_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="passport_validity_year" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="medical_examination" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="exam_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="apply_date" Type="DateTime" Precision="0" />
-          <Property Name="job_offer_id" Type="Int32" />
-        </EntityType>
         <EntityType Name="job_offers">
           <Key>
             <PropertyRef Name="job_offer_id" />
@@ -264,6 +244,30 @@
           <Property Name="job_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="job_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="created_at" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="job_applicants">
+          <Key>
+            <PropertyRef Name="applicant_id" />
+          </Key>
+          <Property Name="applicant_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sex" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nif_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NIF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NISS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="passport_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="passport_validity_year" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="medical_examination" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="exam_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="apply_date" Type="DateTime" Precision="0" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="job_offer_id" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -359,29 +363,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="job_applicants">
-            <EntityTypeMapping TypeName="employee_managementModel.job_applicants">
-              <MappingFragment StoreEntitySet="job_applicants">
-                <ScalarProperty Name="job_offer_id" ColumnName="job_offer_id" />
-                <ScalarProperty Name="apply_date" ColumnName="apply_date" />
-                <ScalarProperty Name="exam_date" ColumnName="exam_date" />
-                <ScalarProperty Name="medical_examination" ColumnName="medical_examination" />
-                <ScalarProperty Name="passport_validity_year" ColumnName="passport_validity_year" />
-                <ScalarProperty Name="passport_number" ColumnName="passport_number" />
-                <ScalarProperty Name="NISS" ColumnName="NISS" />
-                <ScalarProperty Name="NIF" ColumnName="NIF" />
-                <ScalarProperty Name="nationality" ColumnName="nationality" />
-                <ScalarProperty Name="nif_number" ColumnName="nif_number" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="contact" ColumnName="contact" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="dob" ColumnName="dob" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="applicant_id" ColumnName="applicant_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="job_offers">
             <EntityTypeMapping TypeName="employee_managementModel.job_offers">
               <MappingFragment StoreEntitySet="job_offers">
@@ -394,6 +375,31 @@
                 <ScalarProperty Name="job_details" ColumnName="job_details" />
                 <ScalarProperty Name="job_title" ColumnName="job_title" />
                 <ScalarProperty Name="job_offer_id" ColumnName="job_offer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="job_applicants">
+            <EntityTypeMapping TypeName="employee_managementModel.job_applicants">
+              <MappingFragment StoreEntitySet="job_applicants">
+                <ScalarProperty Name="job_offer_id" ColumnName="job_offer_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="apply_date" ColumnName="apply_date" />
+                <ScalarProperty Name="exam_date" ColumnName="exam_date" />
+                <ScalarProperty Name="medical_examination" ColumnName="medical_examination" />
+                <ScalarProperty Name="passport_validity_year" ColumnName="passport_validity_year" />
+                <ScalarProperty Name="passport_number" ColumnName="passport_number" />
+                <ScalarProperty Name="NISS" ColumnName="NISS" />
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="nationality" ColumnName="nationality" />
+                <ScalarProperty Name="nif_number" ColumnName="nif_number" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="applicant_id" ColumnName="applicant_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

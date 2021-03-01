@@ -65,6 +65,7 @@
     <Property Name="first_name" Type="varchar(max)" />
     <Property Name="last_name" Type="varchar(max)" />
     <Property Name="dob" Type="varchar(max)" />
+    <Property Name="sex" Type="varchar(max)" />
     <Property Name="email" Type="varchar(max)" />
     <Property Name="contact" Type="varchar(max)" />
     <Property Name="address" Type="varchar(max)" />
@@ -77,6 +78,7 @@
     <Property Name="medical_examination" Type="varchar(max)" />
     <Property Name="exam_date" Type="varchar(max)" />
     <Property Name="apply_date" Type="date" />
+    <Property Name="status" Type="varchar(max)" />
     <Property Name="job_offer_id" Type="int" />
   </EntityType>
   <EntityType Name="job_offers">

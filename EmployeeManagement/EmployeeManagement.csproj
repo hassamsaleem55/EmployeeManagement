@@ -409,6 +409,8 @@
     <Content Include="home\fonts\glyphicons-halflings-regular-5.html" />
     <Content Include="home\fonts\glyphicons-halflings-regular.html" />
     <Content Include="home\fonts\glyphicons-halflings-regulard41d.html" />
+    <Content Include="home\footer.html" />
+    <Content Include="home\header.html" />
     <Content Include="home\home-2.html" />
     <Content Include="home\home-3-parallax.html" />
     <Content Include="home\home-4-gradient.html" />
@@ -486,7 +488,9 @@
     <Content Include="home\images\tm2.jpg" />
     <Content Include="home\images\tm3.jpg" />
     <Content Include="home\images\tm4.jpg" />
+    <Content Include="home\index.aspx" />
     <Content Include="home\index.html" />
+    <Content Include="home\jobs.aspx" />
     <Content Include="home\jobs.html" />
     <Content Include="home\js\app.js" />
     <Content Include="home\js\bootstrap.min.js" />
@@ -571,6 +575,7 @@
     <Content Include="home\fonts\Raleway-Bold.ttf" />
     <Content Include="home\fonts\Raleway-Medium.ttf" />
     <Content Include="home\fonts\Raleway-Regular.ttf" />
+    <Content Include="homeMaster.Master" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -687,12 +692,33 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="homeMaster.Master.cs">
+      <DependentUpon>homeMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="homeMaster.Master.designer.cs">
+      <DependentUpon>homeMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="homepage.aspx.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="homepage.aspx.designer.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="home\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="home\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="home\jobs.aspx.cs">
+      <DependentUpon>jobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="home\jobs.aspx.designer.cs">
+      <DependentUpon>jobs.aspx</DependentUpon>
     </Compile>
     <Compile Include="inactivated_employees.aspx.cs">
       <DependentUpon>inactivated_employees.aspx</DependentUpon>

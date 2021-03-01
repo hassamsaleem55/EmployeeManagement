@@ -18,6 +18,7 @@ namespace DataAccess
         public string first_name { get; set; }
         public string last_name { get; set; }
         public string dob { get; set; }
+        public string sex { get; set; }
         public string email { get; set; }
         public string contact { get; set; }
         public string address { get; set; }
@@ -30,6 +31,7 @@ namespace DataAccess
         public string medical_examination { get; set; }
         public string exam_date { get; set; }
         public Nullable<System.DateTime> apply_date { get; set; }
+        public string status { get; set; }
         public Nullable<int> job_offer_id { get; set; }
     }
 }

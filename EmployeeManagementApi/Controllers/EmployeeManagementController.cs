@@ -1403,5 +1403,20 @@ namespace EmployeeManagementApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
             }
         }
+
+        [Route("api/job_applicants")]
+        public HttpResponseMessage PostJobApplicants([FromBody] job_applicants entities)
+        {
+            try
+            {
+                Context.job_applicants.Add(entities);
+                Context.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK, "Data inserted successfully");
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
     }
 }

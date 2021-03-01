@@ -388,6 +388,16 @@
                                     </ul>
                                 </div>
                             </li>
+                            <li>
+                                <a href="#job_applications" id="linkJobApplications" data-toggle="collapse" class="collapsed"><i class="fa fa-users"></i><span>Job Applications</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                                <div id="job_applications" class="collapse">
+                                    <ul class="nav">
+                                        <li><a href="agriculture_job_applications.aspx" class="nav-item"><i class="fa fa-users"></i><span>Agriculture</span></a></li>
+                                        <li><a href="industry_job_applications.aspx" class="nav-item"><i class="fa fa-users"></i><span>Industry</span></a></li>
+                                        <li><a href="retail_job_applications.aspx" class="nav-item"><i class="fa fa-users"></i><span>Retail</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li id="settings"><a href="settings.aspx" class="nav-item"><i class="lnr lnr-cog"></i><span>Settings</span></a></li>
                             <li id="logout"><a href="login.aspx" class="nav-item"><i class="lnr lnr-lock"></i><span>Logout</span></a></li>
                             <%--<li><a href="login.aspx" class="nav-item"><i class="lnr lnr-lock"></i><span>Logout</span></a></li>--%>

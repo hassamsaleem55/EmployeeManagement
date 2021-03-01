@@ -57,7 +57,13 @@
     <script src="js/jquery-1.12.4.min.js"></script>
 
     <script>
-        localStorage.setItem("applied_jobs", 0);
+        //localStorage.removeItem("applied_jobs");
+        if (localStorage.getItem("applied_jobs") == undefined || localStorage.getItem("applied_jobs") == null) {
+            var arr = [];
+            localStorage.setItem("applied_jobs", JSON.stringify(arr));
+        }
+
+        
     </script>
 </head>
 <body>

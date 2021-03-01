@@ -79,6 +79,7 @@
     <Property Name="exam_date" Type="varchar(max)" />
     <Property Name="apply_date" Type="date" />
     <Property Name="status" Type="varchar(max)" />
+    <Property Name="job_offer_type" Type="varchar(max)" />
     <Property Name="job_offer_id" Type="int" />
   </EntityType>
   <EntityType Name="job_offers">

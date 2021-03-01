@@ -153,6 +153,10 @@
 
     <script>
         $(document).ready(function () {
+            $(".nav-item:eq(0)").attr("class", "nav-item");
+            $("#linkJobOffers").attr("class", "collapsed active");
+            $(".nav-item:eq(9)").attr("class", "nav-item active");
+            $("#job_offers").attr("class", "");
             $("#endDate").attr('min', formatDate(new Date()));
             function formatDate(date) {
                 var month = date.getMonth() + 1;

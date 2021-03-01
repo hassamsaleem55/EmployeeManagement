@@ -5,6 +5,7 @@ H:\GIT\EmployeeManagement\DataAccess\bin\Debug\EntityFramework.dll
 H:\GIT\EmployeeManagement\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
 H:\GIT\EmployeeManagement\DataAccess\bin\Debug\EntityFramework.xml
 H:\GIT\EmployeeManagement\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+H:\GIT\EmployeeManagement\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
 H:\GIT\EmployeeManagement\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
 H:\GIT\EmployeeManagement\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
 H:\GIT\EmployeeManagement\DataAccess\obj\Debug\DataAccess.dll

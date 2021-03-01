@@ -84,6 +84,7 @@
           <Property Name="exam_date" Type="varchar(max)" />
           <Property Name="apply_date" Type="date" />
           <Property Name="status" Type="varchar(max)" />
+          <Property Name="job_offer_type" Type="varchar(max)" />
           <Property Name="job_offer_id" Type="int" />
         </EntityType>
         <EntityType Name="job_offers">
@@ -267,6 +268,7 @@
           <Property Name="exam_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="apply_date" Type="DateTime" Precision="0" />
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="job_offer_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="job_offer_id" Type="Int32" />
         </EntityType>
       </Schema>
@@ -382,6 +384,7 @@
             <EntityTypeMapping TypeName="employee_managementModel.job_applicants">
               <MappingFragment StoreEntitySet="job_applicants">
                 <ScalarProperty Name="job_offer_id" ColumnName="job_offer_id" />
+                <ScalarProperty Name="job_offer_type" ColumnName="job_offer_type" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="apply_date" ColumnName="apply_date" />
                 <ScalarProperty Name="exam_date" ColumnName="exam_date" />

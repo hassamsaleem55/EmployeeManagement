@@ -142,6 +142,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="admins.aspx" />
+    <Content Include="agriculture_job_applications.aspx" />
     <Content Include="agriculture_job_offers.aspx" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\bootstrap.min.css" />
@@ -489,9 +490,7 @@
     <Content Include="home\images\tm3.jpg" />
     <Content Include="home\images\tm4.jpg" />
     <Content Include="home\index.aspx" />
-    <Content Include="home\index.html" />
     <Content Include="home\jobs.aspx" />
-    <Content Include="home\jobs.html" />
     <Content Include="home\js\app.js" />
     <Content Include="home\js\bootstrap.min.js" />
     <Content Include="home\js\jquery-1.12.4.min.js" />
@@ -527,7 +526,9 @@
     <Content Include="inactivated_employees.aspx" />
     <Content Include="index.aspx" />
     <Content Include="completed_jobs.aspx" />
+    <Content Include="industry_job_applications.aspx" />
     <Content Include="industry_job_offers.aspx" />
+    <Content Include="retail_job_applications.aspx" />
     <Content Include="retail_job_offers.aspx" />
     <Content Include="running_jobs.aspx" />
     <Content Include="settings.aspx" />
@@ -616,6 +617,13 @@
     </Compile>
     <Compile Include="admins.aspx.designer.cs">
       <DependentUpon>admins.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agriculture_job_applications.aspx.cs">
+      <DependentUpon>agriculture_job_applications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agriculture_job_applications.aspx.designer.cs">
+      <DependentUpon>agriculture_job_applications.aspx</DependentUpon>
     </Compile>
     <Compile Include="agriculture_job_offers.aspx.cs">
       <DependentUpon>agriculture_job_offers.aspx</DependentUpon>
@@ -741,6 +749,13 @@
     <Compile Include="completed_jobs.aspx.designer.cs">
       <DependentUpon>completed_jobs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="industry_job_applications.aspx.cs">
+      <DependentUpon>industry_job_applications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="industry_job_applications.aspx.designer.cs">
+      <DependentUpon>industry_job_applications.aspx</DependentUpon>
+    </Compile>
     <Compile Include="industry_job_offers.aspx.cs">
       <DependentUpon>industry_job_offers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -749,6 +764,13 @@
       <DependentUpon>industry_job_offers.aspx</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="retail_job_applications.aspx.cs">
+      <DependentUpon>retail_job_applications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="retail_job_applications.aspx.designer.cs">
+      <DependentUpon>retail_job_applications.aspx</DependentUpon>
+    </Compile>
     <Compile Include="retail_job_offers.aspx.cs">
       <DependentUpon>retail_job_offers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

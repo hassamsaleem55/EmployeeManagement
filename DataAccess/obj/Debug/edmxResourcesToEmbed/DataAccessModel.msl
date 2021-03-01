@@ -108,6 +108,7 @@
       <EntityTypeMapping TypeName="employee_managementModel.job_applicants">
         <MappingFragment StoreEntitySet="job_applicants">
           <ScalarProperty Name="job_offer_id" ColumnName="job_offer_id" />
+          <ScalarProperty Name="job_offer_type" ColumnName="job_offer_type" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="apply_date" ColumnName="apply_date" />
           <ScalarProperty Name="exam_date" ColumnName="exam_date" />

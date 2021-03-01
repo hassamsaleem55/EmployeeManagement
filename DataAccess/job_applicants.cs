@@ -32,6 +32,7 @@ namespace DataAccess
         public string exam_date { get; set; }
         public Nullable<System.DateTime> apply_date { get; set; }
         public string status { get; set; }
+        public string job_offer_type { get; set; }
         public Nullable<int> job_offer_id { get; set; }
     }
 }

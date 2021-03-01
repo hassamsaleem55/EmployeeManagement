@@ -1418,5 +1418,135 @@ namespace EmployeeManagementApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
             }
         }
+
+
+        [Route("api/agriculture_job_applications_new")]
+        public HttpResponseMessage GetAgricultureJobApplicationsNew()
+        {
+            try
+            {
+                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "agriculture" && e.status == "pending");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/agriculture_job_applications_approved")]
+        public HttpResponseMessage GetAgricultureJobApplicationsApproved()
+        {
+            try
+            {
+                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "agriculture" && e.status == "approved");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/agriculture_job_applications_rejected")]
+        public HttpResponseMessage GetAgricultureJobApplicationsRejected()
+        {
+            try
+            {
+                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "agriculture" && e.status == "rejected");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+
+        [Route("api/industry_job_applications_new")]
+        public HttpResponseMessage GetIndustryJobApplicationsNew()
+        {
+            try
+            {
+                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "industry" && e.status == "pending");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/industry_job_applications_approved")]
+        public HttpResponseMessage GetIndustryJobApplicationsApproved()
+        {
+            try
+            {
+                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "industry" && e.status == "approved");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/industry_job_applications_rejected")]
+        public HttpResponseMessage GetIndustryJobApplicationsRejected()
+        {
+            try
+            {
+                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "industry" && e.status == "rejected");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+
+
+        [Route("api/retail_job_applications_new")]
+        public HttpResponseMessage GetRetailJobApplicationsNew()
+        {
+            try
+            {
+                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "retail" && e.status == "pending");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/retail_job_applications_approved")]
+        public HttpResponseMessage GetRetailJobApplicationsApproved()
+        {
+            try
+            {
+                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "retail" && e.status == "approved");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/retail_job_applications_rejected")]
+        public HttpResponseMessage GetRetailJobApplicationsRejected()
+        {
+            try
+            {
+                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "retail" && e.status == "rejected");
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
     }
 }

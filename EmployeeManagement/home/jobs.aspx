@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Jobs - Work Permit" Language="C#" MasterPageFile="~/homeMaster.Master" AutoEventWireup="true" CodeBehind="jobs.aspx.cs" Inherits="EmployeeManagement.home.jobs" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
         .single-brand {
@@ -174,7 +175,6 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="table-responsive">
-
                                 </div>
                             </div>
                         </div>
@@ -183,7 +183,6 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="table-responsive">
-
                                 </div>
                             </div>
                         </div>
@@ -192,7 +191,6 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="table-responsive">
-
                                 </div>
                             </div>
                         </div>
@@ -351,11 +349,14 @@
     </section>
 
     <script>
+
+
         $(document).ready(function () {
 
+            $("#endDate").attr('min', formatDate(new Date()));
             var nifPath = "";
             var nissPath = "";
-            $("#endDate").attr('min', formatDate(new Date()));
+            $("input[type='date']").attr('max', formatDate(new Date()));
             function formatDate(date) {
                 var month = date.getMonth() + 1;
                 var day = date.getDate();
@@ -384,19 +385,37 @@
                 return date;
             }
 
+            function accept_letters_only(e) {
+                if (e.which != 8 && e.which != 9 && e.which != 32 && (e.which < 65 || e.which > 122 || e
+                    .which == 96)) {
+                    e.preventDefault();
+                }
+            }
+
+            function accept_numbers_only(e) {
+                if (e.which != 8 && (e.which < 48 || e.which > 57)) {
+                    e.preventDefault();
+                }
+            }
+
             function createDataTable(data, component) {
+                var arrAppliedJobs = JSON.parse(localStorage.getItem("applied_jobs"));
+                console.log(arrAppliedJobs);
                 $(component + " .table-responsive").html('<table class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Last Date</th><th>Shift</th><th>Location</th><th>Details</th><th class="text-center">Actions</th></tr></thead></table>');
                 var arrData = [];
                 $(data).each(function (index, value) {
                     var objData = {
-                        "sr": index + 1,
+                        "sr": (index + 1),
                         "title": value.job_title,
                         "last_date": getFormatedDate(new Date(value.job_last_date)),
                         "shift": value.job_shift,
                         "location": value.job_location,
                         "details": "<a id='btnViewDetails' style='cursor: pointer;' data-details='" + value.job_details + "'>View</a>",
-                        "actions": "<div class='text-center'><a id='btnApply' class='btn btn-sm btn-success' data-id='" + value.job_offer_id + "'>Apply Now</a></div>"
+                        "actions": "<div class='text-center'><a id='btnApply' data-type='" + value.job_type + "' class='btn btn-sm btn-primary' data-id='" + value.job_offer_id + "'>Apply Now</a></div>"
                     };
+                    if ($.inArray(value.job_offer_id, arrAppliedJobs) != -1) {
+                        objData.actions = "<div class='text-center'><a class='btn btn-sm btn-success'>Applied</a></div>"
+                    }
                     arrData.push(objData);
                 });
 
@@ -558,6 +577,7 @@
 
 
                 $("#modalApplyNow #btnSubmit").attr("data-id", $(this).attr("data-id"));
+                $("#modalApplyNow #btnSubmit").attr("data-type", $(this).attr("data-type"));
                 $("#modalApplyNow").modal("show");
             });
 
@@ -566,6 +586,24 @@
                 $("#modalViewDetails #viewDetailsBody").html(unescape($(this).attr("data-details")));
                 $("#modalViewDetails").modal("show");
             });
+
+            $(document).on("keypress", "#firstName",
+                function (
+                    e) {
+                    accept_letters_only(e);
+                });
+
+            $(document).on("keypress", "#lastName",
+                function (
+                    e) {
+                    accept_letters_only(e);
+                });
+
+            $(document).on("keypress", "#contact",
+                function (
+                    e) {
+                    accept_numbers_only(e);
+                });
 
             $(document).on("click", "#uploadNif", function () {
                 if ($("#nif").val() == '') {
@@ -705,6 +743,7 @@
                 }
 
                 var id = $(this).attr("data-id");
+                var type = $(this).attr("data-type");
 
                 $.ajax({
                     url: localStorage.getItem("ApiLink") + "api/job_applicants",
@@ -725,6 +764,7 @@
                         "NIF": nifPath,
                         "NISS": nissPath,
                         "status": "pending",
+                        "job_offer_type": type,
                         "job_offer_id": id,
                         "apply_date": formatDate(new Date())
                     },
@@ -733,6 +773,9 @@
                     success: function () {
                         $("#modalApplyNow").modal("hide");
                         toastr.success("You have successfully applied for this job");
+                        var ids = JSON.parse(localStorage.getItem("applied_jobs"));
+                        ids.push(Number(id));
+                        localStorage.setItem("applied_jobs", JSON.stringify(ids));
                         getNewAgricultureJobOffers();
                         getNewIndustryJobOffers();
                         getNewRetailJobOffers();

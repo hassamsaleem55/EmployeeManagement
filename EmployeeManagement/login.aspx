@@ -76,7 +76,7 @@
                             <div class="bottom col-lg-12" style="margin-top: 20px;">
                                 <div class="row">
                                     <div class="col-lg-6 text-left">
-                                        <i class="fa fa-arrow-left"></i><a href="home/index.html"> Back to home page</a>
+                                        <i class="fa fa-arrow-left"></i><a href="home/index.aspx"> Back to home page</a>
                                     </div>
                                     <div class="col-lg-6 text-right">
                                         <span class="helper-text"><i class="fa fa-lock"></i><a href="forgot_password.aspx"> Forgot password?</a></span>

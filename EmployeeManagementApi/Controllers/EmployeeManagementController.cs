@@ -1548,5 +1548,43 @@ namespace EmployeeManagementApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
             }
         }
+
+        [Route("api/job_applicants/{id}")]
+        public HttpResponseMessage GetApplicants(int id)
+        {
+            try
+            {
+                var entities = Context.job_applicants.FirstOrDefault(e => e.applicant_id == id);
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/job_applicants/{id}")]
+
+        public HttpResponseMessage PutApplicants(int id, [FromBody] job_applicants entities)
+        {
+            try
+            {
+                var entity = Context.job_applicants.FirstOrDefault(e => e.applicant_id == id);
+                if (entity != null)
+                {
+                    entity.status = entities.status;
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Data updated successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
     }
 }

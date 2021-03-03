@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Jobs - Work Permit" Language="C#" MasterPageFile="~/homeMaster.Master" AutoEventWireup="true" CodeBehind="jobs.aspx.cs" Inherits="EmployeeManagement.home.jobs" %>
+﻿<%@ Page Title="Jobs" Language="C#" MasterPageFile="~/homeMaster.Master" AutoEventWireup="true" CodeBehind="jobs.aspx.cs" Inherits="EmployeeManagement.home.jobs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="industry_job_offers.aspx.cs" Inherits="EmployeeManagement.industry_job_offers" %>
+﻿<%@ Page Title="Industry Job Offers" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="industry_job_offers.aspx.cs" Inherits="EmployeeManagement.industry_job_offers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <style>
         table .btn-default{

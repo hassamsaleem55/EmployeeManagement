@@ -1264,7 +1264,18 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "agriculture" && e.job_status == "open");
+                var entities = from e in Context.job_offers
+                               where e.job_type == "agriculture" && e.job_status == "open"
+                               select new
+                               {
+                                   job_offer_id = e.job_offer_id,
+                                   job_title = e.job_title,
+                                   job_last_date = e.job_last_date,
+                                   job_shift = e.job_shift,
+                                   job_details = e.job_details,
+                                   job_type = e.job_type,
+                                   job_location = e.job_location
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1278,7 +1289,18 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "agriculture" && e.job_status == "closed");
+                var entities = from e in Context.job_offers
+                               where e.job_type == "agriculture" && e.job_status == "closed"
+                               select new
+                               {
+                                   job_offer_id = e.job_offer_id,
+                                   job_title = e.job_title,
+                                   job_last_date = e.job_last_date,
+                                   job_shift = e.job_shift,
+                                   job_details = e.job_details,
+                                   job_type = e.job_type,
+                                   job_location = e.job_location
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1292,7 +1314,18 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "industry" && e.job_status == "open");
+                var entities = from e in Context.job_offers
+                               where e.job_type == "industry" && e.job_status == "open"
+                               select new
+                               {
+                                   job_offer_id = e.job_offer_id,
+                                   job_title = e.job_title,
+                                   job_last_date = e.job_last_date,
+                                   job_shift = e.job_shift,
+                                   job_details = e.job_details,
+                                   job_type = e.job_type,
+                                   job_location = e.job_location
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1306,7 +1339,18 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "industry" && e.job_status == "closed");
+                var entities = from e in Context.job_offers
+                               where e.job_type == "industry" && e.job_status == "closed"
+                               select new
+                               {
+                                   job_offer_id = e.job_offer_id,
+                                   job_title = e.job_title,
+                                   job_last_date = e.job_last_date,
+                                   job_shift = e.job_shift,
+                                   job_details = e.job_details,
+                                   job_type = e.job_type,
+                                   job_location = e.job_location
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1320,7 +1364,18 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "retail" && e.job_status == "new");
+                var entities = from e in Context.job_offers
+                               where e.job_type == "retail" && e.job_status == "new"
+                               select new
+                               {
+                                   job_offer_id = e.job_offer_id,
+                                   job_title = e.job_title,
+                                   job_last_date = e.job_last_date,
+                                   job_shift = e.job_shift,
+                                   job_details = e.job_details,
+                                   job_type = e.job_type,
+                                   job_location = e.job_location
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1334,7 +1389,18 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_offers.FirstOrDefault(e => e.job_type == "retail" && e.job_status == "closed");
+                var entities = from e in Context.job_offers
+                               where e.job_type == "retail" && e.job_status == "closed"
+                               select new
+                               {
+                                   job_offer_id = e.job_offer_id,
+                                   job_title = e.job_title,
+                                   job_last_date = e.job_last_date,
+                                   job_shift = e.job_shift,
+                                   job_details = e.job_details,
+                                   job_type = e.job_type,
+                                   job_location = e.job_location
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1425,7 +1491,26 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "agriculture" && e.status == "pending");
+                var entities = from e in Context.job_applicants
+                               where e.job_offer_type == "agriculture" && e.status == "pending"
+                               select new
+                               {
+                                   applicant_id = e.applicant_id,
+                                   first_name = e.first_name,
+                                   last_name = e.last_name,
+                                   dob = e.dob,
+                                   sex = e.sex,
+                                   email = e.email,
+                                   contact = e.contact,
+                                   address = e.address,
+                                   nif_number = e.nif_number,
+                                   nationality = e.nationality,
+                                   passport_number = e.passport_number,
+                                   passport_validity_year = e.passport_validity_year,
+                                   medical_examination = e.medical_examination,
+                                   exam_date = e.exam_date,
+                                   apply_date = e.apply_date,
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1439,7 +1524,26 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "agriculture" && e.status == "approved");
+                var entities = from e in Context.job_applicants
+                               where e.job_offer_type == "agriculture" && e.status == "approved"
+                               select new
+                               {
+                                   applicant_id = e.applicant_id,
+                                   first_name = e.first_name,
+                                   last_name = e.last_name,
+                                   dob = e.dob,
+                                   sex = e.sex,
+                                   email = e.email,
+                                   contact = e.contact,
+                                   address = e.address,
+                                   nif_number = e.nif_number,
+                                   nationality = e.nationality,
+                                   passport_number = e.passport_number,
+                                   passport_validity_year = e.passport_validity_year,
+                                   medical_examination = e.medical_examination,
+                                   exam_date = e.exam_date,
+                                   apply_date = e.apply_date,
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1453,7 +1557,26 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "agriculture" && e.status == "rejected");
+                var entities = from e in Context.job_applicants
+                               where e.job_offer_type == "agriculture" && e.status == "rejected"
+                               select new
+                               {
+                                   applicant_id = e.applicant_id,
+                                   first_name = e.first_name,
+                                   last_name = e.last_name,
+                                   dob = e.dob,
+                                   sex = e.sex,
+                                   email = e.email,
+                                   contact = e.contact,
+                                   address = e.address,
+                                   nif_number = e.nif_number,
+                                   nationality = e.nationality,
+                                   passport_number = e.passport_number,
+                                   passport_validity_year = e.passport_validity_year,
+                                   medical_examination = e.medical_examination,
+                                   exam_date = e.exam_date,
+                                   apply_date = e.apply_date,
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1468,7 +1591,26 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "industry" && e.status == "pending");
+                var entities = from e in Context.job_applicants
+                               where e.job_offer_type == "industry" && e.status == "pending"
+                               select new
+                               {
+                                   applicant_id = e.applicant_id,
+                                   first_name = e.first_name,
+                                   last_name = e.last_name,
+                                   dob = e.dob,
+                                   sex = e.sex,
+                                   email = e.email,
+                                   contact = e.contact,
+                                   address = e.address,
+                                   nif_number = e.nif_number,
+                                   nationality = e.nationality,
+                                   passport_number = e.passport_number,
+                                   passport_validity_year = e.passport_validity_year,
+                                   medical_examination = e.medical_examination,
+                                   exam_date = e.exam_date,
+                                   apply_date = e.apply_date,
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1482,7 +1624,26 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "industry" && e.status == "approved");
+                var entities = from e in Context.job_applicants
+                               where e.job_offer_type == "industry" && e.status == "approved"
+                               select new
+                               {
+                                   applicant_id = e.applicant_id,
+                                   first_name = e.first_name,
+                                   last_name = e.last_name,
+                                   dob = e.dob,
+                                   sex = e.sex,
+                                   email = e.email,
+                                   contact = e.contact,
+                                   address = e.address,
+                                   nif_number = e.nif_number,
+                                   nationality = e.nationality,
+                                   passport_number = e.passport_number,
+                                   passport_validity_year = e.passport_validity_year,
+                                   medical_examination = e.medical_examination,
+                                   exam_date = e.exam_date,
+                                   apply_date = e.apply_date,
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1496,7 +1657,26 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "industry" && e.status == "rejected");
+                var entities = from e in Context.job_applicants
+                               where e.job_offer_type == "industry" && e.status == "rejected"
+                               select new
+                               {
+                                   applicant_id = e.applicant_id,
+                                   first_name = e.first_name,
+                                   last_name = e.last_name,
+                                   dob = e.dob,
+                                   sex = e.sex,
+                                   email = e.email,
+                                   contact = e.contact,
+                                   address = e.address,
+                                   nif_number = e.nif_number,
+                                   nationality = e.nationality,
+                                   passport_number = e.passport_number,
+                                   passport_validity_year = e.passport_validity_year,
+                                   medical_examination = e.medical_examination,
+                                   exam_date = e.exam_date,
+                                   apply_date = e.apply_date,
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1512,7 +1692,26 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "retail" && e.status == "pending");
+                var entities = from e in Context.job_applicants
+                               where e.job_offer_type == "retail" && e.status == "pending"
+                               select new
+                               {
+                                   applicant_id = e.applicant_id,
+                                   first_name = e.first_name,
+                                   last_name = e.last_name,
+                                   dob = e.dob,
+                                   sex = e.sex,
+                                   email = e.email,
+                                   contact = e.contact,
+                                   address = e.address,
+                                   nif_number = e.nif_number,
+                                   nationality = e.nationality,
+                                   passport_number = e.passport_number,
+                                   passport_validity_year = e.passport_validity_year,
+                                   medical_examination = e.medical_examination,
+                                   exam_date = e.exam_date,
+                                   apply_date = e.apply_date,
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1526,7 +1725,26 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "retail" && e.status == "approved");
+                var entities = from e in Context.job_applicants
+                               where e.job_offer_type == "retail" && e.status == "approved"
+                               select new
+                               {
+                                   applicant_id = e.applicant_id,
+                                   first_name = e.first_name,
+                                   last_name = e.last_name,
+                                   dob = e.dob,
+                                   sex = e.sex,
+                                   email = e.email,
+                                   contact = e.contact,
+                                   address = e.address,
+                                   nif_number = e.nif_number,
+                                   nationality = e.nationality,
+                                   passport_number = e.passport_number,
+                                   passport_validity_year = e.passport_validity_year,
+                                   medical_examination = e.medical_examination,
+                                   exam_date = e.exam_date,
+                                   apply_date = e.apply_date,
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)
@@ -1540,7 +1758,26 @@ namespace EmployeeManagementApi.Controllers
         {
             try
             {
-                var entities = Context.job_applicants.FirstOrDefault(e => e.job_offer_type == "retail" && e.status == "rejected");
+                var entities = from e in Context.job_applicants
+                               where e.job_offer_type == "retail" && e.status == "rejected"
+                               select new
+                               {
+                                   applicant_id = e.applicant_id,
+                                   first_name = e.first_name,
+                                   last_name = e.last_name,
+                                   dob = e.dob,
+                                   sex = e.sex,
+                                   email = e.email,
+                                   contact = e.contact,
+                                   address = e.address,
+                                   nif_number = e.nif_number,
+                                   nationality = e.nationality,
+                                   passport_number = e.passport_number,
+                                   passport_validity_year = e.passport_validity_year,
+                                   medical_examination = e.medical_examination,
+                                   exam_date = e.exam_date,
+                                   apply_date = e.apply_date,
+                               };
                 return Request.CreateResponse(HttpStatusCode.OK, entities);
             }
             catch (Exception)

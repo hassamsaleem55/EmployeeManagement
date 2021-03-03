@@ -369,63 +369,56 @@
     </div>
 
     <div id="modalViewJobs" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog " style="width: 90%;">
             <div class="modal-content">
-                <div class="modal-body">
-                    <div class="container" style="margin-top: 70px; margin-bottom: 255px;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="section-text">
-                                    <h2 class="section-title">job <span class="color">openings</span></h2>
-                                    <!--<p class="s-title">Espark sit amet consectetur adipisicing elit. Corporis, perferendis! Lorem ipsum. adipisicing elit. Corporis, perferendis! Lorem ipsum.</p>-->
-                                </div>
-                            </div>
-
-                            <ul class="nav nav-pills nav-justified">
-                                <li class="bg-success active"><a data-toggle="tab" class="agriculture" href="#agriculture">Agriculture</a></li>
-                                <li class="bg-success"><a data-toggle="tab" class="industry" href="#industry">Industry</a></li>
-                                <li class="bg-success"><a data-toggle="tab" class="retail" href="#retail">Retail</a></li>
-                            </ul>
-
-                            <div class="tab-content">
-                                <div id="agriculture" class="tab-pane fade in active">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <div class="table-responsive">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="industry" class="tab-pane fade">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <div class="table-responsive">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="retail" class="tab-pane fade">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <div class="table-responsive">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                <div class="modal-body" style="overflow: auto"">
+                    <div style="width: 100%;" >
+                        <div class="section-text">
+                            <h2 class="section-title">job <span class="color">openings</span></h2>
                         </div>
+
+
+                        <ul class="nav nav-pills nav-justified">
+                            <li class="bg-success active"><a data-toggle="tab" class="agriculture" href="#agriculture">Agriculture</a></li>
+                            <li class="bg-success"><a data-toggle="tab" class="industry" href="#industry">Industry</a></li>
+                            <li class="bg-success"><a data-toggle="tab" class="retail" href="#retail">Retail</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="agriculture" class="tab-pane fade in active">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="industry" class="tab-pane fade">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="retail" class="tab-pane fade">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="modalApplyNow" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog " style="width: 95%;">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #333d4d !important; color: #F3F5F8 !important">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -555,7 +548,7 @@
     </div>
 
     <div id="modalViewDetails" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog " style="width: 90%;">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #333d4d !important; color: #F3F5F8 !important">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -571,10 +564,11 @@
     </div>
 
     <script>
-
-
+        $(window).on('load', function () {
+            $("#modalViewJobs").modal("show");
+        });
         $(document).ready(function () {
-           
+
             $("#endDate").attr('min', formatDate(new Date()));
             var nifPath = "";
             var nissPath = "";
@@ -623,7 +617,7 @@
             function createDataTable(data, component) {
                 var arrAppliedJobs = JSON.parse(localStorage.getItem("applied_jobs"));
                 console.log(arrAppliedJobs);
-                $(component + " .table-responsive").html('<table class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Last Date</th><th>Shift</th><th>Location</th><th>Details</th><th class="text-center">Actions</th></tr></thead></table>');
+                $(component + " .table-responsive").html('<table class="table table-striped table-bordered table-hover table-scrollable" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Last Date</th><th>Shift</th><th>Location</th><th>Details</th><th class="text-center">Actions</th></tr></thead></table>');
                 var arrData = [];
                 $(data).each(function (index, value) {
                     var objData = {
@@ -1013,8 +1007,9 @@
                 });
             });
 
-            //$("#modalViewJobs").modal("show");
+
         });
     </script>
     <!-- CONTACT US AREA END HERE -->
+    </div>
 </asp:Content>

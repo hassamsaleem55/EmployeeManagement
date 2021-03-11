@@ -125,7 +125,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="employee_id" Type="int" />
           <Property Name="job_id" Type="int" />
-          <Property Name="payslip" Type="text" />
+          <Property Name="payslip" Type="varchar(max)" />
+          <Property Name="cutt" Type="varchar(max)" />
         </EntityType>
         <EntityContainer Name="employee_managementModelStoreContainer">
           <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
@@ -214,23 +215,14 @@
           <Property Name="client_id" Type="Int32" />
           <Property Name="created_at" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityType Name="jobs_log">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="employee_id" Type="Int32" />
-          <Property Name="job_id" Type="Int32" />
-          <Property Name="payslip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityContainer Name="employee_managementEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admins" EntityType="Self.admin" />
           <EntitySet Name="clients" EntityType="Self.client" />
           <EntitySet Name="employees" EntityType="Self.employee" />
           <EntitySet Name="jobs" EntityType="Self.job" />
-          <EntitySet Name="jobs_log" EntityType="Self.jobs_log" />
           <EntitySet Name="job_offers" EntityType="employee_managementModel.job_offers" />
           <EntitySet Name="job_applicants" EntityType="employee_managementModel.job_applicants" />
+          <EntitySet Name="jobs_log" EntityType="employee_managementModel.jobs_log" />
         </EntityContainer>
         <EntityType Name="job_offers">
           <Key>
@@ -270,6 +262,16 @@
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="job_offer_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="job_offer_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="jobs_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employee_id" Type="Int32" />
+          <Property Name="job_id" Type="Int32" />
+          <Property Name="payslip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cutt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -355,16 +357,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="jobs_log">
-            <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
-              <MappingFragment StoreEntitySet="jobs_log">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
-                <ScalarProperty Name="job_id" ColumnName="job_id" />
-                <ScalarProperty Name="payslip" ColumnName="payslip" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="job_offers">
             <EntityTypeMapping TypeName="employee_managementModel.job_offers">
               <MappingFragment StoreEntitySet="job_offers">
@@ -403,6 +395,17 @@
                 <ScalarProperty Name="last_name" ColumnName="last_name" />
                 <ScalarProperty Name="first_name" ColumnName="first_name" />
                 <ScalarProperty Name="applicant_id" ColumnName="applicant_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobs_log">
+            <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
+              <MappingFragment StoreEntitySet="jobs_log">
+                <ScalarProperty Name="cutt" ColumnName="cutt" />
+                <ScalarProperty Name="payslip" ColumnName="payslip" />
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

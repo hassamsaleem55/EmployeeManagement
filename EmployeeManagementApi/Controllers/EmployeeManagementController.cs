@@ -369,6 +369,7 @@ namespace EmployeeManagementApi.Controllers
                                    job_id = j.job_id,
                                    job_title = j.job_title,
                                    job_details = j.job_details,
+                                   job_start_date = j.job_start_date,
                                    job_end_date = j.job_end_date,
                                    job_type = j.job_type,
                                    job_shift = j.job_shift,
@@ -747,11 +748,20 @@ namespace EmployeeManagementApi.Controllers
                     int length = httpPostedFile.ContentLength;
                     imgupload.imagedata = new byte[length]; //get imagedata  
                     httpPostedFile.InputStream.Read(imgupload.imagedata, 0, length);
-                    imgupload.imagename = Path.GetFileName(httpPostedFile.FileName);
+                    StringBuilder sb = new StringBuilder();
+                    foreach (char c in Path.GetFileName(httpPostedFile.FileName))
+                    {
+                        if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_')
+                        {
+                            sb.Append(c);
+                        }
+                    }
+                    imgupload.imagename = sb.ToString();
                     //db.FileUpload.Add(imgupload);
                     //db.SaveChanges();
                     string extension = Path.GetExtension(httpPostedFile.FileName);
-                    string filename = httpPostedFile.FileName;
+                    //string filename = httpPostedFile.FileName;
+                    string filename = sb.ToString();
                     string[] tokens = filename.Split('.');
                     string fileName = tokens[0] + "_" + n + extension;
 

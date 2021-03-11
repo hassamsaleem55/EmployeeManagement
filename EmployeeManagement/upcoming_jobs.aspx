@@ -133,7 +133,7 @@
                     <h4 class="modal-title">Assigned Labor's List</h4>
                 </div>
                 <div class="modal-body">
-                    <button class="btn btn-sm btn-success pull-right" id="assignNewLabor"><i class="fa fa-plus"></i>Assign New Labor</button>
+                    <button class="btn btn-sm btn-success pull-right" id="assignNewLabor"><i class="fa fa-plus"></i>Assigned New Labor</button>
                     <div class="col-md-12 table-responsive assigned_labors_list" style="margin-top: 10px;">
                     </div>
                     <div class="clearfix"></div>
@@ -151,7 +151,7 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Assigned New Labor</h4>
+                    <h4 class="modal-title">Assign New Labor</h4>
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12 table-responsive unassigned_labors_list"></div>
@@ -160,6 +160,23 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                     <button id="btnAddLabor" data-id="0" type="button" class="btn btn-success">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalUploadCutt" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Assign New Labor</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                    <button id="btnAddLaborWithCutt" type="button" class="btn btn-success">Add</button>
                 </div>
             </div>
         </div>
@@ -208,6 +225,7 @@
             $("#linkJobs").attr("class", "collapsed active");
             $(".nav-item:eq(1)").attr("class", "nav-item active");
             $("#subPages").attr("class", "");
+            var cutt = [];
 
             //function getFormatedDate(value) {
             //    var date = new Date(value);
@@ -489,7 +507,7 @@
                                     "sr": index + 1,
                                     "name": value.name,
                                     "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a>",
-                                   
+
                                 };
                                 arrData.push(objData);
                             });
@@ -526,6 +544,37 @@
 
                 date = year + '-' + month + '-' + day;
                 return date;
+            }
+
+            function uploadFile(files) {
+                var data = new FormData();
+                var result = "";
+                // Add the uploaded image content to the form data collection  
+                if (files.length > 0) {
+                    data.append("UploadedImage", files[0]);
+                }
+                // Make Ajax request with the contentType = false, and procesDate = false  
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/file_upload",
+                    async: false,
+                    type: 'POST',
+                    method: 'POST',
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (response) {
+                        result = response;
+                    },
+                    error: function (exception) {
+                        if (exception == "") {
+                            toastr.error("File Upload Error Please try again");
+                        }
+                        else {
+                            toastr.error(exception.responseJSON.ExceptionMessage);
+                        }
+                    }
+                });
+                return result;
             }
 
             $(document).on("click", "#btnShowModal", function () {
@@ -757,6 +806,7 @@
                 var job_id = $(this).attr("data-job-id");
                 var job_start_date = $(this).attr("data-start-date");
                 var job_end_date = $(this).attr("data-end-date");
+                var count = 0;
                 $(".unassigned_labors_list").html('<table id="tblLaborsList" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th><th>Select</th></tr></thead></table>');
                 $("#btnAddLabor").hide();
                 $.ajax({
@@ -768,7 +818,7 @@
                             $("#btnAddLabor").show();
                             $(data).each(function (index, value) {
                                 var objData = {
-                                    "sr": index + 1,
+                                    "sr": ++count,
                                     "name": value.name,
                                     "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a>",
                                     "select": "<input type='checkbox' class='checkbox' data-id='" + value.id + "' data-job-id='" + job_id + "'/>",
@@ -797,7 +847,7 @@
                             $(data).each(function (index, value) {
                                 if (new Date(job_end_date.split("T")[0]) < new Date(value.start_date.split("T")[0]) || new Date(job_start_date.split("T")[0]) > new Date(value.end_date.split("T")[0])) {
                                     var objData = {
-                                        "sr": index + 1,
+                                        "sr": ++count,
                                         "name": value.name,
                                         "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a>",
                                         "select": "<input type='checkbox' class='checkbox' data-id='" + value.id + "' data-job-id='" + job_id + "'/>",
@@ -834,21 +884,94 @@
                     toastr.error("No employee is selected to add");
                     return false;
                 }
-                $(".checkbox:checked").each(function () {
+
+                $("#modalUploadCutt").find(".modal-body").empty();
+
+                $(".checkbox:checked").each(function (index, value) {
                     var employee_id = $(this).attr("data-id");
                     var job_id = $(this).attr("data-job-id");
+                    $("#modalUploadCutt").find(".modal-body").append('<div class="form-group"><label class="control-label col-sm-12">Upload ' + $(this).closest("tr").find("td:eq(1)").text() + '\'s CUTT<sup class="text-danger"> *</sup></label><div class="col-sm-12 row"><div class="col-sm-11"><input type="file" class="form-control" data-employee-id="' + employee_id + '" data-job-id="' + job_id + '"/></div><div class="col-sm-1"><button class="btn btn-xs btn-info btnUploadCutt" data-index="' + index + '">Upload</button></div></div>');
+
+                });
+
+                $("#modalUploadCutt").find(".modal-body").append("<div class='clearfix'></div>");
+                $(".btnUploadCutt").text("Upload");
+                $(".btnUploadCutt").attr("disabled", false);
+                $(".btnUploadCutt").attr("class", "btn btn-xs btn-info btnUploadCutt");
+                $(".btnUploadCutt").css("color", "#fff");
+
+                $("#modalUploadCutt").modal("show");
+            });
+
+            $(document).on("change", "#modalUploadCutt .form-control", function () {
+                $(this).closest(".form-group").find(".btnUploadCutt").text("Upload");
+                $(this).closest(".form-group").find(".btnUploadCutt").attr("disabled", false);
+                $(this).closest(".form-group").find(".btnUploadCutt").attr("class", "btn btn-xs btn-info btnUploadCutt");
+                $(this).closest(".form-group").find(".btnUploadCutt").css("color", "#fff");
+            });
+
+            $(document).on("click", ".btnUploadCutt", function () {
+                if ($(this).closest(".form-group").find(".form-control").val() == "") {
+                    toastr.error("Choose any file first");
+                    return;
+                }
+
+                $(this).attr("disabled", "disabled");
+                $(this).text("Uploading...");
+
+                var cuttPath = uploadFile($(this).closest(".form-group").find(".form-control").get(0).files);
+
+                if (cuttPath == "Invalid file type") {
+                    toastr.error(cuttPath);
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else if (cuttPath == "") {
+                    toastr.error("Something went wrong");
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else {
+                    $(this).text("");
+                    $(this).attr("class", "btn btn-xs btn-success btnUploadCutt");
+                    $(this).append("<i class='fa fa-check'></i>");
+                    //cutt.push(cuttPath);
+                    cutt[$(this).attr("data-index")] = cuttPath;
+                }
+            });
+
+            $(document).on("click", "#btnAddLaborWithCutt", function () {
+                var error = 0;
+                $("#modalUploadCutt").find(".btnUploadCutt").each(function () {
+                    if ($(this).hasClass("btn-info")) {
+                        toastr.error("CUTT of " + $(this).closest(".form-group").find("label").text().replace("'s CUTT *", "").replace("Upload ", "") + " is not uploaded");
+                        error = 1;
+                    }
+                });
+
+                if (error == 1) {
+                    return false;
+                }
+
+                var job_id = "";
+
+                $("#modalUploadCutt").find(".form-control").each(function (index, value) {
+                    var employee_id = $(this).attr("data-employee-id");
+                    job_id = $(this).attr("data-job-id");
+                    var cuttPath = cutt[index];
+                    var employee_name = $(this).closest(".form-group").find("label").text().split("s CUTT")[0];
+
                     $.ajax({
                         url: localStorage.getItem("ApiLink") + "api/assign_employee_to_job",
                         async: false,
                         method: 'POST',
                         data: {
                             "employee_id": employee_id,
-                            "job_id": job_id
+                            "job_id": job_id,
+                            "cutt": cuttPath
                         },
                         success: function (response) {
-                            getLabors(job_id);
-                            $("#modalNewLabor").modal("hide");
-                            toastr.success("Employees have been assigned successfully");
+                            toastr.success(employee_name + " have been assigned successfully");
                         },
                         error: function (jqXHR, exception) {
                             swal({
@@ -860,7 +983,12 @@
                         }
                     });
                 });
+
+                getLabors(job_id);
+                $("#modalUploadCutt").modal("hide");
+                $("#modalNewLabor").modal("hide");
             });
+
 
             $(document).on("click", "#btnRemoveEmployee", function () {
                 var id = $(this).attr("data-id");

@@ -21,7 +21,7 @@
                     <h4 class="modal-title">Assigned Labor's List</h4>
                 </div>
                 <div class="modal-body">
-                    <button class="btn btn-sm btn-success pull-right" id="assignNewLabor"><i class="fa fa-plus"></i>Assign New Labor</button>
+                    <%--<button class="btn btn-sm btn-success pull-right" id="assignNewLabor"><i class="fa fa-plus"></i>Assign New Labor</button>--%>
                     <div class="col-md-12 table-responsive assigned_labors_list" style="margin-top: 10px;">
                     </div>
                     <div class="clearfix"></div>
@@ -263,7 +263,7 @@
 
             function getLabors(id) {
                 if (JSON.parse(localStorage.getItem("login_details"))[0].type == "admin") {
-                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th><th>Action</th></tr></thead></table>');
+                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th></tr></thead></table>');
                     var arrData = [];
                     $.ajax({
                         url: localStorage.getItem("ApiLink") + "api/assigned_employees/" + id,
@@ -275,7 +275,7 @@
                                     "sr": index + 1,
                                     "name": value.name,
                                     "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a>",
-                                    "actions": "<a id='btnRemoveEmployee' class='btn btn-sm btn-danger' data-id='" + value.id + "' data-job-id='" + id + "'>Remove</a>",
+                                    //"actions": "<a id='btnRemoveEmployee' class='btn btn-sm btn-danger' data-id='" + value.id + "' data-job-id='" + id + "'>Remove</a>",
                                 };
                                 arrData.push(objData);
                             });
@@ -296,7 +296,7 @@
                             { "data": "sr" },
                             { "data": "name" },
                             { "data": "documents" },
-                            { "data": "actions" }
+                            //{ "data": "actions" }
                         ]
                     });
                 }

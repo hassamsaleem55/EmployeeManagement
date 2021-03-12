@@ -19,5 +19,6 @@ namespace DataAccess
         public Nullable<int> job_id { get; set; }
         public string payslip { get; set; }
         public string cutt { get; set; }
+        public string status { get; set; }
     }
 }

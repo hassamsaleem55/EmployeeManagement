@@ -122,6 +122,7 @@
     <Property Name="job_id" Type="int" />
     <Property Name="payslip" Type="varchar(max)" />
     <Property Name="cutt" Type="varchar(max)" />
+    <Property Name="status" Type="varchar(max)" />
   </EntityType>
   <EntityContainer Name="employee_managementModelStoreContainer">
     <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />

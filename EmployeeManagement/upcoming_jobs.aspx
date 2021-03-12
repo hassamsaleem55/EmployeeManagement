@@ -133,7 +133,7 @@
                     <h4 class="modal-title">Assigned Labor's List</h4>
                 </div>
                 <div class="modal-body">
-                    <button class="btn btn-sm btn-success pull-right" id="assignNewLabor"><i class="fa fa-plus"></i>Assigned New Labor</button>
+                    <button class="btn btn-sm btn-success pull-right" id="assignNewLabor"><i class="fa fa-plus"></i>Assign New Labor</button>
                     <div class="col-md-12 table-responsive assigned_labors_list" style="margin-top: 10px;">
                     </div>
                     <div class="clearfix"></div>
@@ -468,7 +468,7 @@
                                 var objData = {
                                     "sr": index + 1,
                                     "name": value.name,
-                                    "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a>",
+                                    "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
                                     "actions": "<a id='btnRemoveEmployee' class='btn btn-sm btn-danger' data-id='" + value.id + "' data-job-id='" + id + "'>Remove</a>",
                                 };
                                 arrData.push(objData);
@@ -506,7 +506,7 @@
                                 var objData = {
                                     "sr": index + 1,
                                     "name": value.name,
-                                    "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a>",
+                                    "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
 
                                 };
                                 arrData.push(objData);
@@ -706,10 +706,11 @@
             $(document).on("click", ".btn-job-start", function () {
                 var id = $(this).attr("data-id");
                 $.ajax({
-                    url: localStorage.getItem("ApiLink") + "api/change_job_status/" + id,
+                    url: localStorage.getItem("ApiLink") + "api/change_job_status",
                     async: false,
                     method: 'PUT',
                     data: {
+                        job_id: id,
                         job_status: "running"
                     },
                     success: function () {
@@ -820,7 +821,7 @@
                                 var objData = {
                                     "sr": ++count,
                                     "name": value.name,
-                                    "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a>",
+                                    "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + job_id + "'>view</a>",
                                     "select": "<input type='checkbox' class='checkbox' data-id='" + value.id + "' data-job-id='" + job_id + "'/>",
                                 };
                                 arrData.push(objData);
@@ -849,7 +850,7 @@
                                     var objData = {
                                         "sr": ++count,
                                         "name": value.name,
-                                        "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "'>view</a>",
+                                        "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + job_id + "'>view</a>",
                                         "select": "<input type='checkbox' class='checkbox' data-id='" + value.id + "' data-job-id='" + job_id + "'/>",
                                     };
                                     arrData.push(objData);
@@ -968,7 +969,8 @@
                         data: {
                             "employee_id": employee_id,
                             "job_id": job_id,
-                            "cutt": cuttPath
+                            "cutt": cuttPath,
+                            "status": "upcoming"
                         },
                         success: function (response) {
                             toastr.success(employee_name + " have been assigned successfully");
@@ -1014,64 +1016,77 @@
             });
 
             $(document).on("click", "#viewDocuments", function () {
-                var id = $(this).attr("data-id");
+                var emp_id = $(this).attr("data-id");
+                var job_id = $(this).attr("data-job-id");
+
                 var count = 1;
                 $.ajax({
-                    url: localStorage.getItem("ApiLink") + "api/employees/" + id,
+                    url: localStorage.getItem("ApiLink") + "api/employee_documents/" + emp_id + "/" + job_id,
                     async: false,
                     method: 'GET',
+                    //data: {
+                    //    employee_id: id,
+                    //    job_id: job_id
+                    //},
                     success: function (data) {
                         $("#modalViewDocuments").modal("show");
-                        $("#viewDocumentsTitle").text(data.first_name + "'s Documents");
+                        $("#viewDocumentsTitle").text(data[0].first_name + "'s Documents");
                         $("#rowDocuments").empty();
-                        if (data.length != 0) {
-                            if (data.NIF != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NIF</td><td><a href='" + data.NIF + "' target='_blank'>" + data.NIF.split("/")[data.NIF.split("/").length - 1] + "</a></td><tr>");
+                        if (data[0].length != 0) {
+                            if (data[0].NIF != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NIF</td><td><a href='" + data[0].NIF + "' target='_blank'>" + data[0].NIF.split("/")[data[0].NIF.split("/").length - 1] + "</a></td><tr>");
                             }
                             else {
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NIF</td><td>Not Available</td><tr>");
                             }
 
-                            if (data.NISS != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td><a href='" + data.NISS + "' target='_blank'>" + data.NISS.split("/")[data.NISS.split("/").length - 1] + "</a></td><tr>");
+                            if (data[0].NISS != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td><a href='" + data[0].NISS + "' target='_blank'>" + data[0].NISS.split("/")[data[0].NISS.split("/").length - 1] + "</a></td><tr>");
                             }
                             else {
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td>Not Available</td><tr>");
                             }
 
-                            if (data.passport != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td><a href='" + data.passport + "' target='_blank'>" + data.passport.split("/")[data.passport.split("/").length - 1] + "</a></td><tr>");
+                            if (data[0].passport != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td><a href='" + data[0].passport + "' target='_blank'>" + data[0].passport.split("/")[data[0].passport.split("/").length - 1] + "</a></td><tr>");
                             }
                             else {
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td>Not Available</td><tr>");
                             }
 
-                            if (data.visa != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td><a href='" + data.visa + "' target='_blank'>" + data.visa.split("/")[data.visa.split("/").length - 1] + "</a></td><tr>");
+                            if (data[0].visa != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td><a href='" + data[0].visa + "' target='_blank'>" + data[0].visa.split("/")[data[0].visa.split("/").length - 1] + "</a></td><tr>");
                             }
                             else {
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td>Not Available</td><tr>");
                             }
 
-                            if (data.residence_card != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td><a href='" + data.residence_card + "' target='_blank'>" + data.residence_card.split("/")[data.residence_card.split("/").length - 1] + "</a></td><tr>");
+                            if (data[0].residence_card != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td><a href='" + data[0].residence_card + "' target='_blank'>" + data[0].residence_card.split("/")[data[0].residence_card.split("/").length - 1] + "</a></td><tr>");
                             }
                             else {
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td>Not Available</td><tr>");
                             }
 
-                            if (data.SEF != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td><a href='" + data.SEF + "' target='_blank'>" + data.SEF.split("/")[data.SEF.split("/").length - 1] + "</a></td><tr>");
+                            if (data[0].SEF != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td><a href='" + data[0].SEF + "' target='_blank'>" + data[0].SEF.split("/")[data[0].SEF.split("/").length - 1] + "</a></td><tr>");
                             }
                             else {
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td>Not Available</td><tr>");
                             }
 
-                            if (data.boarding_pass != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td><a href='" + data.boarding_pass + "' target='_blank'>" + data.boarding_pass.split("/")[data.boarding_pass.split("/").length - 1] + "</a></td><tr>");
+                            if (data[0].boarding_pass != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td><a href='" + data[0].boarding_pass + "' target='_blank'>" + data[0].boarding_pass.split("/")[data[0].boarding_pass.split("/").length - 1] + "</a></td><tr>");
                             }
                             else {
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td>Not Available</td><tr>");
+                            }
+
+                            if (data[0].CUTT != null) {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td><a href='" + data[0].CUTT + "' target='_blank'>" + data[0].CUTT.split("/")[data[0].CUTT.split("/").length - 1] + "</a></td><tr>");
+                            }
+                            else {
+                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td>Not Available</td><tr>");
                             }
                         }
                     },

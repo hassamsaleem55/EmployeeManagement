@@ -50,14 +50,14 @@
         </div>
         <!-- HEADER TOP END HERE -->
         <!-- MENU AREA START HERE -->
-        <div class="main-menu-area">
+        <div class="main-menu-area" >
             <div class="container">
                 <div class="row">
                     <!-- FOR LOGO -->
-                    <div class="col-md-2 col-sm-2">
+                    <div class="col-md-2 col-sm-2" >
                         <div class="logo">
                             <a href="#">
-                                <img src="images/wp_logo.svg" alt="">
+                                <img src="images/3dlogo_2mb.gif" alt="" style="width: 25%"/>
                             </a>
                         </div>
                     </div>

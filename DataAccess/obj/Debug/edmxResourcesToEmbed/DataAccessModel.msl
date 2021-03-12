@@ -123,6 +123,7 @@
     <EntitySetMapping Name="jobs_log">
       <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
         <MappingFragment StoreEntitySet="jobs_log">
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="cutt" ColumnName="cutt" />
           <ScalarProperty Name="payslip" ColumnName="payslip" />
           <ScalarProperty Name="job_id" ColumnName="job_id" />

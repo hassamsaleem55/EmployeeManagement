@@ -427,15 +427,23 @@ namespace EmployeeManagementApi.Controllers
             }
         }
 
-        [Route("api/change_job_status/{id}")]
-        public HttpResponseMessage PutChangeJobStatus(int id, [FromBody] job entities)
+        [Route("api/change_job_status")]
+        public HttpResponseMessage PutChangeJobStatus([FromBody] job entities)
         {
             try
             {
-                var entity = Context.jobs.FirstOrDefault(e => e.job_id == id);
+                var entity = Context.jobs.FirstOrDefault(e => e.job_id == entities.job_id);
+                var job_log_entities = Context.jobs_log.ToList();
                 if (entity != null)
                 {
                     entity.job_status = entities.job_status;
+                    foreach (var item in job_log_entities)
+                    {
+                        if (item.job_id == entities.job_id)
+                        {
+                            item.status = entities.job_status.ToString();
+                        }
+                    }
                     Context.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK, "Data updated successfully");
                 }
@@ -717,6 +725,42 @@ namespace EmployeeManagementApi.Controllers
             }
         }
 
+        [Route("api/employee_documents/{emp_id}/{job_id}")]
+        public HttpResponseMessage GetEmployeeDocuments(int emp_id, int job_id)
+        {
+            try
+            {
+                //var enti = Context.jobs_log.FirstOrDefault(e => e.employee_id == entities.employee_id);
+                var entities = from jl in Context.jobs_log
+                               join e in Context.employees on jl.employee_id equals e.employee_id
+                               where jl.employee_id == emp_id && jl.job_id == job_id
+                               select new
+                               {
+                                   first_name = e.first_name,
+                                   NIF = e.NIF,
+                                   NISS = e.NISS,
+                                   passport = e.passport,
+                                   visa = e.visa,
+                                   residence_card = e.residence_card,
+                                   SEF = e.SEF,
+                                   boarding_pass = e.boarding_pass,
+                                   CUTT = jl.cutt,
+                               };
+                if (entities != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entities);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
         [Route("api/employees")]
         public HttpResponseMessage PostEmployee([FromBody] employee entities)
         {
@@ -748,14 +792,23 @@ namespace EmployeeManagementApi.Controllers
                     int length = httpPostedFile.ContentLength;
                     imgupload.imagedata = new byte[length]; //get imagedata  
                     httpPostedFile.InputStream.Read(imgupload.imagedata, 0, length);
-                    StringBuilder sb = new StringBuilder();
-                    foreach (char c in Path.GetFileName(httpPostedFile.FileName))
-                    {
-                        if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_')
-                        {
-                            sb.Append(c);
-                        }
-                    }
+                    //StringBuilder sb = new StringBuilder();
+                    //foreach (char c in Path.GetFileName(httpPostedFile.FileName))
+                    //{
+                    //    if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_')
+                    //    {
+                    //        sb.Append(c);
+                    //    }
+                    //}
+
+                    Random random = new Random();
+                    const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                    //var sb = new string(Enumerable.Repeat(chars, length)
+                    //  .Select(s => s[random.Next(s.Length)]).ToArray());
+
+                    var sb = new string(Enumerable.Repeat(chars, 20)
+                      .Select(s => s[random.Next(s.Length)]).ToArray());
+
                     imgupload.imagename = sb.ToString();
                     //db.FileUpload.Add(imgupload);
                     //db.SaveChanges();

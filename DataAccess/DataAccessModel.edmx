@@ -127,6 +127,7 @@
           <Property Name="job_id" Type="int" />
           <Property Name="payslip" Type="varchar(max)" />
           <Property Name="cutt" Type="varchar(max)" />
+          <Property Name="status" Type="varchar(max)" />
         </EntityType>
         <EntityContainer Name="employee_managementModelStoreContainer">
           <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
@@ -272,6 +273,7 @@
           <Property Name="job_id" Type="Int32" />
           <Property Name="payslip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="cutt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -401,6 +403,7 @@
           <EntitySetMapping Name="jobs_log">
             <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
               <MappingFragment StoreEntitySet="jobs_log">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="cutt" ColumnName="cutt" />
                 <ScalarProperty Name="payslip" ColumnName="payslip" />
                 <ScalarProperty Name="job_id" ColumnName="job_id" />

@@ -224,6 +224,7 @@
             $(document).on("click", ".btnChangeStatus", function () {
                 $("#modalBlacklist .modal-title").html("Reactivate " + $(this).closest("tr").find("td:eq(1)").text() + " " + $(this).closest("tr").find("td:eq(2)").text() + " ?");
                 $("#modalBlacklist .btn-success").attr("data-id", $(this).attr("data-id"));
+                $("#modalBlacklist .form-control").val("");
                 $("#modalBlacklist").modal("show");
             });
 

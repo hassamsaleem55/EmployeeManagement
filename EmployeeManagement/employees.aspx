@@ -470,6 +470,7 @@
             $(document).on("click", ".btnBlacklist", function () {
                 $("#modalBlacklist .modal-title").html("Blacklist " + $(this).closest("tr").find("td:eq(1)").text() + " " + $(this).closest("tr").find("td:eq(2)").text() + " ?");
                 $("#modalBlacklist .btn-danger").attr("data-id", $(this).attr("data-id"));
+                #("#modalBlacklist .form-control").val("");
                 $("#modalBlacklist").modal("show");
             });
 
@@ -508,6 +509,7 @@
             $(document).on("click", ".btnInactive", function () {
                 $("#modalInactive .modal-title").html("Inactive " + $(this).closest("tr").find("td:eq(1)").text() + " " + $(this).closest("tr").find("td:eq(2)").text() + " ?");
                 $("#modalInactive .btn-danger").attr("data-id", $(this).attr("data-id"));
+                $("#modalInactive .form-control").val("");
                 $("#modalInactive").modal("show");
             });
 

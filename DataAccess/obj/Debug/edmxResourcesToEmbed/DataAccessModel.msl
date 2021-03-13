@@ -94,6 +94,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="jobs_log">
+      <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
+        <MappingFragment StoreEntitySet="jobs_log">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="cutt" ColumnName="cutt" />
+          <ScalarProperty Name="payslip" ColumnName="payslip" />
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="job_applicants">
       <EntityTypeMapping TypeName="employee_managementModel.job_applicants">
         <MappingFragment StoreEntitySet="job_applicants">
@@ -105,30 +117,23 @@
           <ScalarProperty Name="medical_examination" ColumnName="medical_examination" />
           <ScalarProperty Name="passport_validity_year" ColumnName="passport_validity_year" />
           <ScalarProperty Name="passport_number" ColumnName="passport_number" />
+          <ScalarProperty Name="boarding_pass" ColumnName="boarding_pass" />
+          <ScalarProperty Name="SEF" ColumnName="SEF" />
+          <ScalarProperty Name="visa" ColumnName="visa" />
           <ScalarProperty Name="NISS" ColumnName="NISS" />
           <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="residence_card" ColumnName="residence_card" />
           <ScalarProperty Name="nationality" ColumnName="nationality" />
           <ScalarProperty Name="nif_number" ColumnName="nif_number" />
           <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="driving_license" ColumnName="driving_license" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="sex" ColumnName="sex" />
           <ScalarProperty Name="dob" ColumnName="dob" />
           <ScalarProperty Name="last_name" ColumnName="last_name" />
           <ScalarProperty Name="first_name" ColumnName="first_name" />
           <ScalarProperty Name="applicant_id" ColumnName="applicant_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="jobs_log">
-      <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
-        <MappingFragment StoreEntitySet="jobs_log">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="cutt" ColumnName="cutt" />
-          <ScalarProperty Name="payslip" ColumnName="payslip" />
-          <ScalarProperty Name="job_id" ColumnName="job_id" />
-          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
-          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

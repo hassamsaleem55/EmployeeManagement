@@ -206,13 +206,13 @@
                     accept_letters_only(e);
                 });
 
-            $(document).on("keypress", "#modalAddNew tbody .form-control:eq(0)",
+            $(document).on("keypress", "#modalAddNew tbody .contact_name",
                 function (
                     e) {
                     accept_letters_only(e);
                 });
 
-            $(document).on("keypress", "#modalAddNew tbody .form-control:eq(1)",
+            $(document).on("keypress", "#modalAddNew tbody .contact_number",
                 function (
                     e) {
                     if ($(this).val().length == 9) {

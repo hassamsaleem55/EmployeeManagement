@@ -67,12 +67,17 @@
     <Property Name="dob" Type="varchar(max)" />
     <Property Name="sex" Type="varchar(max)" />
     <Property Name="email" Type="varchar(max)" />
+    <Property Name="driving_license" Type="varchar(max)" />
     <Property Name="contact" Type="varchar(max)" />
     <Property Name="address" Type="varchar(max)" />
     <Property Name="nif_number" Type="varchar(max)" />
     <Property Name="nationality" Type="varchar(max)" />
+    <Property Name="residence_card" Type="varchar(max)" />
     <Property Name="NIF" Type="varchar(max)" />
     <Property Name="NISS" Type="varchar(max)" />
+    <Property Name="visa" Type="varchar(max)" />
+    <Property Name="SEF" Type="varchar(max)" />
+    <Property Name="boarding_pass" Type="varchar(max)" />
     <Property Name="passport_number" Type="varchar(max)" />
     <Property Name="passport_validity_year" Type="varchar(max)" />
     <Property Name="medical_examination" Type="varchar(max)" />

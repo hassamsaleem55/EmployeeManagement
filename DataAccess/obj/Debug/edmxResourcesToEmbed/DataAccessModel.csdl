@@ -80,8 +80,8 @@
     <EntitySet Name="employees" EntityType="Self.employee" />
     <EntitySet Name="jobs" EntityType="Self.job" />
     <EntitySet Name="job_offers" EntityType="employee_managementModel.job_offers" />
-    <EntitySet Name="job_applicants" EntityType="employee_managementModel.job_applicants" />
     <EntitySet Name="jobs_log" EntityType="employee_managementModel.jobs_log" />
+    <EntitySet Name="job_applicants" EntityType="employee_managementModel.job_applicants" />
   </EntityContainer>
   <EntityType Name="job_offers">
     <Key>
@@ -97,31 +97,6 @@
     <Property Name="job_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="created_at" Type="DateTime" Precision="0" />
   </EntityType>
-  <EntityType Name="job_applicants">
-    <Key>
-      <PropertyRef Name="applicant_id" />
-    </Key>
-    <Property Name="applicant_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="first_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="dob" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="sex" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="nif_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="NIF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="NISS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="passport_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="passport_validity_year" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="medical_examination" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="exam_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="apply_date" Type="DateTime" Precision="0" />
-    <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="job_offer_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="job_offer_id" Type="Int32" />
-  </EntityType>
   <EntityType Name="jobs_log">
     <Key>
       <PropertyRef Name="id" />
@@ -132,5 +107,35 @@
     <Property Name="payslip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="cutt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="job_applicants">
+    <Key>
+      <PropertyRef Name="applicant_id" />
+    </Key>
+    <Property Name="applicant_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="dob" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="sex" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="driving_license" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="nif_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="residence_card" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NIF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NISS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="visa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SEF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="boarding_pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="passport_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="passport_validity_year" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="medical_examination" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="exam_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="apply_date" Type="DateTime" Precision="0" />
+    <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="job_offer_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="job_offer_id" Type="Int32" />
   </EntityType>
 </Schema>

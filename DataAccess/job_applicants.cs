@@ -20,12 +20,17 @@ namespace DataAccess
         public string dob { get; set; }
         public string sex { get; set; }
         public string email { get; set; }
+        public string driving_license { get; set; }
         public string contact { get; set; }
         public string address { get; set; }
         public string nif_number { get; set; }
         public string nationality { get; set; }
+        public string residence_card { get; set; }
         public string NIF { get; set; }
         public string NISS { get; set; }
+        public string visa { get; set; }
+        public string SEF { get; set; }
+        public string boarding_pass { get; set; }
         public string passport_number { get; set; }
         public string passport_validity_year { get; set; }
         public string medical_examination { get; set; }

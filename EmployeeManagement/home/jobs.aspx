@@ -201,7 +201,7 @@
         </div>
 
         <div id="modalApplyNow" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog " style="width: 95%;">
                 <div class="modal-content">
                     <div class="modal-header" style="background-color: #333d4d !important; color: #F3F5F8 !important">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -229,6 +229,16 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="control-label col-sm-2">Driving License</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control">
+                                        <option value="no">No</option>
+                                        <option value="yes">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="control-label col-sm-2">NIF Number<sup class="text-danger"> *</sup></label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="nif_number" placeholder="Enter NIF Number">
@@ -243,17 +253,25 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Passport Validity Year<sup class="text-danger"> *</sup></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="passport_validity_year" placeholder="Enter Passport Validity Year">
+                                    <input type="date" class="form-control" id="passport_validity_year">
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label class="control-label col-sm-2">Medical Examination<sup class="text-danger"> *</sup></label>
+                                <label class="control-label col-sm-2">Residence Card Number</label>
                                 <div class="col-sm-10">
-                                    <textarea rows="4" class="form-control" id="medical_examination" placeholder="Enter Medical Examination Details"></textarea>
+                                    <input type="text" class="form-control" id="residence_card_number" placeholder="Enter Residence Card Number">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Medical Examination Number</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="medical_examination" placeholder="Enter Medical Examination Number">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2">Medical Examination Date<sup class="text-danger"> *</sup></label>
+                                <label class="control-label col-sm-2">Medical Examination Date</label>
                                 <div class="col-sm-10">
                                     <input type="date" class="form-control" id="exam_date">
                                 </div>
@@ -289,6 +307,7 @@
                                     <input type="text" class="form-control" id="nationality" placeholder="Enter Nationality">
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Address<sup class="text-danger"> *</sup></label>
                                 <div class="col-sm-10">
@@ -318,7 +337,60 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Passport<sup class="text-danger"> *</sup></label>
+                                <a href="#" target="_blank" id="passportDocument" class="col-sm-3" hidden="hidden">Passport document</a>
+                                <div class="col-sm-5" id="divUploadPassport">
+                                    <input type="file" id="passport" class="form-control" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-xs btn-info" id="uploadPassport">Upload</button>
+                                </div>
+                            </div>
 
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Visa<sup class="text-danger"> *</sup></label>
+                                <a href="#" target="_blank" id="visaDocument" class="col-sm-3" hidden="hidden">Visa document</a>
+                                <div class="col-sm-5" id="divUploadVisa">
+                                    <input type="file" id="visa" class="form-control" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-xs btn-info" id="uploadVisa">Upload</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Residence Card<sup class="text-danger"> *</sup></label>
+                                <a href="#" target="_blank" id="residenceCardDocument" class="col-sm-3" hidden="hidden">Residence card document</a>
+                                <div class="col-sm-5" id="divUploadResidenceCard">
+                                    <input type="file" id="residenceCard" class="form-control" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-xs btn-info" id="uploadResidenceCard">Upload</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">SEF<sup class="text-danger"> *</sup></label>
+                                <a href="#" target="_blank" id="sefDocument" class="col-sm-3" hidden="hidden">SEF document</a>
+                                <div class="col-sm-5" id="divUploadSef">
+                                    <input type="file" id="sef" class="form-control" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-xs btn-info" id="uploadSef">Upload</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Boarding Pass<sup class="text-danger"> *</sup></label>
+                                <a href="#" target="_blank" id="boardingPassDocument" class="col-md-3" hidden="hidden">Boarding Pass document</a>
+                                <div class="col-sm-5" id="divUploadBoardingPass">
+                                    <input type="file" id="boardingPass" class="form-control" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-xs btn-info" id="uploadBoardingPass">Upload</button>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -354,9 +426,16 @@
         $(document).ready(function () {
 
             $("#endDate").attr('min', formatDate(new Date()));
+            //$("#passport_validity_year").attr('max', formatDate(new Date()));
+            $("input[type='date']").attr('max', formatDate(new Date()));
             var nifPath = "";
             var nissPath = "";
-            $("input[type='date']").attr('max', formatDate(new Date()));
+            var passportPath = "";
+            var visaPath = "";
+            var residenceCardPath = "";
+            var sefPath = "";
+            var boardingPassPath = "";
+
             function formatDate(date) {
                 var month = date.getMonth() + 1;
                 var day = date.getDate();
@@ -394,6 +473,15 @@
 
             function accept_numbers_only(e) {
                 if (e.which != 8 && (e.which < 48 || e.which > 57)) {
+                    e.preventDefault();
+                }
+            }
+
+            function accept_letters_and_numbers_only(e) {
+                //if (e.which != 8 && e.which != 9 && e.which != 32 && (e.which < 65 || e.which > 122 || e
+                //    .which == 96) && (e.which < 48 || e.which > 57)) {
+
+                if (e.which != 8 && e.which != 9 && e.which != 32 && (e.which < 65 || e.which > 57 || e.which == 96)) {
                     e.preventDefault();
                 }
             }
@@ -548,9 +636,11 @@
                 $("#firstName").val("");
                 $("#lastName").val("");
                 $("#email").val("");
+                $("#driving_license").val("no");
                 $("#nif_number").val("");
                 $("#passport_number").val("");
                 $("#passport_validity_year").val("");
+                $("#residence_card_number").val("");
                 $("#medical_examination").val("");
                 $("#exam_date").val("");
                 $("#dob").val("");
@@ -558,6 +648,14 @@
                 $("#contact").val("");
                 $("#nationality").val("");
                 $("#address").val("");
+                nifPath = "";
+                nissPath = "";
+                passportPath = "";
+                visaPath = "";
+                residenceCardPath = "";
+                sefPath = "";
+                boardingPassPath = "";
+
 
                 $("#nifDocument").attr("href", "#");
                 $("#nifDocument").attr("hidden", "hidden");
@@ -574,6 +672,46 @@
                 $("#uploadNiss").attr("class", "btn btn-xs btn-info");
                 $("#uploadNiss").css("color", "#fff");
                 $("#uploadNiss").text("Upload");
+
+                $("#passportDocument").attr("href", "#");
+                $("#passportDocument").attr("hidden", "hidden");
+                $("#uploadPassport").text("Upload");
+                $("#uploadPassport").attr("disabled", false);
+                $("#uploadPassport").attr("class", "btn btn-xs btn-info");
+                $("#uploadPassport").css("color", "#fff");
+                $("#uploadPassport").text("Upload");
+
+                $("#visaDocument").attr("href", "#");
+                $("#visaDocument").attr("hidden", "hidden");
+                $("#uploadVisa").text("Upload");
+                $("#uploadVisa").attr("disabled", false);
+                $("#uploadVisa").attr("class", "btn btn-xs btn-info");
+                $("#uploadVisa").css("color", "#fff");
+                $("#uploadVisa").text("Upload");
+
+                $("#residenceCardDocument").attr("href", "#");
+                $("#residenceCardDocument").attr("hidden", "hidden");
+                $("#uploadResidenceCard").text("Upload");
+                $("#uploadResidenceCard").attr("disabled", false);
+                $("#uploadResidenceCard").attr("class", "btn btn-xs btn-info");
+                $("#uploadResidenceCard").css("color", "#fff");
+                $("#uploadResidenceCard").text("Upload");
+
+                $("#sefDocument").attr("href", "#");
+                $("#sefDocument").attr("hidden", "hidden");
+                $("#uploadSef").text("Upload");
+                $("#uploadSef").attr("disabled", false);
+                $("#uploadSef").attr("class", "btn btn-xs btn-info");
+                $("#uploadSef").css("color", "#fff");
+                $("#uploadSef").text("Upload");
+
+                $("#boardingPassDocument").attr("href", "#");
+                $("#boardingPassDocument").attr("hidden", "hidden");
+                $("#uploadBoardingPass").text("Upload");
+                $("#uploadBoardingPass").attr("disabled", false);
+                $("#uploadBoardingPass").attr("class", "btn btn-xs btn-info");
+                $("#uploadBoardingPass").css("color", "#fff");
+                $("#uploadBoardingPass").text("Upload");
 
 
                 $("#modalApplyNow #btnSubmit").attr("data-id", $(this).attr("data-id"));
@@ -603,6 +741,24 @@
                 function (
                     e) {
                     accept_numbers_only(e);
+                });
+
+            $(document).on("keypress", "#nif_number",
+                function (
+                    e) {
+                    accept_numbers_only(e);
+                });
+
+            $(document).on("keypress", "#nationality",
+                function (
+                    e) {
+                    accept_letters_only(e);
+                });
+
+            $(document).on("keypress", "#passport",
+                function (
+                    e) {
+                    accept_letters_and_numbers_only(e);
                 });
 
             $(document).on("click", "#uploadNif", function () {
@@ -660,6 +816,151 @@
                 }
             });
 
+            $(document).on("click", "#uploadPassport", function () {
+                if ($("#passport").val() == '') {
+                    toastr.error("Choose any file first");
+                    return;
+                }
+
+                $(this).attr("disabled", "disabled");
+                $(this).text("Uploading...");
+
+                passportPath = uploadFile($("#passport").get(0).files);
+
+                if (passportPath == "Invalid file type") {
+                    toastr.error(passportPath);
+                    passportPath = "";
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else if (passportPath == "") {
+                    toastr.error("Something went wrong");
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else {
+                    $(this).text("");
+                    $(this).attr("class", "btn btn-xs btn-success");
+                    $(this).append("<i class='fa fa-check'></i>");
+                }
+            });
+
+            $(document).on("click", "#uploadVisa", function () {
+                if ($("#visa").val() == '') {
+                    toastr.error("Choose any file first");
+                    return;
+                }
+
+                $(this).attr("disabled", "disabled");
+                $(this).text("Uploading...");
+
+                visaPath = uploadFile($("#visa").get(0).files);
+
+                if (visaPath == "Invalid file type") {
+                    toastr.error(visaPath);
+                    visaPath = "";
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else if (visaPath == "") {
+                    toastr.error("Something went wrong");
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else {
+                    $(this).text("");
+                    $(this).attr("class", "btn btn-xs btn-success");
+                    $(this).append("<i class='fa fa-check'></i>");
+                }
+            });
+
+            $(document).on("click", "#uploadResidenceCard", function () {
+                if ($("#residenceCard").val() == '') {
+                    toastr.error("Choose any file first");
+                    return;
+                }
+
+                $(this).attr("disabled", "disabled");
+                $(this).text("Uploading...");
+
+                residenceCardPath = uploadFile($("#visa").get(0).files);
+
+                if (residenceCardPath == "Invalid file type") {
+                    toastr.error(residenceCardPath);
+                    residenceCardPath = "";
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else if (residenceCardPath == "") {
+                    toastr.error("Something went wrong");
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else {
+                    $(this).text("");
+                    $(this).attr("class", "btn btn-xs btn-success");
+                    $(this).append("<i class='fa fa-check'></i>");
+                }
+            });
+
+            $(document).on("click", "#uploadSef", function () {
+                if ($("#sef").val() == '') {
+                    toastr.error("Choose any file first");
+                    return;
+                }
+
+                $(this).attr("disabled", "disabled");
+                $(this).text("Uploading...");
+
+                sefPath = uploadFile($("#sef").get(0).files);
+
+                if (sefPath == "Invalid file type") {
+                    toastr.error(sefPath);
+                    sefPath = "";
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else if (sefPath == "") {
+                    toastr.error("Something went wrong");
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else {
+                    $(this).text("");
+                    $(this).attr("class", "btn btn-xs btn-success");
+                    $(this).append("<i class='fa fa-check'></i>");
+                }
+            });
+
+            $(document).on("click", "#uploadBoardingPass", function () {
+                if ($("#boardingPass").val() == '') {
+                    toastr.error("Choose any file first");
+                    return;
+                }
+
+                $(this).attr("disabled", "disabled");
+                $(this).text("Uploading...");
+
+                boardingPassPath = uploadFile($("#boardingPass").get(0).files);
+
+                if (boardingPassPath == "Invalid file type") {
+                    toastr.error(boardingPassPath);
+                    boardingPassPath = "";
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else if (boardingPassPath == "") {
+                    toastr.error("Something went wrong");
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else {
+                    $(this).text("");
+                    $(this).attr("class", "btn btn-xs btn-success");
+                    $(this).append("<i class='fa fa-check'></i>");
+                }
+            });
+
             $(document).on("click", "#modalApplyNow #btnSubmit", function () {
                 var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
                 var error = false;
@@ -698,13 +999,13 @@
                     error = true;
                 }
 
-                if ($("#medical_examination").val() == "") {
-                    toastr.error("Medical Examination field cannot be empty");
-                    error = true;
-                }
+                //if ($("#medical_examination").val() == "") {
+                //    toastr.error("Medical Examination field cannot be empty");
+                //    error = true;
+                //}
 
-                if ($("#exam_date").val() == "") {
-                    toastr.error("Medical Examination Dates field cannot be empty");
+                if ($("#medical_examination").val() != "" && $("#exam_date").val() == "") {
+                    toastr.error("Medical Examination date field cannot be empty");
                     error = true;
                 }
 
@@ -729,12 +1030,37 @@
                 }
 
                 if (nifPath == '') {
-                    toastr.error("Upload nif document first");
+                    toastr.error("Upload NIF document first");
                     error = true;
                 }
 
                 if (nissPath == '') {
-                    toastr.error("Upload niss document first");
+                    toastr.error("Upload NISS document first");
+                    error = true;
+                }
+
+                if (passportPath == '') {
+                    toastr.error("Upload Passport document first");
+                    error = true;
+                }
+
+                if (visaPath == '') {
+                    toastr.error("Upload Visa document first");
+                    error = true;
+                }
+
+                if (boardingPassPath == '') {
+                    toastr.error("Upload Boarding Pass document first");
+                    error = true;
+                }
+
+                if (sefPath == '') {
+                    toastr.error("Upload SEF document first");
+                    error = true;
+                }
+
+                if (boardingPassPath == '') {
+                    toastr.error("Upload Boarding Pass document first");
                     error = true;
                 }
 
@@ -751,9 +1077,11 @@
                         "first_name": $("#firstName").val(),
                         "last_name": $("#lastName").val(),
                         "email": $("#email").val(),
+                        "driving_license": $("#driving_license").val(),
                         "nif_number": $("#nif_number").val(),
                         "passport_number": $("#passport_number").val(),
                         "passport_validity_year": $("#passport_validity_year").val(),
+                        "residence_card_number": $("#residence_card").val(),
                         "medical_examination": $("#medical_examination").val(),
                         "exam_date": $("#exam_date").val(),
                         "dob": $("#dob").val(),
@@ -763,6 +1091,11 @@
                         "address": $("#address").val(),
                         "NIF": nifPath,
                         "NISS": nissPath,
+                        "passport": passportPath,
+                        "visa": visaPath,
+                        "residence_card": residenceCardPath,
+                        "NISS": sefPath,
+                        "boarding_pass": boardingPassPath,
                         "status": "pending",
                         "job_offer_type": type,
                         "job_offer_id": id,

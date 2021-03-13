@@ -77,10 +77,12 @@
           <Property Name="address" Type="varchar(max)" />
           <Property Name="nif_number" Type="varchar(max)" />
           <Property Name="nationality" Type="varchar(max)" />
-          <Property Name="residence_card" Type="varchar(max)" />
+          <Property Name="residence_card_number" Type="varchar(max)" />
           <Property Name="NIF" Type="varchar(max)" />
           <Property Name="NISS" Type="varchar(max)" />
+          <Property Name="passport" Type="varchar(max)" />
           <Property Name="visa" Type="varchar(max)" />
+          <Property Name="residence_card" Type="varchar(max)" />
           <Property Name="SEF" Type="varchar(max)" />
           <Property Name="boarding_pass" Type="varchar(max)" />
           <Property Name="passport_number" Type="varchar(max)" />
@@ -270,10 +272,12 @@
           <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="nif_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="residence_card" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="residence_card_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NIF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NISS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="passport" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="visa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="residence_card" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SEF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="boarding_pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="passport_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -409,10 +413,12 @@
                 <ScalarProperty Name="passport_number" ColumnName="passport_number" />
                 <ScalarProperty Name="boarding_pass" ColumnName="boarding_pass" />
                 <ScalarProperty Name="SEF" ColumnName="SEF" />
+                <ScalarProperty Name="residence_card" ColumnName="residence_card" />
                 <ScalarProperty Name="visa" ColumnName="visa" />
+                <ScalarProperty Name="passport" ColumnName="passport" />
                 <ScalarProperty Name="NISS" ColumnName="NISS" />
                 <ScalarProperty Name="NIF" ColumnName="NIF" />
-                <ScalarProperty Name="residence_card" ColumnName="residence_card" />
+                <ScalarProperty Name="residence_card_number" ColumnName="residence_card_number" />
                 <ScalarProperty Name="nationality" ColumnName="nationality" />
                 <ScalarProperty Name="nif_number" ColumnName="nif_number" />
                 <ScalarProperty Name="address" ColumnName="address" />

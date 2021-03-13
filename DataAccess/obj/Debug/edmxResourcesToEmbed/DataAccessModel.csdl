@@ -123,10 +123,12 @@
     <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="nif_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="residence_card" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="residence_card_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="NIF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="NISS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="passport" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="visa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="residence_card" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="SEF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="boarding_pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="passport_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />

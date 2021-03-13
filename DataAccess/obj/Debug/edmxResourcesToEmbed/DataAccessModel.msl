@@ -119,10 +119,12 @@
           <ScalarProperty Name="passport_number" ColumnName="passport_number" />
           <ScalarProperty Name="boarding_pass" ColumnName="boarding_pass" />
           <ScalarProperty Name="SEF" ColumnName="SEF" />
+          <ScalarProperty Name="residence_card" ColumnName="residence_card" />
           <ScalarProperty Name="visa" ColumnName="visa" />
+          <ScalarProperty Name="passport" ColumnName="passport" />
           <ScalarProperty Name="NISS" ColumnName="NISS" />
           <ScalarProperty Name="NIF" ColumnName="NIF" />
-          <ScalarProperty Name="residence_card" ColumnName="residence_card" />
+          <ScalarProperty Name="residence_card_number" ColumnName="residence_card_number" />
           <ScalarProperty Name="nationality" ColumnName="nationality" />
           <ScalarProperty Name="nif_number" ColumnName="nif_number" />
           <ScalarProperty Name="address" ColumnName="address" />

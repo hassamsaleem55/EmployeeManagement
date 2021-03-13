@@ -72,10 +72,12 @@
     <Property Name="address" Type="varchar(max)" />
     <Property Name="nif_number" Type="varchar(max)" />
     <Property Name="nationality" Type="varchar(max)" />
-    <Property Name="residence_card" Type="varchar(max)" />
+    <Property Name="residence_card_number" Type="varchar(max)" />
     <Property Name="NIF" Type="varchar(max)" />
     <Property Name="NISS" Type="varchar(max)" />
+    <Property Name="passport" Type="varchar(max)" />
     <Property Name="visa" Type="varchar(max)" />
+    <Property Name="residence_card" Type="varchar(max)" />
     <Property Name="SEF" Type="varchar(max)" />
     <Property Name="boarding_pass" Type="varchar(max)" />
     <Property Name="passport_number" Type="varchar(max)" />

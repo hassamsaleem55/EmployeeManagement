@@ -25,10 +25,12 @@ namespace DataAccess
         public string address { get; set; }
         public string nif_number { get; set; }
         public string nationality { get; set; }
-        public string residence_card { get; set; }
+        public string residence_card_number { get; set; }
         public string NIF { get; set; }
         public string NISS { get; set; }
+        public string passport { get; set; }
         public string visa { get; set; }
+        public string residence_card { get; set; }
         public string SEF { get; set; }
         public string boarding_pass { get; set; }
         public string passport_number { get; set; }

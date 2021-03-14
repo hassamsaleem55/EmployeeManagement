@@ -373,6 +373,7 @@ namespace EmployeeManagementApi.Controllers
                                    job_end_date = j.job_end_date,
                                    job_type = j.job_type,
                                    job_shift = j.job_shift,
+                                   job_location = j.job_location,
                                    client_id = c.client_id,
                                    client_name = c.first_name + " " + c.last_name
                                };
@@ -409,6 +410,7 @@ namespace EmployeeManagementApi.Controllers
                                    job_duration = j.job_duration,
                                    job_type = j.job_type,
                                    job_shift = j.job_shift,
+                                   job_location = j.job_location,
                                    client_id = c.client_id,
                                    client_name = c.first_name + " " + c.last_name
                                };
@@ -515,6 +517,7 @@ namespace EmployeeManagementApi.Controllers
                                    job_end_date = j.job_end_date,
                                    job_type = j.job_type,
                                    job_shift = j.job_shift,
+                                   job_location = j.job_location,
                                    client_id = c.client_id,
                                    client_name = c.first_name + " " + c.last_name
                                };
@@ -564,6 +567,55 @@ namespace EmployeeManagementApi.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
                 }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+
+
+        [Route("api/sick_leaves/{emp_id}/{job_id}")]
+        public HttpResponseMessage GetSickLeaves(int emp_id, int job_id)
+        {
+            try
+            {
+                var entities = from e in Context.employee_sick_leaves
+                               where e.employee_id == emp_id && e.job_id == job_id
+                               select new
+                               {
+                                   sick_leave_id = e.sick_leave_id,
+                                   start_date = e.start_date,
+                                   end_date = e.end_date,
+                                   medical_document = e.medical_document,
+                                   employee_id = e.employee_id,
+                                   job_id = e.job_id
+                               };
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+                //if (entities != null)
+                //{
+                //return Request.CreateResponse(HttpStatusCode.OK, entities);
+                //}
+                //else
+                //{
+                //    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                //}
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/sick_leaves")]
+        public HttpResponseMessage PostSickLeaves([FromBody] employee_sick_leaves entities)
+        {
+            try
+            {
+                Context.employee_sick_leaves.Add(entities);
+                Context.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK, "Data inserted successfully");
             }
             catch (Exception)
             {

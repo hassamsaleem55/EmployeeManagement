@@ -42,7 +42,7 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Assigned New Labor</h4>
+                    <h4 class="modal-title">Assign New Labor</h4>
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12 table-responsive unassigned_labors_list"></div>
@@ -107,6 +107,71 @@
         </div>
     </div>
 
+    <div id="modalViewSickLeaves" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sick Leaves Log</h4>
+                </div>
+                <div class="modal-body">
+                    <button class="btn btn-sm btn-success pull-right" id="btnAddNewSickLeave">Submit New Sick Leave</button>
+                    <div id="divTblSickLeaves" class="table table-responsive">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalSubmitSickLeave" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Submit Sick Leave</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Start Date:<sup class="text-danger"> *</sup></label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="start_date">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">End Date:<sup class="text-danger"> *</sup></label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="end_date">
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <label class="control-label col-sm-2">Medical Document<sup class="text-danger"> *</sup></label>
+                            <%--<a href="#" target="_blank" id="nifDocument" class="col-sm-3" hidden="hidden">NIF document</a>--%>
+                            <div class="col-sm-5">
+                                <input type="file" id="medical_document" class="form-control" />
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-xs btn-info" id="uploadMedicalDocument">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                    <button id="btnSubmitSickLeave" type="button" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function () {
             //$('#tblLabors').DataTable();
@@ -114,7 +179,11 @@
             $("#linkJobs").attr("class", "collapsed active");
             $(".nav-item:eq(2)").attr("class", "nav-item active");
             $("#subPages").attr("class", "");
+            $("#start_date").attr('min', formatDate(new Date()));
+            $("#end_date").attr("disabled", true);
+
             var cutt = [];
+            var medicalDocumentPath = "";
 
             //function getFormatedDate(value) {
             //    var date = new Date(value);
@@ -243,12 +312,13 @@
                 }
 
                 else if (JSON.parse(localStorage.getItem("login_details"))[0].type == "employee") {
+                    var emp_id = JSON.parse(localStorage.getItem("login_details"))[0].id;
                     $("#btnShowModal").hide();
                     $("#assignNewLabor").hide();
-                    $(".jobs_list").html('<table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Client Name</th><th>End Date</th><th>Shift</th><th>Type</th><th>Location</th><th>Details</th></tr></thead></table>');
+                    $(".jobs_list").html('<table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Client Name</th><th>End Date</th><th>Shift</th><th>Type</th><th>Location</th><th>Details</th><th>Sick Leave</th></tr></thead></table>');
                     var arrData = [];
                     $.ajax({
-                        url: localStorage.getItem("ApiLink") + "api/running_jobs_for_employee/" + JSON.parse(localStorage.getItem("login_details"))[0].id,
+                        url: localStorage.getItem("ApiLink") + "api/running_jobs_for_employee/" + emp_id,
                         async: false,
                         method: 'GET',
                         success: function (data) {
@@ -262,6 +332,7 @@
                                     "type": value.job_type,
                                     "location": value.job_location,
                                     "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
+                                    "sick_leaves": "<a id='btnViewSickLeaves' style='cursor: pointer;' data-job-id='" + value.job_id + "' data-emp-id='" + emp_id + "'>View</a>",
                                 };
                                 arrData.push(objData);
                             });
@@ -286,7 +357,8 @@
                             { "data": "shift" },
                             { "data": "type" },
                             { "data": "location" },
-                            { "data": "details" }
+                            { "data": "details" },
+                            { "data": "sick_leaves" }
                         ]
                     });
                 }
@@ -462,12 +534,12 @@
                                         method: 'PUT',
                                         data: {
                                             status: "unassigned",
-                                            comments:  ""
+                                            comments: ""
                                         },
-                                        
+
                                     });
                                 });
-                                
+
                             },
                             error: function (jqXHR, exception) {
                                 swal({
@@ -814,6 +886,168 @@
                         $("#viewDetailsTitle").text(data.job_title + "'s details");
                         $("#viewDetailsBody").text(data.job_details);
                         $("#modalViewDetails").modal("show");
+                    },
+                    error: function (jqXHR, exception) {
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: exception,
+                            timer: 1800
+                        });
+                    }
+                });
+            });
+
+            function getSickLeaves(job_id, emp_id) {
+                $("#divTblSickLeaves").html('<table id="tblLeaves" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Start Date</th><th>End Date</th><th>Medical Document</th></tr></thead></table>');
+                var arrData = [];
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/sick_leaves/" + emp_id + "/" + job_id,
+                    async: false,
+                    method: 'GET',
+                    //data: {
+                    //    job_id: job_id,
+                    //    employee_id: emp_id
+                    //},
+                    success: function (data) {
+                        $(data).each(function (index, value) {
+                            var objData = {
+                                "sr": index + 1,
+                                "start_date": getFormatedDate(value.start_date),
+                                "end_date": getFormatedDate(value.end_date),
+                                "documents": "<a target='_blank' href='" + value.medical_document + "'>" + value.medical_document + "</a>",
+
+                            };
+                            arrData.push(objData);
+                        });
+                    },
+                    error: function (jqXHR, exception) {
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: exception,
+                            timer: 1800
+                        });
+                    }
+                });
+
+                $('#tblLeaves').DataTable({
+                    "data": arrData,
+                    "columns": [
+                        { "data": "sr" },
+                        { "data": "start_date" },
+                        { "data": "end_date" },
+                        { "data": "documents" }
+                    ]
+                });
+            }
+
+            $(document).on("click", "#btnViewSickLeaves", function () {
+                var job_id = $(this).attr("data-job-id");
+                var emp_id = $(this).attr("data-emp-id");
+
+                getSickLeaves(job_id, emp_id);
+
+                $("#btnAddNewSickLeave").attr("data-job-id", job_id);
+                $("#btnAddNewSickLeave").attr("data-emp-id", emp_id);
+                $("#modalViewSickLeaves").modal("show");
+            });
+
+            $(document).on("click", "#btnAddNewSickLeave", function () {
+                var job_id = $(this).attr("data-job-id");
+                var emp_id = $(this).attr("data-emp-id");
+
+                $("#btnSubmitSickLeave").attr("data-job-id", job_id);
+                $("#btnSubmitSickLeave").attr("data-emp-id", emp_id);
+
+                //$("#nissDocument").attr("href", "#");
+                //$("#nissDocument").attr("hidden", "hidden");
+                $("#uploadMedicalDocument").text("Upload");
+                $("#uploadMedicalDocument").attr("disabled", false);
+                $("#uploadMedicalDocument").attr("class", "btn btn-xs btn-info");
+                $("#uploadMedicalDocument").css("color", "#fff");
+                $("#uploadMedicalDocument").text("Upload");
+
+                $("#modalSubmitSickLeave").modal("show");
+            });
+
+            $(document).on("change", "#start_date", function () {
+                if ($(this).val() != "") {
+                    $("#end_date").attr("disabled", false);
+                    $("#end_date").attr("min", formatDate(new Date($(this).val())));
+                }
+                else {
+                    $("#end_date").val("");
+                    $("#end_date").attr("disabled", true);
+                }
+            });
+
+            $(document).on("click", "#uploadMedicalDocument", function () {
+                if ($("#medical_document").val() == "") {
+                    toastr.error("Please select any file");
+                    return;
+                }
+
+                $(this).attr("disabled", "disabled");
+                $(this).text("Uploading...");
+
+                medicalDocumentPath = uploadFile($("#medical_document").get(0).files);
+
+                if (medicalDocumentPath == "Invalid file type") {
+                    toastr.error(medicalDocumentPath);
+                    medicalDocumentPath = "";
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else if (medicalDocumentPath == "") {
+                    toastr.error("Something went wrong");
+                    $(this).text("Upload");
+                    $(this).attr("disabled", false);
+                }
+                else {
+                    $(this).text("");
+                    $(this).attr("class", "btn btn-xs btn-success");
+                    $(this).append("<i class='fa fa-check'></i>");
+                }
+            });
+
+
+            $(document).on("click", "#btnSubmitSickLeave", function () {
+
+                if ($("#start_date").val() == '') {
+                    toastr.error("Start date is not selected");
+                    return;
+                }
+
+                if ($("#end_date").val() == '') {
+                    toastr.error("End date is not selected");
+                    return;
+                }
+
+                if (medicalDocumentPath == '') {
+                    toastr.error("Medical document is not uploaded");
+                    return;
+                }
+
+                var job_id = $(this).attr("data-job-id");
+                var emp_id = $(this).attr("data-emp-id");
+
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/sick_leaves",
+                    async: false,
+                    method: 'POST',
+                    data: {
+                        start_date: $("#start_date").val(),
+                        end_date: $("#end_date").val(),
+                        medical_document: medicalDocumentPath,
+                        job_id: job_id,
+                        employee_id: emp_id,
+
+                    },
+                    success: function () {
+                        toastr.success("Sick leave has been submitted successfully");
+                        getSickLeaves(job_id, emp_id);
+                        $("#modalSubmitSickLeave").modal("hide");
                     },
                     error: function (jqXHR, exception) {
                         swal({

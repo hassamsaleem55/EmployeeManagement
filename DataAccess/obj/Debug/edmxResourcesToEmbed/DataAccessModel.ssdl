@@ -57,6 +57,17 @@
     <Property Name="created_at" Type="date" />
     <Property Name="modified_at" Type="date" />
   </EntityType>
+  <EntityType Name="employee_sick_leaves">
+    <Key>
+      <PropertyRef Name="sick_leave_id" />
+    </Key>
+    <Property Name="sick_leave_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="start_date" Type="varchar(max)" />
+    <Property Name="end_date" Type="varchar(max)" />
+    <Property Name="medical_document" Type="varchar(max)" />
+    <Property Name="employee_id" Type="int" />
+    <Property Name="job_id" Type="int" />
+  </EntityType>
   <EntityType Name="job_applicants">
     <Key>
       <PropertyRef Name="applicant_id" />
@@ -135,6 +146,7 @@
     <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employee_sick_leaves" EntityType="Self.employee_sick_leaves" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="job_applicants" EntityType="Self.job_applicants" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="job_offers" EntityType="Self.job_offers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />

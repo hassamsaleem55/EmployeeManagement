@@ -139,5 +139,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="employee_sick_leaves">
+      <EntityTypeMapping TypeName="employee_managementModel.employee_sick_leaves">
+        <MappingFragment StoreEntitySet="employee_sick_leaves">
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="medical_document" ColumnName="medical_document" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="sick_leave_id" ColumnName="sick_leave_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -62,6 +62,17 @@
           <Property Name="created_at" Type="date" />
           <Property Name="modified_at" Type="date" />
         </EntityType>
+        <EntityType Name="employee_sick_leaves">
+          <Key>
+            <PropertyRef Name="sick_leave_id" />
+          </Key>
+          <Property Name="sick_leave_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="start_date" Type="varchar(max)" />
+          <Property Name="end_date" Type="varchar(max)" />
+          <Property Name="medical_document" Type="varchar(max)" />
+          <Property Name="employee_id" Type="int" />
+          <Property Name="job_id" Type="int" />
+        </EntityType>
         <EntityType Name="job_applicants">
           <Key>
             <PropertyRef Name="applicant_id" />
@@ -140,6 +151,7 @@
           <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee_sick_leaves" EntityType="Self.employee_sick_leaves" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="job_applicants" EntityType="Self.job_applicants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="job_offers" EntityType="Self.job_offers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />
@@ -231,6 +243,7 @@
           <EntitySet Name="job_offers" EntityType="employee_managementModel.job_offers" />
           <EntitySet Name="jobs_log" EntityType="employee_managementModel.jobs_log" />
           <EntitySet Name="job_applicants" EntityType="employee_managementModel.job_applicants" />
+          <EntitySet Name="employee_sick_leaves" EntityType="employee_managementModel.employee_sick_leaves" />
         </EntityContainer>
         <EntityType Name="job_offers">
           <Key>
@@ -288,6 +301,17 @@
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="job_offer_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="job_offer_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="employee_sick_leaves">
+          <Key>
+            <PropertyRef Name="sick_leave_id" />
+          </Key>
+          <Property Name="sick_leave_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="start_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="end_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="medical_document" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="employee_id" Type="Int32" />
+          <Property Name="job_id" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -430,6 +454,18 @@
                 <ScalarProperty Name="last_name" ColumnName="last_name" />
                 <ScalarProperty Name="first_name" ColumnName="first_name" />
                 <ScalarProperty Name="applicant_id" ColumnName="applicant_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee_sick_leaves">
+            <EntityTypeMapping TypeName="employee_managementModel.employee_sick_leaves">
+              <MappingFragment StoreEntitySet="employee_sick_leaves">
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="medical_document" ColumnName="medical_document" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="sick_leave_id" ColumnName="sick_leave_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

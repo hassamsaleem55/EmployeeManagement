@@ -82,6 +82,7 @@
     <EntitySet Name="job_offers" EntityType="employee_managementModel.job_offers" />
     <EntitySet Name="jobs_log" EntityType="employee_managementModel.jobs_log" />
     <EntitySet Name="job_applicants" EntityType="employee_managementModel.job_applicants" />
+    <EntitySet Name="employee_sick_leaves" EntityType="employee_managementModel.employee_sick_leaves" />
   </EntityContainer>
   <EntityType Name="job_offers">
     <Key>
@@ -139,5 +140,16 @@
     <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="job_offer_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="job_offer_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="employee_sick_leaves">
+    <Key>
+      <PropertyRef Name="sick_leave_id" />
+    </Key>
+    <Property Name="sick_leave_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="start_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="end_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="medical_document" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="employee_id" Type="Int32" />
+    <Property Name="job_id" Type="Int32" />
   </EntityType>
 </Schema>

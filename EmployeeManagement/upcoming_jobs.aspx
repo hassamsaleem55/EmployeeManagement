@@ -1033,6 +1033,14 @@
                         $("#viewDocumentsTitle").text(data[0].first_name + "'s Documents");
                         $("#rowDocuments").empty();
                         if (data[0].length != 0) {
+
+
+                            if (JSON.parse(localStorage.getItem("login_details"))[0].type == "client") {
+
+                            }
+
+
+
                             if (data[0].NIF != null) {
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NIF</td><td><a href='" + data[0].NIF + "' target='_blank'>" + data[0].NIF.split("/")[data[0].NIF.split("/").length - 1] + "</a></td><tr>");
                             }

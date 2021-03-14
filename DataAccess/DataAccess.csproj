@@ -75,6 +75,9 @@
     <Compile Include="employee.cs">
       <DependentUpon>DataAccessModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="employee_sick_leaves.cs">
+      <DependentUpon>DataAccessModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="job.cs">
       <DependentUpon>DataAccessModel.tt</DependentUpon>
     </Compile>

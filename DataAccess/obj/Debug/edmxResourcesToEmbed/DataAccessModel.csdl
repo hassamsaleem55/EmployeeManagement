@@ -146,8 +146,8 @@
       <PropertyRef Name="sick_leave_id" />
     </Key>
     <Property Name="sick_leave_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="start_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="end_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
     <Property Name="medical_document" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="employee_id" Type="Int32" />
     <Property Name="job_id" Type="Int32" />

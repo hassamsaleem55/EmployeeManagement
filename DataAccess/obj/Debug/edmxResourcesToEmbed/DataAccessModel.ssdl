@@ -62,8 +62,8 @@
       <PropertyRef Name="sick_leave_id" />
     </Key>
     <Property Name="sick_leave_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="start_date" Type="varchar(max)" />
-    <Property Name="end_date" Type="varchar(max)" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="end_date" Type="date" />
     <Property Name="medical_document" Type="varchar(max)" />
     <Property Name="employee_id" Type="int" />
     <Property Name="job_id" Type="int" />

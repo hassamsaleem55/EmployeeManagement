@@ -150,7 +150,7 @@
                             </div>
                         </div>
 
-                         <div class="form-group">
+                        <div class="form-group">
                             <label class="control-label col-sm-2">Medical Document<sup class="text-danger"> *</sup></label>
                             <%--<a href="#" target="_blank" id="nifDocument" class="col-sm-3" hidden="hidden">NIF document</a>--%>
                             <div class="col-sm-5">
@@ -391,7 +391,7 @@
 
             function getLabors(id) {
                 if (JSON.parse(localStorage.getItem("login_details"))[0].type == "admin") {
-                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th><th>Action</th></tr></thead></table>');
+                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th><th>Medical Document</th><th>Action</th></tr></thead></table>');
                     var arrData = [];
                     $.ajax({
                         url: localStorage.getItem("ApiLink") + "api/assigned_employees/" + id,
@@ -399,10 +399,34 @@
                         method: 'GET',
                         success: function (data) {
                             $(data).each(function (index, value) {
+                                var medical = "N/A";
+                                var emp_name = value.name;
+                                $.ajax({
+                                    url: localStorage.getItem("ApiLink") + "api/get_medical/" + id + "/" + value.id,
+                                    async: false,
+                                    method: 'GET',
+                                    success: function (data) {
+                                        $(data).each(function (ind, val) {
+                                            if (new Date() >= new Date(val.start_date) && new Date() <= new Date(val.end_date)) {
+                                                medical = "<a href='" + val.medical + "' target='_blank'>view</a>";
+                                                emp_name = value.name + "<small class='text-danger'> (On Leave)</small>";
+                                            }
+                                        });
+                                    },
+                                    error: function (jqXHR, exception) {
+                                        swal({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: exception,
+                                            timer: 1800
+                                        });
+                                    }
+                                });
                                 var objData = {
                                     "sr": index + 1,
-                                    "name": value.name,
+                                    "name": emp_name,
                                     "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
+                                    "medical": medical,
                                     "actions": "<a id='btnRemoveEmployee' class='btn btn-sm btn-danger' data-id='" + value.id + "' data-job-id='" + id + "'>Remove</a>",
                                 };
                                 arrData.push(objData);
@@ -424,12 +448,14 @@
                             { "data": "sr" },
                             { "data": "name" },
                             { "data": "documents" },
+                            { "data": "medical" },
                             { "data": "actions" }
                         ]
                     });
                 }
                 else if (JSON.parse(localStorage.getItem("login_details"))[0].type == "client") {
-                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th></tr></thead></table>');
+                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th><th>Medical Document</th></tr></thead></table>');
+
                     var arrData = [];
                     $.ajax({
                         url: localStorage.getItem("ApiLink") + "api/assigned_employees/" + id,
@@ -437,11 +463,35 @@
                         method: 'GET',
                         success: function (data) {
                             $(data).each(function (index, value) {
+                                var medical = "N/A";
+                                var emp_name = value.name;
+                                $.ajax({
+                                    url: localStorage.getItem("ApiLink") + "api/get_medical/" + id + "/" + value.id,
+                                    async: false,
+                                    method: 'GET',
+                                    success: function (data) {
+                                        $(data).each(function (ind, val) {
+                                            if (new Date() >= new Date(val.start_date) && new Date() <= new Date(val.end_date)) {
+                                                medical = "<a href='" + val.medical + "' target='_blank'>view</a>";
+                                                emp_name = value.name + "<small class='text-danger'> (On Leave)</small>";
+                                            }
+                                        });
+                                    },
+                                    error: function (jqXHR, exception) {
+                                        swal({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: exception,
+                                            timer: 1800
+                                        });
+                                    }
+                                });
+
                                 var objData = {
                                     "sr": index + 1,
-                                    "name": value.name,
+                                    "name": emp_name,
                                     "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
-
+                                    "medical": medical,
                                 };
                                 arrData.push(objData);
                             });
@@ -461,7 +511,8 @@
                         "columns": [
                             { "data": "sr" },
                             { "data": "name" },
-                            { "data": "documents" }
+                            { "data": "documents" },
+                            { "data": "medical" }
                         ]
                     });
                 }

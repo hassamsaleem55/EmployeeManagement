@@ -15,8 +15,8 @@ namespace DataAccess
     public partial class employee_sick_leaves
     {
         public int sick_leave_id { get; set; }
-        public string start_date { get; set; }
-        public string end_date { get; set; }
+        public Nullable<System.DateTime> start_date { get; set; }
+        public Nullable<System.DateTime> end_date { get; set; }
         public string medical_document { get; set; }
         public Nullable<int> employee_id { get; set; }
         public Nullable<int> job_id { get; set; }

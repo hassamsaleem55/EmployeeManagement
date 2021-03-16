@@ -331,6 +331,34 @@ namespace EmployeeManagementApi.Controllers
             }
         }
 
+        [Route("api/get_medical/{job_id}/{emp_id}")]
+        public HttpResponseMessage GetMedical(int job_id, int emp_id)
+        {
+            try
+            {
+                var entities = from e in Context.employee_sick_leaves
+                               where e.job_id == job_id && e.employee_id == emp_id
+                               select new
+                               {
+                                   start_date = e.start_date,
+                                   end_date = e.end_date,
+                                   medical = e.medical_document
+                               };
+                if (entities != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entities);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
         [Route("api/assigned_employees/{id}")]
         public HttpResponseMessage DeleteAssignedEmployees(int id)
         {

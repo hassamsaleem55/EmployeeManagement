@@ -30,8 +30,8 @@ namespace DataAccess
         public virtual DbSet<employee> employees { get; set; }
         public virtual DbSet<job> jobs { get; set; }
         public virtual DbSet<job_offers> job_offers { get; set; }
-        public virtual DbSet<jobs_log> jobs_log { get; set; }
         public virtual DbSet<job_applicants> job_applicants { get; set; }
         public virtual DbSet<employee_sick_leaves> employee_sick_leaves { get; set; }
+        public virtual DbSet<jobs_log> jobs_log { get; set; }
     }
 }

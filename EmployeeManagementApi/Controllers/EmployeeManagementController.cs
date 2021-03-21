@@ -314,7 +314,8 @@ namespace EmployeeManagementApi.Controllers
                                select new
                                {
                                    id = e.employee_id,
-                                   name = e.first_name + " " + e.last_name
+                                   name = e.first_name + " " + e.last_name,
+                                   operator_id = j.operator_id
                                };
                 if (entities != null)
                 {
@@ -347,6 +348,29 @@ namespace EmployeeManagementApi.Controllers
                 if (entities != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, entities);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Something went wrong");
+            }
+        }
+
+        [Route("api/submit_operator_id")]
+        public HttpResponseMessage PutSubmitOperatorId([FromBody] jobs_log entities)
+        {
+            try
+            {
+                var entity = Context.jobs_log.FirstOrDefault(e => e.job_id == entities.job_id && e.employee_id == entities.employee_id);
+                if (entity != null)
+                {
+                    entity.operator_id = entities.operator_id;
+                    Context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Data updated successfully");
                 }
                 else
                 {
@@ -546,6 +570,7 @@ namespace EmployeeManagementApi.Controllers
                                    job_type = j.job_type,
                                    job_shift = j.job_shift,
                                    job_location = j.job_location,
+                                   operator_id = jl.operator_id,
                                    client_id = c.client_id,
                                    client_name = c.first_name + " " + c.last_name
                                };
@@ -611,6 +636,7 @@ namespace EmployeeManagementApi.Controllers
             {
                 var entities = from e in Context.employee_sick_leaves
                                where e.employee_id == emp_id && e.job_id == job_id
+                               orderby e.sick_leave_id descending
                                select new
                                {
                                    sick_leave_id = e.sick_leave_id,
@@ -811,9 +837,8 @@ namespace EmployeeManagementApi.Controllers
             try
             {
                 //var enti = Context.jobs_log.FirstOrDefault(e => e.employee_id == entities.employee_id);
-                var entities = from jl in Context.jobs_log
-                               join e in Context.employees on jl.employee_id equals e.employee_id
-                               where jl.employee_id == emp_id && jl.job_id == job_id
+                var entities = from e in Context.employees
+                               where e.employee_id == emp_id
                                select new
                                {
                                    first_name = e.first_name,
@@ -824,7 +849,13 @@ namespace EmployeeManagementApi.Controllers
                                    residence_card = e.residence_card,
                                    SEF = e.SEF,
                                    boarding_pass = e.boarding_pass,
-                                   CUTT = jl.cutt,
+                                   CUTT = from jl in Context.jobs_log
+                                          join emp in Context.employees on jl.employee_id equals emp.employee_id
+                                          where jl.employee_id == emp_id && jl.job_id == job_id
+                                          select new
+                                          {
+                                              CUTT = jl.cutt,
+                                          }
                                };
                 if (entities != null)
                 {

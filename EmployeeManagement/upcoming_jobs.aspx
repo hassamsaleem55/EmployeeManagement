@@ -270,7 +270,7 @@
                                     "shift": value.job_shift,
                                     "type": value.job_type,
                                     "location": value.job_location,
-                                    "labor": "<a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "' data-start-date='" + value.job_start_date + "' data-end-date='" + value.job_end_date + "'>View</a>",
+                                    "labor": "<a class='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "' data-start-date='" + value.job_start_date + "' data-end-date='" + value.job_end_date + "'>View</a>",
                                     "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
                                     "actions": "<div class='text-center'><a href='' class='btn btn-primary btn-sm btn-job-start' style='margin-right: 5px;' data-id='" + value.job_id + "'>Start Job</a><a id='btnEdit' class='btn btn-xs btn-warning' data-id='" + value.job_id + "' style='margin-right: 5px;'><i class='fa fa-pencil'></i></a><a id='btnDelete' class='btn btn-xs btn-danger ml-2' data-id='" + value.job_id + "'><i class='fa fa-trash'></i></a></div>"
                                 };
@@ -327,7 +327,7 @@
                                         "duration": value.job_duration + " days",
                                         "shift": value.job_shift,
                                         "type": value.job_type,
-                                        "labor": "<a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "' data-start-date='" + value.job_start_date + "'>View</a>",
+                                        "labor": "<a class='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "' data-start-date='" + value.job_start_date + "'>View</a>",
                                         "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
                                         //"actions": "<a href='' class='btn btn-primary btn-sm btn-job-complete' data-id='" + value.job_id + "'>Finish Job</a>"
                                     };
@@ -468,7 +468,7 @@
                                 var objData = {
                                     "sr": index + 1,
                                     "name": value.name,
-                                    "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
+                                    "documents": "<a class='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
                                     "actions": "<a id='btnRemoveEmployee' class='btn btn-sm btn-danger' data-id='" + value.id + "' data-job-id='" + id + "'>Remove</a>",
                                 };
                                 arrData.push(objData);
@@ -506,7 +506,7 @@
                                 var objData = {
                                     "sr": index + 1,
                                     "name": value.name,
-                                    "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
+                                    "documents": "<a class='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
 
                                 };
                                 arrData.push(objData);
@@ -794,7 +794,7 @@
                     });
             });
 
-            $(document).on("click", "#btnViewLabors", function () {
+            $(document).on("click", ".btnViewLabors", function () {
                 $("#assignNewLabor").attr("data-start-date", $(this).attr("data-start-date"));
                 $("#assignNewLabor").attr("data-end-date", $(this).attr("data-end-date"));
                 $("#assignNewLabor").attr("data-job-id", $(this).attr("data-id"));
@@ -821,7 +821,7 @@
                                 var objData = {
                                     "sr": ++count,
                                     "name": value.name,
-                                    "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + job_id + "'>view</a>",
+                                    "documents": "<a class='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + job_id + "'>view</a>",
                                     "select": "<input type='checkbox' class='checkbox' data-id='" + value.id + "' data-job-id='" + job_id + "'/>",
                                 };
                                 arrData.push(objData);
@@ -850,7 +850,7 @@
                                     var objData = {
                                         "sr": ++count,
                                         "name": value.name,
-                                        "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + job_id + "'>view</a>",
+                                        "documents": "<a class='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + job_id + "'>view</a>",
                                         "select": "<input type='checkbox' class='checkbox' data-id='" + value.id + "' data-job-id='" + job_id + "'/>",
                                     };
                                     arrData.push(objData);
@@ -1015,7 +1015,7 @@
                 });
             });
 
-            $(document).on("click", "#viewDocuments", function () {
+            $(document).on("click", ".viewDocuments", function () {
                 var emp_id = $(this).attr("data-id");
                 var job_id = $(this).attr("data-job-id");
 
@@ -1033,14 +1033,6 @@
                         $("#viewDocumentsTitle").text(data[0].first_name + "'s Documents");
                         $("#rowDocuments").empty();
                         if (data[0].length != 0) {
-
-
-                            if (JSON.parse(localStorage.getItem("login_details"))[0].type == "client") {
-
-                            }
-
-
-
                             if (data[0].NIF != null) {
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NIF</td><td><a href='" + data[0].NIF + "' target='_blank'>" + data[0].NIF.split("/")[data[0].NIF.split("/").length - 1] + "</a></td><tr>");
                             }
@@ -1055,46 +1047,50 @@
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td>Not Available</td><tr>");
                             }
 
-                            if (data[0].passport != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td><a href='" + data[0].passport + "' target='_blank'>" + data[0].passport.split("/")[data[0].passport.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td>Not Available</td><tr>");
+                            if (JSON.parse(localStorage.getItem("login_details"))[0].type != "client") {
+                                if (data[0].passport != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td><a href='" + data[0].passport + "' target='_blank'>" + data[0].passport.split("/")[data[0].passport.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].visa != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td><a href='" + data[0].visa + "' target='_blank'>" + data[0].visa.split("/")[data[0].visa.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].residence_card != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td><a href='" + data[0].residence_card + "' target='_blank'>" + data[0].residence_card.split("/")[data[0].residence_card.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].SEF != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td><a href='" + data[0].SEF + "' target='_blank'>" + data[0].SEF.split("/")[data[0].SEF.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].boarding_pass != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td><a href='" + data[0].boarding_pass + "' target='_blank'>" + data[0].boarding_pass.split("/")[data[0].boarding_pass.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td>Not Available</td><tr>");
+                                }
                             }
 
-                            if (data[0].visa != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td><a href='" + data[0].visa + "' target='_blank'>" + data[0].visa.split("/")[data[0].visa.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].residence_card != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td><a href='" + data[0].residence_card + "' target='_blank'>" + data[0].residence_card.split("/")[data[0].residence_card.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].SEF != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td><a href='" + data[0].SEF + "' target='_blank'>" + data[0].SEF.split("/")[data[0].SEF.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].boarding_pass != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td><a href='" + data[0].boarding_pass + "' target='_blank'>" + data[0].boarding_pass.split("/")[data[0].boarding_pass.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].CUTT != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td><a href='" + data[0].CUTT + "' target='_blank'>" + data[0].CUTT.split("/")[data[0].CUTT.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td>Not Available</td><tr>");
+                            if (JSON.parse(localStorage.getItem("login_details"))[0].type != "employee") {
+                                if (data[0].CUTT[0].CUTT != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td><a href='" + data[0].CUTT[0].CUTT + "' target='_blank'>" + data[0].CUTT[0].CUTT.split("/")[data[0].CUTT[0].CUTT.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td>Not Available</td><tr>");
+                                }
                             }
                         }
                     },

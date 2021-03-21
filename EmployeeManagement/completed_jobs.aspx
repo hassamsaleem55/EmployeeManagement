@@ -375,46 +375,50 @@
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td>Not Available</td><tr>");
                             }
 
-                            if (data[0].passport != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td><a href='" + data[0].passport + "' target='_blank'>" + data[0].passport.split("/")[data[0].passport.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td>Not Available</td><tr>");
+                            if (JSON.parse(localStorage.getItem("login_details"))[0].type != "client") {
+                                if (data[0].passport != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td><a href='" + data[0].passport + "' target='_blank'>" + data[0].passport.split("/")[data[0].passport.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].visa != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td><a href='" + data[0].visa + "' target='_blank'>" + data[0].visa.split("/")[data[0].visa.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].residence_card != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td><a href='" + data[0].residence_card + "' target='_blank'>" + data[0].residence_card.split("/")[data[0].residence_card.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].SEF != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td><a href='" + data[0].SEF + "' target='_blank'>" + data[0].SEF.split("/")[data[0].SEF.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].boarding_pass != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td><a href='" + data[0].boarding_pass + "' target='_blank'>" + data[0].boarding_pass.split("/")[data[0].boarding_pass.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td>Not Available</td><tr>");
+                                }
                             }
 
-                            if (data[0].visa != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td><a href='" + data[0].visa + "' target='_blank'>" + data[0].visa.split("/")[data[0].visa.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].residence_card != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td><a href='" + data[0].residence_card + "' target='_blank'>" + data[0].residence_card.split("/")[data[0].residence_card.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].SEF != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td><a href='" + data[0].SEF + "' target='_blank'>" + data[0].SEF.split("/")[data[0].SEF.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].boarding_pass != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td><a href='" + data[0].boarding_pass + "' target='_blank'>" + data[0].boarding_pass.split("/")[data[0].boarding_pass.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].CUTT != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td><a href='" + data[0].CUTT + "' target='_blank'>" + data[0].CUTT.split("/")[data[0].CUTT.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td>Not Available</td><tr>");
+                            if (JSON.parse(localStorage.getItem("login_details"))[0].type != "employee") {
+                                if (data[0].CUTT != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td><a href='" + data[0].CUTT + "' target='_blank'>" + data[0].CUTT.split("/")[data[0].CUTT.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td>Not Available</td><tr>");
+                                }
                             }
                         }
                     },

@@ -138,6 +138,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="employee_id" Type="int" />
     <Property Name="job_id" Type="int" />
+    <Property Name="operator_id" Type="varchar(max)" />
     <Property Name="payslip" Type="varchar(max)" />
     <Property Name="cutt" Type="varchar(max)" />
     <Property Name="status" Type="varchar(max)" />

@@ -470,7 +470,7 @@
             $(document).on("click", ".btnBlacklist", function () {
                 $("#modalBlacklist .modal-title").html("Blacklist " + $(this).closest("tr").find("td:eq(1)").text() + " " + $(this).closest("tr").find("td:eq(2)").text() + " ?");
                 $("#modalBlacklist .btn-danger").attr("data-id", $(this).attr("data-id"));
-                #("#modalBlacklist .form-control").val("");
+                $("#modalBlacklist .form-control").val("");
                 $("#modalBlacklist").modal("show");
             });
 

@@ -73,6 +73,31 @@
         </div>
     </div>
 
+    <div id="modalOperatorId" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #333d4d; color: #F3F5F8">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Operator ID:<sup class="text-danger"> *</sup></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtOperatorId" placeholder="Enter Operator ID">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                    <button id="btnSubmitOperatorId" data-id="0" type="button" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="modalViewDocuments" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -226,7 +251,7 @@
                                     "end_date": getFormatedDate(value.job_end_date),
                                     "shift": value.job_shift,
                                     "type": value.job_type,
-                                    "labor": "<a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "' data-start-date='" + value.job_start_date + "' data-end-date='" + value.job_end_date + "'>View</a>",
+                                    "labor": "<a class='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "' data-start-date='" + value.job_start_date + "' data-end-date='" + value.job_end_date + "'>View</a>",
                                     "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
                                     "actions": "<a href='' class='btn btn-primary btn-sm btn-job-complete' data-id='" + value.job_id + "' data-employee-id='" + value.employee_id + "'>Finish Job</a>"
                                 };
@@ -278,7 +303,7 @@
                                         "end_date": getFormatedDate(value.job_end_date),
                                         "shift": value.job_shift,
                                         "type": value.job_type,
-                                        "labor": "<a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "' data-start-date='" + value.job_start_date + "' data-end-date='" + value.job_end_date + "'>View</a>",
+                                        "labor": "<a class='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "' data-start-date='" + value.job_start_date + "' data-end-date='" + value.job_end_date + "'>View</a>",
                                         "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
                                         //"actions": "<a href='' class='btn btn-primary btn-sm btn-job-complete' data-id='" + value.job_id + "'>Finish Job</a>"
                                     };
@@ -315,7 +340,7 @@
                     var emp_id = JSON.parse(localStorage.getItem("login_details"))[0].id;
                     $("#btnShowModal").hide();
                     $("#assignNewLabor").hide();
-                    $(".jobs_list").html('<table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Client Name</th><th>End Date</th><th>Shift</th><th>Type</th><th>Location</th><th>Details</th><th>Sick Leave</th></tr></thead></table>');
+                    $(".jobs_list").html('<table id="tblJobs" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Title</th><th>Client Name</th><th>Operator ID</th><th>End Date</th><th>Shift</th><th>Type</th><th>Location</th><th>Details</th><th>Sick Leaves</th></tr></thead></table>');
                     var arrData = [];
                     $.ajax({
                         url: localStorage.getItem("ApiLink") + "api/running_jobs_for_employee/" + emp_id,
@@ -327,12 +352,13 @@
                                     "sr": index + 1,
                                     "title": value.job_title,
                                     "client_name": value.client_name,
+                                    "operator_id": value.operator_id,
                                     "end_date": getFormatedDate(value.job_end_date),
                                     "shift": value.job_shift,
                                     "type": value.job_type,
                                     "location": value.job_location,
                                     "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
-                                    "sick_leaves": "<a id='btnViewSickLeaves' style='cursor: pointer;' data-job-id='" + value.job_id + "' data-emp-id='" + emp_id + "'>View</a>",
+                                    "sick_leaves": "<a class='btnOnLeave' style='cursor: pointer;' data-job-id='" + value.job_id + "' data-emp-id='" + emp_id + "'>View</a>",
                                 };
                                 arrData.push(objData);
                             });
@@ -353,6 +379,7 @@
                             { "data": "sr" },
                             { "data": "title" },
                             { "data": "client_name" },
+                            { "data": "operator_id" },
                             { "data": "end_date" },
                             { "data": "shift" },
                             { "data": "type" },
@@ -391,7 +418,7 @@
 
             function getLabors(id) {
                 if (JSON.parse(localStorage.getItem("login_details"))[0].type == "admin") {
-                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th><th>Medical Document</th><th>Action</th></tr></thead></table>');
+                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Operator ID</th><th>Documents</th><th>Sick Leaves</th><th>Action</th></tr></thead></table>');
                     var arrData = [];
                     $.ajax({
                         url: localStorage.getItem("ApiLink") + "api/assigned_employees/" + id,
@@ -399,8 +426,12 @@
                         method: 'GET',
                         success: function (data) {
                             $(data).each(function (index, value) {
-                                var medical = "N/A";
+                                //var medical = "N/A";
                                 var emp_name = value.name;
+                                var operator_id = "<span class='text-danger'>Not Assigned</span><span><small class='text-success btnOperatorId' style='cursor: pointer' data-job-id='" + id + "' data-emp-id='" + value.id + "'>  (Assign Operator ID)</small></span>";
+                                if (value.operator_id != null && value.operator_id != "") {
+                                    operator_id = value.operator_id;
+                                }
                                 $.ajax({
                                     url: localStorage.getItem("ApiLink") + "api/get_medical/" + id + "/" + value.id,
                                     async: false,
@@ -408,7 +439,7 @@
                                     success: function (data) {
                                         $(data).each(function (ind, val) {
                                             if (new Date() >= new Date(val.start_date) && new Date() <= new Date(val.end_date)) {
-                                                medical = "<a href='" + val.medical + "' target='_blank'>view</a>";
+                                                //medical = "<a href='" + val.medical + "' target='_blank'>view</a>";
                                                 emp_name = value.name + "<small class='text-danger'> (On Leave)</small>";
                                             }
                                         });
@@ -425,8 +456,10 @@
                                 var objData = {
                                     "sr": index + 1,
                                     "name": emp_name,
+                                    "operator_id": operator_id,
                                     "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
-                                    "medical": medical,
+                                    //"medical": medical,
+                                    "sick_leaves": "<a class='btnViewSickLeaves' style='cursor: pointer;' data-emp-id='" + value.id + "' data-job-id='" + id + "'>View</a>",
                                     "actions": "<a id='btnRemoveEmployee' class='btn btn-sm btn-danger' data-id='" + value.id + "' data-job-id='" + id + "'>Remove</a>",
                                 };
                                 arrData.push(objData);
@@ -447,14 +480,15 @@
                         "columns": [
                             { "data": "sr" },
                             { "data": "name" },
+                            { "data": "operator_id" },
                             { "data": "documents" },
-                            { "data": "medical" },
+                            { "data": "sick_leaves" },
                             { "data": "actions" }
                         ]
                     });
                 }
                 else if (JSON.parse(localStorage.getItem("login_details"))[0].type == "client") {
-                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th><th>Medical Document</th></tr></thead></table>');
+                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Operator ID</th><th>Documents</th></tr></thead></table>');
 
                     var arrData = [];
                     $.ajax({
@@ -463,8 +497,16 @@
                         method: 'GET',
                         success: function (data) {
                             $(data).each(function (index, value) {
-                                var medical = "N/A";
+                                //var medical = "N/A";
                                 var emp_name = value.name;
+                                var operator_id = "<span class='text-danger'>Not Assigned</span><span><small class='text-success btnOperatorId' style='cursor: pointer' data-job-id='" + id + "' data-emp-id='" + value.id +"'>  (Assign Operator ID)</small></span>";
+                                if (value.operator_id != null && value.operator_id != "") {
+                                    operator_id = value.operator_id;
+                                }
+                                //else {
+                                //    $("#txtOperatorId").val("");
+                                //}
+                                
                                 $.ajax({
                                     url: localStorage.getItem("ApiLink") + "api/get_medical/" + id + "/" + value.id,
                                     async: false,
@@ -472,8 +514,8 @@
                                     success: function (data) {
                                         $(data).each(function (ind, val) {
                                             if (new Date() >= new Date(val.start_date) && new Date() <= new Date(val.end_date)) {
-                                                medical = "<a href='" + val.medical + "' target='_blank'>view</a>";
-                                                emp_name = value.name + "<small class='text-danger'> (On Leave)</small>";
+                                                //medical = "<a href='" + val.medical + "' target='_blank'>view</a>";
+                                                emp_name = value.name + "<small class='text-danger btnOnLeave' data-job-id='" + id + "' data-emp-id='" + value.id +"' style='cursor: pointer;'> (On Leave)</small>";
                                             }
                                         });
                                     },
@@ -490,8 +532,9 @@
                                 var objData = {
                                     "sr": index + 1,
                                     "name": emp_name,
+                                    "operator_id": operator_id,
                                     "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
-                                    "medical": medical,
+                                    //"medical": medical,
                                 };
                                 arrData.push(objData);
                             });
@@ -511,8 +554,9 @@
                         "columns": [
                             { "data": "sr" },
                             { "data": "name" },
+                            { "data": "operator_id" },
                             { "data": "documents" },
-                            { "data": "medical" }
+                            //{ "data": "medical" }
                         ]
                     });
                 }
@@ -615,13 +659,21 @@
                 });
             });
 
-            $(document).on("click", "#btnViewLabors", function () {
+            $(document).on("click", ".btnViewLabors", function () {
                 $("#assignNewLabor").attr("data-start-date", $(this).attr("data-start-date"));
                 $("#assignNewLabor").attr("data-end-date", $(this).attr("data-end-date"));
                 $("#assignNewLabor").attr("data-job-id", $(this).attr("data-id"));
                 getLabors($(this).attr("data-id"));
                 $("#modalViewLabors").modal("show");
             });
+
+            $(document).on("click", ".btnOnLeave", function () {
+                var job_id = $(this).attr("data-job-id");
+                var emp_id = $(this).attr("data-emp-id");
+                $("#btnAddNewSickLeave").hide();
+                $("#modalViewSickLeaves").modal("show");
+                getSickLeaves(job_id, emp_id);
+            })
 
             $(document).on("click", "#assignNewLabor", function () {
                 var arrData = [];
@@ -873,46 +925,50 @@
                                 $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>NISS</td><td>Not Available</td><tr>");
                             }
 
-                            if (data[0].passport != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td><a href='" + data[0].passport + "' target='_blank'>" + data[0].passport.split("/")[data[0].passport.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td>Not Available</td><tr>");
+                            if (JSON.parse(localStorage.getItem("login_details"))[0].type != "client") {
+                                if (data[0].passport != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td><a href='" + data[0].passport + "' target='_blank'>" + data[0].passport.split("/")[data[0].passport.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Passport</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].visa != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td><a href='" + data[0].visa + "' target='_blank'>" + data[0].visa.split("/")[data[0].visa.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].residence_card != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td><a href='" + data[0].residence_card + "' target='_blank'>" + data[0].residence_card.split("/")[data[0].residence_card.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].SEF != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td><a href='" + data[0].SEF + "' target='_blank'>" + data[0].SEF.split("/")[data[0].SEF.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td>Not Available</td><tr>");
+                                }
+
+                                if (data[0].boarding_pass != null) {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td><a href='" + data[0].boarding_pass + "' target='_blank'>" + data[0].boarding_pass.split("/")[data[0].boarding_pass.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td>Not Available</td><tr>");
+                                }
                             }
 
-                            if (data[0].visa != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td><a href='" + data[0].visa + "' target='_blank'>" + data[0].visa.split("/")[data[0].visa.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Visa</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].residence_card != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td><a href='" + data[0].residence_card + "' target='_blank'>" + data[0].residence_card.split("/")[data[0].residence_card.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Residence Card</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].SEF != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td><a href='" + data[0].SEF + "' target='_blank'>" + data[0].SEF.split("/")[data[0].SEF.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>SEF</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].boarding_pass != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td><a href='" + data[0].boarding_pass + "' target='_blank'>" + data[0].boarding_pass.split("/")[data[0].boarding_pass.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>Boarding Pass</td><td>Not Available</td><tr>");
-                            }
-
-                            if (data[0].CUTT != null) {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td><a href='" + data[0].CUTT + "' target='_blank'>" + data[0].CUTT.split("/")[data[0].CUTT.split("/").length - 1] + "</a></td><tr>");
-                            }
-                            else {
-                                $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td>Not Available</td><tr>");
+                            if (JSON.parse(localStorage.getItem("login_details"))[0].type != "employee") {
+                                if (data[0].CUTT[0].CUTT != null) { 
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td><a href='" + data[0].CUTT[0].CUTT + "' target='_blank'>" + data[0].CUTT[0].CUTT.split("/")[data[0].CUTT[0].CUTT.split("/").length - 1] + "</a></td><tr>");
+                                }
+                                else {
+                                    $("#rowDocuments").append("<tr><td>" + (count++) + "</td><td>CUTT</td><td>Not Available</td><tr>");
+                                }
                             }
                         }
                     },
@@ -993,7 +1049,7 @@
                 });
             }
 
-            $(document).on("click", "#btnViewSickLeaves", function () {
+            $(document).on("click", ".btnViewSickLeaves", function () {
                 var job_id = $(this).attr("data-job-id");
                 var emp_id = $(this).attr("data-emp-id");
 
@@ -1001,6 +1057,7 @@
 
                 $("#btnAddNewSickLeave").attr("data-job-id", job_id);
                 $("#btnAddNewSickLeave").attr("data-emp-id", emp_id);
+                $("#btnAddNewSickLeave").show();
                 $("#modalViewSickLeaves").modal("show");
             });
 
@@ -1098,7 +1155,50 @@
                     success: function () {
                         toastr.success("Sick leave has been submitted successfully");
                         getSickLeaves(job_id, emp_id);
+                        getLabors(job_id);
                         $("#modalSubmitSickLeave").modal("hide");
+                    },
+                    error: function (jqXHR, exception) {
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: exception,
+                            timer: 1800
+                        });
+                    }
+                });
+            });
+
+            $(document).on("click", ".btnOperatorId", function () {
+                $("#modalOperatorId .modal-title").text("Submit " + $(this).closest("tr").find("td:eq(1)").text() + "'s Operator ID");
+                $("#btnSubmitOperatorId").attr("data-job-id", $(this).attr("data-job-id"));
+                $("#btnSubmitOperatorId").attr("data-emp-id", $(this).attr("data-emp-id"));
+                $("#txtOperatorId").val("");
+                $("#modalOperatorId").modal("show");
+            });
+
+            $(document).on("click", "#btnSubmitOperatorId", function () {
+                if ($("#txtOperatorId").val() == "") {
+                    toastr.error("Operator ID is missing");
+                    return false;
+                }
+
+                var job_id = $(this).attr("data-job-id");
+                var emp_id = $(this).attr("data-emp-id");
+                var operator_id = $("#txtOperatorId").val();
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/submit_operator_id",
+                    async: false,
+                    method: 'PUT',
+                    data: {
+                        "employee_id": emp_id,
+                        "job_id": job_id,
+                        "operator_id": operator_id,
+                    },
+                    success: function () {
+                        toastr.success("Operator ID has been submitted");
+                        getLabors(job_id);
+                        $("#modalOperatorId").modal("hide");
                     },
                     error: function (jqXHR, exception) {
                         swal({

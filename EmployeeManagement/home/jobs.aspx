@@ -360,7 +360,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2">Residence Card<sup class="text-danger"> *</sup></label>
+                                <label class="control-label col-sm-2">Residence Card</label>
                                 <a href="#" target="_blank" id="residenceCardDocument" class="col-sm-3" hidden="hidden">Residence card document</a>
                                 <div class="col-sm-5" id="divUploadResidenceCard">
                                     <input type="file" id="residenceCard" class="form-control" />

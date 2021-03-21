@@ -94,18 +94,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="jobs_log">
-      <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
-        <MappingFragment StoreEntitySet="jobs_log">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="cutt" ColumnName="cutt" />
-          <ScalarProperty Name="payslip" ColumnName="payslip" />
-          <ScalarProperty Name="job_id" ColumnName="job_id" />
-          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="job_applicants">
       <EntityTypeMapping TypeName="employee_managementModel.job_applicants">
         <MappingFragment StoreEntitySet="job_applicants">
@@ -148,6 +136,19 @@
           <ScalarProperty Name="end_date" ColumnName="end_date" />
           <ScalarProperty Name="start_date" ColumnName="start_date" />
           <ScalarProperty Name="sick_leave_id" ColumnName="sick_leave_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobs_log">
+      <EntityTypeMapping TypeName="employee_managementModel.jobs_log">
+        <MappingFragment StoreEntitySet="jobs_log">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="cutt" ColumnName="cutt" />
+          <ScalarProperty Name="payslip" ColumnName="payslip" />
+          <ScalarProperty Name="operator_id" ColumnName="operator_id" />
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

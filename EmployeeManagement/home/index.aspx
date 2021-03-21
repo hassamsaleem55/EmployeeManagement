@@ -54,15 +54,17 @@
             <div class="container">
                 <div class="row">
                     <!-- FOR LOGO -->
-                    <div class="col-md-2 col-sm-2">
+                    <div class="col-md-3 col-sm-3">
                         <div class="logo">
                             <a href="#">
-                                <img src="images/3dlogo_2mb.gif" alt="" style="width: 25%" />
+                                <img src="images/3dlogo_2mb.gif" alt="" style="width: 15%" />
+                                <img src="images/work_permit_3.png" style="height: 50%" />
+                                <%-- <img src="images/work_permit_high_res.png" style="height: 50%" />--%>
                             </a>
                         </div>
                     </div>
                     <!-- MAIN MENU START -->
-                    <div class="col-md-10 col-sm-10">
+                    <div class="col-md-9 col-sm-9">
                         <div class="main-menu">
                             <nav>
                                 <ul>
@@ -123,62 +125,10 @@
     </header>
     <!-- HEADER AREA END HERE -->
     <!-- SLIDER AREA START HERE -->
-    <section class="slider-area" id="home">
-        <div class="slider-wrapper">
-            <div id="slider" class="nivoSlider">
-                <img src="images/slider1.jpg" alt="" title="#htmlcaption1" />
-                <img src="images/slider2.jpg" alt="" title="#htmlcaption2" />
-            </div>
-            <!-- CAPTION 1 -->
-            <div id="htmlcaption1" class="nivo-html-caption slider-caption-1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="slider-content">
-                                <!-- Direction 1 -->
-                                <div class="wow bounceInRight" data-wow-duration="1.5" data-wow-delay=".5s ">
-                                    <h1 class="title1">welcome to <span class="color">work permit</span></h1>
-                                </div>
-                                <!-- Direction 2 -->
-                                <div class="wow bounceInRight" data-wow-duration="2" data-wow-delay=".7s ">
-                                    <p class="title2">We are a Recruitement Agency</p>
-                                </div>
-                                <!-- Direction 3 -->
-                                <div class="wow bounceInUp" data-wow-duration="1.5" data-wow-delay=".9s ">
-                                    <a href="#" class="ready-btn">read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- CAPTION 1 END -->
-            <!-- CAPTION 2 START -->
-            <div id="htmlcaption2" class="nivo-html-caption slider-caption-1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="slider-content">
-                                <!-- Direction 1 -->
-                                <div class="wow slideInLeft" data-wow-duration="1.5" data-wow-delay=".5s ">
-                                    <h1 class="title1">explore your <span class="color">dream</span> business</h1>
-                                </div>
-                                <!-- Direction 2 -->
-                                <div class="wow slideInLeft" data-wow-duration="2" data-wow-delay=".7s ">
-                                    <p class="title2">we are ready to lessen your work </p>
-                                </div>
-                                <!-- Direction 3 -->
-                                <div class="wow bounceInUp" data-wow-duration="1.5" data-wow-delay=".9s ">
-                                    <a href="#" class="ready-btn">read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- CAPTION 2 END -->
-        </div>
-    </section>
+    <%--<section class="slider-area" id="home">--%>
+    <img src="images/animation_high_res.gif" />
+
+    <%--</section>--%>
     <!-- SLIDER AREA END HERE -->
 
     <section id="what_we_deo">
@@ -221,7 +171,7 @@
     </section>
 
     <!-- FUN AREA END HERE -->
-    <section class="fun-area" style="background-image: url(images/port7.jpg)">
+    <section class="fun-area" style="background-image: url(images/animation_high_res.gif)">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-3 col-xs-12">
@@ -257,12 +207,12 @@
     </section>
     <!-- FUN AREA END HERE -->
     <!-- ABOUT AREA START HERE -->
-    <section class="about-area" id="about">
+    <section class="about-area" id="about" style="background-color: #80c223">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-text">
-                        <h2 class="section-title">About <span class="color">us</span></h2>
+                        <h2 class="section-title section-title-about-us">About <span class="color-white">us</span></h2>
 
                     </div>
                 </div>
@@ -340,7 +290,8 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-6" style="height: 200px">
-                    <div id="google-map" ></div>
+                    <%--<div id="google-map"></div>--%>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3090.5335015838164!2d-8.691297584639754!3d39.23075937952065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd18ee6c242131db%3A0xa4689bb976b87795!2sR.%20Eng.%20Ant%C3%B3nio%20Jos%C3%A9%20Souto%20Barreiros%20Mota%2C%20Santar%C3%A9m%2C%20Portugal!5e0!3m2!1sen!2s!4v1616353763372!5m2!1sen!2s" width="580" height="325" style="border: 0;"></iframe>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="form-group">
@@ -363,7 +314,7 @@
                             <textarea class="form-control" rows="7" id="message" placeholder="Enter Your Message"></textarea>
                         </div>
                     </div>
-                    
+
 
                     <%-- <div class="contact-us-form">
                         <div id="form-messages"></div>
@@ -387,8 +338,8 @@
                     </div>--%>
                 </div>
                 <div class="contact-us-form col-md-12 col-sm-12">
-                        <button type="submit">submit</button>
-                    </div>
+                    <button type="submit" id="submit_inquiry">submit</button>
+                </div>
             </div>
         </div>
     </div>
@@ -495,7 +446,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Passport Validity Year<sup class="text-danger"> *</sup></label>
                             <div class="col-sm-10">
-                                <input type="date" class="form-control" id="passport_validity_year" >
+                                <input type="date" class="form-control" id="passport_validity_year">
                             </div>
                         </div>
 
@@ -602,7 +553,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2">Residence Card<sup class="text-danger"> *</sup></label>
+                            <label class="control-label col-sm-2">Residence Card</label>
                             <a href="#" target="_blank" id="residenceCardDocument" class="col-sm-3" hidden="hidden">Residence card document</a>
                             <div class="col-sm-5" id="divUploadResidenceCard">
                                 <input type="file" id="residenceCard" class="form-control" />
@@ -676,7 +627,7 @@
             var residenceCardPath = "";
             var sefPath = "";
             var boardingPassPath = "";
-            
+
             function formatDate(date) {
                 var month = date.getMonth() + 1;
                 var day = date.getDate();
@@ -1365,7 +1316,58 @@
                 });
             });
 
+            $(document).on("click", "#submit_inquiry", function () {
+                var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                var error = false;
 
+                if ($("#name").val() == "") {
+                    toastr.error("Please enter your name");
+                    error = true;
+                }
+
+                if ($("#email_address").val() == "") {
+                    toastr.error("Please enter your email address");
+                    error = true;
+                }
+
+                if (!regex.test($("#email_address").val())) {
+                    toastr.error("Invalid Email Address");
+                    error = true;
+                }
+
+                if ($("#message").val() == "") {
+                    toastr.error("Please type something in message box");
+                    error = true;
+                }
+
+                if (error) {
+                    return false;
+                }
+
+
+                var EmailBody = "<h4>" + $("#name").val() + " (" + $("#email_address").val() + ") asked something!</h4><p>" + $("#message").val() + "</p>";
+                var EmailAddress = "akashaus2020@gmail.com";
+                var Subject = "Visitor's Inquiry from workpermit.pt";
+                $.ajax({
+                    url: localStorage.getItem("ApiLink") + "api/send_email",
+                    async: false,
+                    method: 'GET',
+                    data: {
+                        EmailBody: EmailBody,
+                        EmailAddress: EmailAddress,
+                        Subject: Subject,
+                    },
+                    success: function (response) {
+                        toastr.success("Your inquiry has been submitted successfully");
+                        $("#name").val("");
+                        $("#email_address").val("");
+                        $("#message").val("");
+                    },
+                    error: function (jqXHR, exception) {
+                        toastr.error("Something went wrong");
+                    }
+                });
+            });
         });
     </script>
     <!-- CONTACT US AREA END HERE -->

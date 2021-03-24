@@ -495,17 +495,31 @@
                     });
                 }
                 else if (JSON.parse(localStorage.getItem("login_details"))[0].type == "client") {
-                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th></tr></thead></table>');
+                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Health Care Number</th><th>Residence Card Number</th><th>Documents</th></tr></thead></table>');
                     var arrData = [];
+
                     $.ajax({
                         url: localStorage.getItem("ApiLink") + "api/assigned_employees/" + id,
                         async: false,
                         method: 'GET',
                         success: function (data) {
                             $(data).each(function (index, value) {
+                                var health_care_number = "-----";
+                                var residence_card_number = "-----";
+
+                                if (value.health_care_number != null && value.health_care_number != "") {
+                                    health_care_number = value.health_care_number;
+                                }
+
+                                if (value.residence_card_number != null && value.residence_card_number != "") {
+                                    residence_card_number = value.residence_card_number;
+                                }
+
                                 var objData = {
                                     "sr": index + 1,
                                     "name": value.name,
+                                    "health_care_number": health_care_number,
+                                    "residence_card_number": residence_card_number,
                                     "documents": "<a class='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
 
                                 };
@@ -527,6 +541,8 @@
                         "columns": [
                             { "data": "sr" },
                             { "data": "name" },
+                            { "data": "health_care_number" },
+                            { "data": "residence_card_number" },
                             { "data": "documents" }
                         ]
                     });

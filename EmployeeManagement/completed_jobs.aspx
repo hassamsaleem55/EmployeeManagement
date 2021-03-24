@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Completed Jobs" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="completed_jobs.aspx.cs" Inherits="EmployeeManagement.completed_jobs" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <div class="main">
+    <div class="main">
         <div class="panel">
             <div class="panel-heading">
                 <h3>Completed Jobs List</h3>
@@ -121,7 +122,7 @@
                                     "type": value.job_type,
                                     "labor": "<a id='btnViewLabors' style='cursor: pointer;' data-id='" + value.job_id + "' data-start-date='" + value.job_start_date + "'>View</a>",
                                     "details": "<a id='btnViewDetails' style='cursor: pointer;' data-id='" + value.job_id + "'>View</a>",
-                                    
+
                                 };
                                 arrData.push(objData);
                             });
@@ -301,7 +302,8 @@
                     });
                 }
                 else if (JSON.parse(localStorage.getItem("login_details"))[0].type == "client") {
-                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Documents</th></tr></thead></table>');
+                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Operator ID</th><th>Health Care Number</th><th>Residence Card Number</th><th>Documents</th></tr></thead></table>');
+
                     var arrData = [];
                     $.ajax({
                         url: localStorage.getItem("ApiLink") + "api/assigned_employees/" + id,
@@ -309,10 +311,35 @@
                         method: 'GET',
                         success: function (data) {
                             $(data).each(function (index, value) {
+                                //var medical = "N/A";
+                                //var emp_name = value.name;
+                                var operator_id = "<span class='text-danger'>Not Assigned</span>";
+                                var health_care_number = "-----";
+                                var residence_card_number = "-----";
+                                if (value.operator_id != null && value.operator_id != "") {
+                                    operator_id = value.operator_id;
+                                }
+                                //else {
+                                //    $("#txtOperatorId").val("");
+                                //}
+
+
+                                if (value.health_care_number != null && value.health_care_number != "") {
+                                    health_care_number = value.health_care_number;
+                                }
+
+                                if (value.residence_card_number != null && value.residence_card_number != "") {
+                                    residence_card_number = value.residence_card_number;
+                                }
+
                                 var objData = {
                                     "sr": index + 1,
-                                    "name": value.name,
+                                    "name": value.name;
+                                    "operator_id": operator_id,
+                                    "health_care_number": health_care_number,
+                                    "residence_card_number": residence_card_number,
                                     "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
+                                    //"medical": medical,
                                 };
                                 arrData.push(objData);
                             });
@@ -332,7 +359,11 @@
                         "columns": [
                             { "data": "sr" },
                             { "data": "name" },
-                            { "data": "documents" }
+                            { "data": "operator_id" },
+                            { "data": "health_care_number" },
+                            { "data": "residence_card_number" },
+                            { "data": "documents" },
+                            //{ "data": "medical" }
                         ]
                     });
                 }

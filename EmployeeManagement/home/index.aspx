@@ -291,7 +291,8 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6" style="height: 200px">
                     <%--<div id="google-map"></div>--%>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3090.5335015838164!2d-8.691297584639754!3d39.23075937952065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd18ee6c242131db%3A0xa4689bb976b87795!2sR.%20Eng.%20Ant%C3%B3nio%20Jos%C3%A9%20Souto%20Barreiros%20Mota%2C%20Santar%C3%A9m%2C%20Portugal!5e0!3m2!1sen!2s!4v1616353763372!5m2!1sen!2s" width="580" height="325" style="border: 0;"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3090.523323771552!2d-8.690329284741868!3d39.230990479520585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd18ee6e96bc4081%3A0xc7e64720660cd89b!2sR.%20Eng.%20Ant%C3%B3nio%20Jos%C3%A9%20Souto%20Barreiros%20Mota%2014%2C%202000-014%20Santar%C3%A9m%2C%20Portugal!5e0!3m2!1sen!2s!4v1616609996220!5m2!1sen!2s" width="580" height="325" style="border: 0;"></iframe>
+
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="form-group">
@@ -1315,6 +1316,12 @@
                     }
                 });
             });
+
+            $(document).on("keypress", "#name",
+                function (
+                    e) {
+                    accept_letters_only(e);
+                });
 
             $(document).on("click", "#submit_inquiry", function () {
                 var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;

@@ -315,6 +315,8 @@ namespace EmployeeManagementApi.Controllers
                                {
                                    id = e.employee_id,
                                    name = e.first_name + " " + e.last_name,
+                                   health_care_number = e.health_care_number,
+                                   residence_card_number = e.residence_card_number,
                                    operator_id = j.operator_id
                                };
                 if (entities != null)
@@ -345,14 +347,15 @@ namespace EmployeeManagementApi.Controllers
                                    end_date = e.end_date,
                                    medical = e.medical_document
                                };
-                if (entities != null)
-                {
-                    return Request.CreateResponse(HttpStatusCode.OK, entities);
-                }
-                else
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
-                }
+                return Request.CreateResponse(HttpStatusCode.OK, entities);
+                //if (entities != null)
+                //{
+                //    return Request.CreateResponse(HttpStatusCode.OK, entities);
+                //}
+                //else
+                //{
+                //    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+                //}
             }
             catch (Exception)
             {

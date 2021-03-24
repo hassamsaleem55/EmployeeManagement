@@ -24,6 +24,8 @@ namespace DataAccess
         public string sex { get; set; }
         public string driving_license { get; set; }
         public string contact { get; set; }
+        public string health_care_number { get; set; }
+        public string residence_card_number { get; set; }
         public string nationality { get; set; }
         public string location { get; set; }
         public string address { get; set; }

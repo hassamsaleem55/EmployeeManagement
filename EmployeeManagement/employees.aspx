@@ -105,6 +105,22 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Health Care Number</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="health_care_number" placeholder="Enter Health Care Number">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Residence Card Number</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="residence_card_number" placeholder="Enter Residence Card Number">
+                            </div>
+                        </div>
+
+
                         <div class="form-group">
                             <label class="control-label col-sm-2">Nationality<sup class="text-danger"> *</sup></label>
                             <div class="col-sm-10">
@@ -197,7 +213,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2">Residence Card<sup class="text-danger"> *</sup></label>
+                            <label class="control-label col-sm-2">Residence Card</label>
                             <a href="#" target="_blank" id="residenceCardDocument" class="col-sm-3" hidden="hidden">Residence card document</a>
                             <div class="col-sm-5" id="divUploadResidenceCard">
                                 <input type="file" id="residenceCard" class="form-control" />
@@ -948,10 +964,10 @@
                         return;
                     }
 
-                    if (residenceCardPath == '') {
-                        toastr.error("Upload residence card first");
-                        return;
-                    }
+                    //if (residenceCardPath == '') {
+                    //    toastr.error("Upload residence card first");
+                    //    return;
+                    //}
 
                     if (sefPath == '') {
                         toastr.error("Upload sef document first");

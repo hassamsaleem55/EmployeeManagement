@@ -428,7 +428,7 @@
                             $(data).each(function (index, value) {
                                 //var medical = "N/A";
                                 var emp_name = value.name;
-                                var operator_id = "<span class='text-danger'>Not Assigned</span><span><small class='text-success btnOperatorId' style='cursor: pointer' data-job-id='" + id + "' data-emp-id='" + value.id + "'>  (Assign Operator ID)</small></span>";
+                                var operator_id = "<span class='text-danger'>Not Assigned</span>";
                                 if (value.operator_id != null && value.operator_id != "") {
                                     operator_id = value.operator_id;
                                 }
@@ -488,7 +488,7 @@
                     });
                 }
                 else if (JSON.parse(localStorage.getItem("login_details"))[0].type == "client") {
-                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Operator ID</th><th>Documents</th></tr></thead></table>');
+                    $(".assigned_labors_list").html('<table id="tblLabors" class="table table-striped table-bordered table-hover" style="width: 100%;"><thead><tr><th>#</th><th>Employee Name</th><th>Operator ID</th><th>Health Care Number</th><th>Residence Card Number</th><th>Documents</th></tr></thead></table>');
 
                     var arrData = [];
                     $.ajax({
@@ -499,7 +499,9 @@
                             $(data).each(function (index, value) {
                                 //var medical = "N/A";
                                 var emp_name = value.name;
-                                var operator_id = "<span class='text-danger'>Not Assigned</span><span><small class='text-success btnOperatorId' style='cursor: pointer' data-job-id='" + id + "' data-emp-id='" + value.id +"'>  (Assign Operator ID)</small></span>";
+                                var operator_id = "<span class='text-danger'>Not Assigned</span><span><small class='text-success btnOperatorId' style='cursor: pointer' data-job-id='" + id + "' data-emp-id='" + value.id + "'>  (Assign Operator ID)</small></span>";
+                                var health_care_number = "-----";
+                                var residence_card_number = "-----";
                                 if (value.operator_id != null && value.operator_id != "") {
                                     operator_id = value.operator_id;
                                 }
@@ -507,6 +509,15 @@
                                 //    $("#txtOperatorId").val("");
                                 //}
                                 
+
+                                if (value.health_care_number != null && value.health_care_number != "") {
+                                    health_care_number = value.health_care_number;
+                                }
+
+                                if (value.residence_card_number != null && value.residence_card_number != "") {
+                                    residence_card_number = value.residence_card_number;
+                                }
+
                                 $.ajax({
                                     url: localStorage.getItem("ApiLink") + "api/get_medical/" + id + "/" + value.id,
                                     async: false,
@@ -533,6 +544,8 @@
                                     "sr": index + 1,
                                     "name": emp_name,
                                     "operator_id": operator_id,
+                                    "health_care_number": health_care_number,
+                                    "residence_card_number": residence_card_number,
                                     "documents": "<a id='viewDocuments' style='cursor: pointer;' data-id='" + value.id + "' data-job-id='" + id + "'>view</a>",
                                     //"medical": medical,
                                 };
@@ -555,6 +568,8 @@
                             { "data": "sr" },
                             { "data": "name" },
                             { "data": "operator_id" },
+                            { "data": "health_care_number" },
+                            { "data": "residence_card_number" },
                             { "data": "documents" },
                             //{ "data": "medical" }
                         ]

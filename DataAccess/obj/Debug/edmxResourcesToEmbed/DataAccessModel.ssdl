@@ -40,6 +40,8 @@
     <Property Name="sex" Type="varchar(max)" />
     <Property Name="driving_license" Type="varchar(max)" />
     <Property Name="contact" Type="varchar(max)" />
+    <Property Name="health_care_number" Type="varchar(max)" />
+    <Property Name="residence_card_number" Type="varchar(max)" />
     <Property Name="nationality" Type="varchar(max)" />
     <Property Name="location" Type="varchar(max)" />
     <Property Name="address" Type="varchar(max)" />
